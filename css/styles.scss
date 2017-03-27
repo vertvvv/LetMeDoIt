@@ -1,0 +1,289 @@
+*, *:before, *:after { box-sizing: border-box; }
+
+/* Reset */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #edeef0;
+}
+
+input, a, button {
+    outline: none;
+}
+
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+/*Reset end*/
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid \9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+$headerHeight: 80px;
+$navColor: #e6e53e;
+$hrColor: #d9d9d9;
+$maxPageWidth: 1100px;
+
+nav {
+    position: fixed;
+    height: $headerHeight;
+    min-height: $headerHeight;
+    width: 100%;
+    background-color: $navColor;
+    font-size: 32px;
+
+    .nav-wrapper {
+        width: 70%;
+        margin: auto;
+        max-width: $maxPageWidth;
+    }
+
+    .nav__left-side {
+        float: left;
+        line-height: $headerHeight;
+
+        a {
+            display: block;
+            float: left;
+            cursor: pointer;
+            padding-right: 30px;
+            transition: all 0.3s;
+
+            img {
+                float: left;
+                padding-right: 30px;
+                padding: 10px;
+            }
+
+            span {
+                float: left;
+                color: #333;
+            }
+
+            &:hover {
+                background-color: #cbca4c;
+            }
+        }
+    }
+
+    .nav__right-side {
+        float: right;
+
+        a {
+            cursor: pointer;
+
+            img {
+                float: left;
+            }
+
+            span {
+                display: inline-block;
+            }
+        }
+    }
+
+    .nav__img-wrapper {
+        display: block;
+        position: relative;
+        line-height: $headerHeight - 30px;
+        padding: 15px;
+        font-size: 24px;
+
+        img {
+            max-height: $headerHeight - 30px;
+            border-radius: 40px;
+        }
+
+        .nav__profile-name {
+            margin-left: 20px;
+        }
+    }
+
+    .logo img {
+        max-height: $headerHeight;
+    }
+}
+
+.page-wrapper {
+    padding-top: $headerHeight;
+    width: 70%;
+    max-width: $maxPageWidth;
+    margin: auto;
+
+    .ideas-section {
+        $pad: 40px;
+        padding-top: 35px;
+
+        .ideas-filter {
+            display: inline-block;
+
+            &__current {
+                background-color: $navColor;
+            }
+
+            li {
+                display: inline-block;
+                float: left;
+                padding: 10px 18px;
+                margin-right: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.5s;
+
+                &:hover {
+                    background-color: $navColor;
+                }
+            }
+        }
+
+        .idea {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 30px;
+            line-height: 1.4;
+            margin: $pad / 2 0;
+            border: 2px solid $hrColor;
+
+            &__header {
+                padding-bottom: 60px;
+                font-weight: 600;
+
+                &__name {
+                    font-size: 24px;
+                    float: left;
+                }
+
+                &__rating {
+                    float: right;
+                    padding-right: 30px;
+                    font-size: 20px;
+
+                    .rating {
+                        cursor: pointer;
+                        font-weight: 800;
+                        transition: all 0.2s;
+
+                        &__plus:hover {
+                            color: green;
+                        }
+                        &__minus:hover {
+                            color: red;
+                        }
+                    }
+                }
+            }
+
+            &__text {
+                font-size: 16px;
+            }
+
+            &__footer {
+                padding: 15px 20px 10px 0;
+                line-height: 30px;
+                font-size: 18px;
+                color: #627588;
+
+                a {
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                &__full {
+                    float: left;
+                }
+
+                &__comments {
+                    float: right;
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+
+    .footer-hr {
+        margin-top: 50px;
+        width: 80%;
+        border: 1px solid $hrColor;
+    }
+
+    .page-footer {
+        margin: 40px;
+        text-align: center;
+
+        &__links {
+            display: inline-block;
+            line-height: 40px;
+
+            li {
+                float: left;
+                padding-right: 15px;
+                padding-left: 15px;
+
+                &:first-of-type {
+                    border-right: 1px solid $hrColor;
+                }
+            }
+        }
+    }
+
+}

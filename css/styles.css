@@ -99,6 +99,8 @@ nav {
         float: left; }
       nav .nav__right-side a span {
         display: inline-block; }
+      nav .nav__right-side a:hover {
+        background-color: #cbca4c; }
   nav .nav__img-wrapper {
     display: block;
     position: relative;

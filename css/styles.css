@@ -81,8 +81,8 @@ button:disabled {
 
 nav {
   position: fixed;
-  height: 80px;
-  min-height: 80px;
+  height: 70px;
+  min-height: 70px;
   width: 100%;
   background-color: #f0f317;
   font-size: 18px;
@@ -91,20 +91,23 @@ nav {
     width: 70%;
     margin: auto;
     max-width: 1100px; }
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       nav .nav-wrapper {
         font-size: 0.9em;
         width: 90%; } }
   nav .nav__left-side {
     font-size: 1.6em;
     float: left;
-    line-height: 80px; }
+    line-height: 70px; }
     nav .nav__left-side a {
       display: block;
       float: left;
       cursor: pointer;
       padding-right: 30px;
       transition: all 0.3s; }
+      @media (max-width: 768px) {
+        nav .nav__left-side a {
+          padding-right: 0; } }
       nav .nav__left-side a img {
         float: left;
         padding: 10px; }
@@ -150,40 +153,125 @@ nav {
   nav .nav__img-wrapper {
     display: block;
     position: relative;
-    line-height: 50px;
+    line-height: 40px;
     padding: 15px; }
     nav .nav__img-wrapper img {
-      max-height: 50px;
+      max-height: 40px;
       border-radius: 40px; }
     nav .nav__img-wrapper .nav__profile-name {
       margin-left: 20px; }
   nav .logo img {
-    max-height: 80px; }
+    max-height: 70px; }
 
 .page-wrapper {
-  padding-top: 80px;
+  padding-top: 70px;
   width: 70%;
   max-width: 1100px;
   margin: auto; }
   @media (max-width: 768px) {
     .page-wrapper {
       width: 90%; } }
-  .page-wrapper .ideas-section {
+  .page-wrapper .ideas-section, .page-wrapper .ideas-user-section {
     padding-top: 35px; }
     @media (max-width: 768px) {
-      .page-wrapper .ideas-section {
+      .page-wrapper .ideas-section, .page-wrapper .ideas-user-section {
         padding-top: 17.5px; } }
-    .page-wrapper .ideas-section .ideas-filter {
+    .page-wrapper .ideas-section .ideas-filter, .page-wrapper .ideas-user-section .ideas-filter {
       display: inline-block; }
-      .page-wrapper .ideas-section .ideas-filter__current, .page-wrapper .ideas-section .ideas-filter li:hover {
+      .page-wrapper .ideas-section .ideas-filter__current, .page-wrapper .ideas-section .ideas-filter li:hover, .page-wrapper .ideas-user-section .ideas-filter__current, .page-wrapper .ideas-user-section .ideas-filter li:hover {
         border-bottom: 3px solid #ddda4b; }
-      .page-wrapper .ideas-section .ideas-filter li {
+      .page-wrapper .ideas-section .ideas-filter li, .page-wrapper .ideas-user-section .ideas-filter li {
         display: inline-block;
         float: left;
         padding: 8px 14px;
         margin-right: 10px;
         cursor: pointer;
         transition: all 0.1s; }
+  .page-wrapper .ideas-user-section {
+    padding-top: 5px; }
+  .page-wrapper .user-section {
+    padding-top: 35px; }
+    @media (max-width: 768px) {
+      .page-wrapper .user-section {
+        padding-top: 8.75px; } }
+    .page-wrapper .user-section .user-bio {
+      background-color: #fcfcfc;
+      width: 70%;
+      margin: 0 auto;
+      padding: 40px;
+      line-height: 1.4;
+      box-shadow: 10px 10px 15px -10px #1b1c05;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column; }
+      @media (max-width: 768px) {
+        .page-wrapper .user-section .user-bio {
+          padding: 20px;
+          margin-top: 25px;
+          margin-bottom: 25px;
+          width: 100%; } }
+      .page-wrapper .user-section .user-bio__main {
+        flex: 1;
+        padding-bottom: 5px; }
+        .page-wrapper .user-section .user-bio__main__avatar {
+          background: url(../img/profile.jpg);
+          background-position: center;
+          background-size: cover;
+          margin: 0 auto;
+          width: 150px;
+          height: 150px;
+          border: 1px solid #ddd;
+          border-radius: 10px; }
+        @media (max-width: 767px) {
+          .page-wrapper .user-section .user-bio__main__avatar {
+            width: 100px;
+            height: 100px; } }
+        .page-wrapper .user-section .user-bio__main__username {
+          text-align: center;
+          padding-top: 15px; }
+      .page-wrapper .user-section .user-bio__info {
+        flex: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
+        .page-wrapper .user-section .user-bio__info__desc {
+          padding-top: 10px;
+          margin: 0 auto;
+          width: 80%;
+          max-width: 600px;
+          text-align: center; }
+          .page-wrapper .user-section .user-bio__info__desc i {
+            font-weight: 600;
+            font-style: italic; }
+        .page-wrapper .user-section .user-bio__info__stats {
+          display: flex;
+          justify-content: space-between;
+          margin: 0 auto;
+          width: 80%; }
+          .page-wrapper .user-section .user-bio__info__stats .stats-button {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            background-color: #fff;
+            width: 100%;
+            padding: 3px;
+            margin-top: 20px;
+            border: 1px solid #d1d1d1;
+            border-collapse: collapse;
+            text-align: center; }
+            .page-wrapper .user-section .user-bio__info__stats .stats-button:first-of-type {
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px; }
+            .page-wrapper .user-section .user-bio__info__stats .stats-button:last-of-type {
+              border-top-right-radius: 10px;
+              border-bottom-right-radius: 10px; }
+            .page-wrapper .user-section .user-bio__info__stats .stats-button__name {
+              color: #555; }
+            .page-wrapper .user-section .user-bio__info__stats .stats-button__value {
+              font-weight: 600; }
+        @media (max-width: 767px) {
+          .page-wrapper .user-section .user-bio__info__desc, .page-wrapper .user-section .user-bio__info__stats {
+            width: 95%; } }
   .page-wrapper .idea {
     background-color: #fcfcfc;
     padding: 40px;
@@ -264,7 +352,7 @@ nav {
         margin-bottom: 20px; }
         .page-wrapper .idea__text__functions ul {
           list-style-type: disc;
-          padding: 0 70px;
+          padding: 0 10px 0 40px;
           margin-top: 10px; }
       .page-wrapper .idea__text__mockups {
         margin-bottom: 20px; }
@@ -379,17 +467,20 @@ nav {
       border-collapse: collapse;
       width: 100%; }
       .page-wrapper .single-idea-section .comments .input-place textarea {
-        flex: 8;
+        flex: 6;
         font: inherit;
         font-size: 0.8em;
         padding: 10px;
-        padding-top: 0;
+        padding-top: 3px;
         height: 150px;
         border: 1px solid #ccc;
         resize: none;
         outline: none;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px; }
+        @media (max-width: 767px) {
+          .page-wrapper .single-idea-section .comments .input-place textarea {
+            flex: 4; } }
       .page-wrapper .single-idea-section .comments .input-place__button {
         flex: 1;
         text-align: center;
@@ -418,5 +509,92 @@ nav {
         font-size: 0.7em;
         color: #888;
         align-self: flex-end; }
+  .page-wrapper .settings-section {
+    background-color: #fcfcfc;
+    padding: 25px 30px 40px 30px;
+    line-height: 1.4;
+    margin: 50px 0;
+    box-shadow: 10px 10px 15px -10px #1b1c05;
+    font-size: 16px; }
+    @media (max-width: 991px) {
+      .page-wrapper .settings-section {
+        padding: 20px 10px; } }
+    .page-wrapper .settings-section h1 {
+      text-align: center;
+      font-size: 1.6em;
+      font-weight: 600;
+      margin-bottom: 25px; }
+    .page-wrapper .settings-section .settings {
+      display: flex; }
+      @media (max-width: 767px) {
+        .page-wrapper .settings-section .settings {
+          flex-direction: column; } }
+      .page-wrapper .settings-section .settings__info {
+        flex: 1;
+        text-align: center; }
+        .page-wrapper .settings-section .settings__info__avatar {
+          background: url(../img/profile.jpg);
+          background-position: center;
+          background-size: cover;
+          margin: 0 auto;
+          width: 150px;
+          height: 150px;
+          border: 1px solid #ddd;
+          border-radius: 10px; }
+        .page-wrapper .settings-section .settings__info__change-avatar {
+          margin-top: 15px;
+          margin-bottom: 15px;
+          background-color: #fff;
+          box-shadow: none;
+          padding: 6px 12px;
+          cursor: pointer;
+          border: 1px solid #d1d1d1;
+          border-radius: 3px;
+          transition: all 0.5s; }
+          .page-wrapper .settings-section .settings__info__change-avatar:hover {
+            background-color: #f0f317; }
+      .page-wrapper .settings-section .settings__main {
+        flex: 3;
+        border: 1px solid #d1d1d1;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px 15px; }
+        .page-wrapper .settings-section .settings__main h2 {
+          font-size: 1.2em;
+          font-weight: 600;
+          text-align: center; }
+        .page-wrapper .settings-section .settings__main .form-input {
+          margin: 22px 20px;
+          display: flex;
+          line-height: 24px;
+          font-size: 1em;
+          align-items: center; }
+          @media (max-width: 767px) {
+            .page-wrapper .settings-section .settings__main .form-input {
+              flex-direction: column; } }
+          .page-wrapper .settings-section .settings__main .form-input label {
+            flex: 1; }
+          .page-wrapper .settings-section .settings__main .form-input input {
+            line-height: 24px;
+            flex: 3;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: none;
+            padding: 2px 4px 2px 12px;
+            font-size: 1em;
+            width: 100%; }
+            .page-wrapper .settings-section .settings__main .form-input input[disabled] {
+              cursor: not-allowed; }
+          .page-wrapper .settings-section .settings__main .form-input textarea {
+            line-height: 24px;
+            flex: 3;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font: inherit;
+            padding: 2px 12px 2px 12px;
+            font-size: 1em;
+            width: 100%;
+            resize: none;
+            outline: none; }
 
 /*# sourceMappingURL=styles.css.map */

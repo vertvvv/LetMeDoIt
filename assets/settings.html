@@ -1,10 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Let me do it!</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css.map">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
+
 <body>
 
+<nav>
+    <div class="nav-wrapper">
+        <div class="nav__left-side">
+            <a href="../index.html" class="logo">
+                <img src="../img/logo.png">
+                <span class="nav__profile-name">Let me do it!</span>
+            </a>
+        </div>
+        <div id="profile-bar" class="nav__right-side">
+            <a class="nav__img-wrapper">
+                <img src="../img/profile.jpg">
+                <span class="nav__profile-name">Ilya</span>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu invisible-element">
+                <li><a href="new_idea.html">New idea</a></li>
+                <li><a href="profile.html">My profile</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="../index.html">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="page-wrapper">
+    <section class="settings-section">
+        <h1>Settings</h1>
+        <div class="settings">
+            <div class="settings__info">
+                <div class="settings__info__avatar"></div>
+                <button class="settings__info__change-avatar">Change avatar</button>
+            </div>
+            <div class="settings__main">
+                <h2>User settings</h2>
+                <div class="form-input">
+                    <label for="nameInput">Name</label>
+                    <input id="nameInput" placeholder="Name">
+                </div>
+                <div class="form-input">
+                    <label for="surnameInput">Surname</label>
+                    <input id="surnameInput" placeholder="Surname">
+                </div>
+                <div class="form-input">
+                    <label for="bioTextarea">Information</label>
+                    <textarea id="bioTextarea" placeholder="About me" rows="5"></textarea>
+                </div>
+                <h2>Account settings</h2>
+                <div class="form-input">
+                    <label for="usernameInput">Username</label>
+                    <input id="usernameInput" placeholder="Username">
+                </div>
+                <div class="form-input">
+                    <label for="emailInput">E-mail</label>
+                    <input id="emailInput" placeholder="E-Mail" disabled="disabled">
+                </div>
+                <div class="form-input">
+                    <label for="passInput">Password</label>
+                    <input id="passInput" type="password" placeholder="Password">
+                </div>
+                <div class="form-input">
+                    <label for="confirmPassInput">Confirm password</label>
+                    <input id="confirmPassInput" type="password" placeholder="Password">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="footer-hr">
+
+    <footer class="page-footer">
+        <ul class="page-footer__links">
+            <li>
+                © 2017, Let me do it!
+            </li>
+            <li>
+                <a href="https://gitlab.com/vertvvv/js-practice-ilya-trokhin">Gitlab link</a>
+            </li>
+        </ul>
+    </footer>
+</div>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+
 </body>
+
 </html>

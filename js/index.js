@@ -3,7 +3,6 @@
  */
 
 $('#profile-bar').on('click', function (e) {
-    e.preventDefault();
     $('.dropdown-menu').toggleClass('invisible-element');
     $(this).toggleClass('active');
 });

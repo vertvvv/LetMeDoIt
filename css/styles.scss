@@ -100,7 +100,7 @@ button:disabled {
     flex: 10 !important;
 }
 
-$headerHeight: 80px;
+$headerHeight: 70px;
 $navColor: #f0f317;
 $hrColor: #d9d9d9;
 $maxPageWidth: 1100px;
@@ -120,7 +120,7 @@ nav {
         margin: auto;
         max-width: $maxPageWidth;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             & {
                 font-size: 0.9em;
                 width: $pageMobileWidth;
@@ -139,6 +139,12 @@ nav {
             cursor: pointer;
             padding-right: 30px;
             transition: all 0.3s;
+
+            @media (max-width: 768px) {
+                & {
+                    padding-right: 0;
+                }
+            }
 
             img {
                 float: left;
@@ -248,7 +254,7 @@ nav {
 
     $pad: 35px;
 
-    .ideas-section {
+    .ideas-section, .ideas-user-section {
         padding-top: $pad;
 
         @media (max-width: 768px) {
@@ -271,6 +277,138 @@ nav {
                 margin-right: 10px;
                 cursor: pointer;
                 transition: all 0.1s;
+            }
+        }
+    }
+
+    .ideas-user-section {
+        padding-top: 5px;
+    }
+
+    .user-section {
+        padding-top: $pad;
+
+        @media (max-width: 768px) {
+            & {
+                padding-top: $pad / 4;
+            }
+        }
+
+        .user-bio {
+            background-color: #fcfcfc;
+            width: 70%;
+            margin: 0 auto;
+            padding: 40px;
+            line-height: 1.4;
+            box-shadow: 10px 10px 15px -10px rgba(27, 28, 5, 1);
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+
+            @media (max-width: 768px) {
+                & {
+                    padding: 20px;
+                    margin-top: 25px;
+                    margin-bottom: 25px;
+                    width: 100%;
+                }
+            }
+
+            &__main {
+                flex: 1;
+                padding-bottom: 5px;
+
+                &__avatar {
+                    background: url(../img/profile.jpg);
+                    background-position: center;
+                    background-size: cover;
+                    margin: 0 auto;
+                    width: 150px;
+                    height: 150px;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                }
+
+                @media (max-width: 767px) {
+                    &__avatar {
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+
+                &__username {
+                    text-align: center;
+                    padding-top: 15px;
+                }
+
+            }
+
+            &__info {
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                $width: 80%;
+
+
+                &__desc {
+                    padding-top: 10px;
+                    margin: 0 auto;
+                    width: $width;
+                    max-width: 600px;
+                    text-align: center;
+
+                    i {
+                        font-weight: 600;
+                        font-style: italic;
+                    }
+                }
+
+                &__stats {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 0 auto;
+                    width: $width;
+
+                    .stats-button {
+                        display: flex;
+                        justify-content: space-between;
+                        flex-direction: column;
+                        background-color: #fff;
+                        width: 100%;
+                        padding: 3px;
+                        margin-top: 20px;
+                        border: 1px solid #d1d1d1;
+                        border-collapse: collapse;
+                        text-align: center;
+
+                        $radius: 10px;
+
+                        &:first-of-type {
+                            border-top-left-radius: $radius;
+                            border-bottom-left-radius: $radius;
+                        }
+
+                        &:last-of-type {
+                            border-top-right-radius: $radius;
+                            border-bottom-right-radius: $radius;
+                        }
+
+                        &__name {
+                            color: #555;
+                        }
+
+                        &__value {
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                @media (max-width: 767px) {
+                    &__desc, &__stats {
+                        width: 95%;
+                    }
+                }
             }
         }
     }
@@ -405,7 +543,7 @@ nav {
 
                 ul {
                     list-style-type: disc;
-                    padding: 0 70px;
+                    padding: 0 10px 0 40px;
                     margin-top: 10px;
                 }
             }
@@ -595,17 +733,23 @@ nav {
                 $radius: 5px;
 
                 textarea {
-                    flex: 8;
+                    flex: 6;
                     font: inherit;
                     font-size: 0.8em;
                     padding: 10px;
-                    padding-top: 0;
+                    padding-top: 3px;
                     height: 150px;
                     border: 1px solid $border;
                     resize: none;
                     outline: none;
                     border-top-left-radius: $radius;
                     border-bottom-left-radius: $radius;
+
+                    @media (max-width: 767px) {
+                        & {
+                            flex: 4;
+                        }
+                    }
                 }
 
                 &__button {
@@ -648,5 +792,135 @@ nav {
                 }
             }
         }
+    }
+
+    .settings-section {
+        background-color: #fcfcfc;
+        padding: 25px 30px 40px 30px;
+        line-height: 1.4;
+        margin: 50px 0;
+        box-shadow: 10px 10px 15px -10px rgba(27, 28, 5, 1);
+        font-size: 16px;
+
+        @media (max-width: 991px)  {
+            & {
+                padding: 20px 10px;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .settings {
+            display: flex;
+
+            @media (max-width: 767px)  {
+                & {
+                    flex-direction: column;
+                }
+            }
+
+            &__info {
+                flex: 1;
+                text-align: center;
+
+                &__avatar {
+                    background: url(../img/profile.jpg);
+                    background-position: center;
+                    background-size: cover;
+                    margin: 0 auto;
+                    width: 150px;
+                    height: 150px;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                }
+
+                &__change-avatar  {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    background-color: #fff;
+                    box-shadow: none;
+                    padding: 6px 12px;
+                    cursor: pointer;
+                    border: 1px solid #d1d1d1;
+                    border-radius: 3px;
+                    transition: all 0.5s;
+
+                    &:hover {
+                        background-color: $navColor;
+                    }
+                }
+            }
+
+            &__main {
+                flex: 3;
+                border: 1px solid #d1d1d1;
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 10px 15px;
+
+                $lnheight: 24px;
+                $fontsize: 1em;
+
+                h2 {
+                    font-size: 1.2em;
+                    font-weight: 600;
+                    text-align: center;
+                }
+
+                .form-input {
+                    margin: 22px 20px;
+                    display: flex;
+                    line-height: $lnheight;
+                    font-size: $fontsize;
+                    align-items: center;
+
+                    @media (max-width: 767px)  {
+                        & {
+                            flex-direction: column;
+                        }
+                    }
+
+                    label {
+                        flex: 1;
+
+                    }
+
+                    input {
+                        line-height: $lnheight;
+                        flex: 3;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        box-shadow: none;
+                        padding: 2px 4px 2px 12px;
+                        font-size: $fontsize;
+                        width: 100%;
+
+                        &[disabled] {
+                            cursor: not-allowed;
+                        }
+                    }
+
+                    textarea {
+                        line-height: $lnheight;
+                        flex: 3;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                        font: inherit;
+                        padding: 2px 12px 2px 12px;
+                        font-size: $fontsize;
+                        width: 100%;
+                        resize: none;
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+
     }
 }

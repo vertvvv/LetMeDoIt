@@ -1,8 +1,7 @@
+/* Reset */
 *, *:before, *:after {
     box-sizing: border-box;
 }
-
-/* Reset */
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
@@ -65,7 +64,6 @@ button:disabled {
     cursor: not-allowed;
     pointer-events: all !important;
 }
-
 /*Reset end*/
 
 .caret {
@@ -74,9 +72,7 @@ button:disabled {
     height: 0;
     margin-left: 2px;
     vertical-align: middle;
-    border-top: 4px dashed;
-    border-top: 4px solid \9
-;
+    border-top: 4px solid;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
 }
@@ -100,11 +96,14 @@ button:disabled {
     flex: 10 !important;
 }
 
+$borderColor: #d1d1d1;
 $headerHeight: 70px;
 $navColor: #f0f317;
 $hrColor: #d9d9d9;
 $maxPageWidth: 1100px;
 $pageMobileWidth: 90%;
+$xs: 767px;
+$s: 991px;
 
 nav {
     position: fixed;
@@ -120,11 +119,9 @@ nav {
         margin: auto;
         max-width: $maxPageWidth;
 
-        @media (max-width: 767px) {
-            & {
-                font-size: 0.9em;
-                width: $pageMobileWidth;
-            }
+        @media (max-width: $xs) {
+            font-size: 0.9em;
+            width: $pageMobileWidth;
         }
     }
 
@@ -140,10 +137,12 @@ nav {
             padding-right: 10px;
             transition: all 0.3s;
 
-            @media (max-width: 768px) {
-                & {
-                    padding-right: 0;
-                }
+            &:hover {
+                background-color: #cbca4c;
+            }
+
+            @media (max-width: $xs) {
+                padding-right: 0;
             }
 
             img {
@@ -156,15 +155,9 @@ nav {
                 float: left;
                 color: #333;
 
-                @media (max-width: 768px) {
-                    & {
-                        display: none;
-                    }
+                @media (max-width: $xs) {
+                    display: none;
                 }
-            }
-
-            &:hover {
-                background-color: #cbca4c;
             }
         }
     }
@@ -176,16 +169,16 @@ nav {
             cursor: pointer;
             transition: all 0.3s;
 
+            &:hover {
+                background-color: #cbca4c;
+            }
+
             img {
                 float: left;
             }
 
             span {
                 display: inline-block;
-            }
-
-            &:hover {
-                background-color: #cbca4c;
             }
         }
 
@@ -246,10 +239,8 @@ nav {
     max-width: $maxPageWidth;
     margin: auto;
 
-    @media (max-width: 768px) {
-        & {
-            width: $pageMobileWidth;
-        }
+    @media (max-width: $xs) {
+        width: $pageMobileWidth;
     }
 
     $pad: 35px;
@@ -257,10 +248,8 @@ nav {
     .ideas-section, .ideas-user-section {
         padding-top: $pad;
 
-        @media (max-width: 768px) {
-            & {
-                padding-top: $pad / 2;
-            }
+        @media (max-width: $xs) {
+            padding-top: $pad / 2;
         }
 
         .ideas-filter {
@@ -288,10 +277,8 @@ nav {
     .user-section {
         padding-top: $pad;
 
-        @media (max-width: 768px) {
-            & {
-                padding-top: $pad / 4;
-            }
+        @media (max-width: $xs) {
+            padding-top: $pad / 4;
         }
 
         .user-bio {
@@ -305,13 +292,11 @@ nav {
             display: flex;
             flex-direction: column;
 
-            @media (max-width: 768px) {
-                & {
-                    padding: 20px;
-                    margin-top: 25px;
-                    margin-bottom: 25px;
-                    width: 100%;
-                }
+            @media (max-width: $xs) {
+                padding: 20px;
+                margin-top: 25px;
+                margin-bottom: 25px;
+                width: 100%;
             }
 
             &__main {
@@ -325,12 +310,10 @@ nav {
                     margin: 0 auto;
                     width: 150px;
                     height: 150px;
-                    border: 1px solid #ddd;
+                    border: 1px solid $borderColor;
                     border-radius: 10px;
-                }
 
-                @media (max-width: 767px) {
-                    &__avatar {
+                    @media (max-width: $xs) {
                         width: 100px;
                         height: 100px;
                     }
@@ -340,7 +323,6 @@ nav {
                     text-align: center;
                     padding-top: 15px;
                 }
-
             }
 
             &__info {
@@ -377,7 +359,7 @@ nav {
                         width: 100%;
                         padding: 3px;
                         margin-top: 20px;
-                        border: 1px solid #d1d1d1;
+                        border: 1px solid $borderColor;
                         border-collapse: collapse;
                         text-align: center;
 
@@ -403,7 +385,7 @@ nav {
                     }
                 }
 
-                @media (max-width: 767px) {
+                @media (max-width: $xs) {
                     &__desc, &__stats {
                         width: 95%;
                     }
@@ -420,24 +402,16 @@ nav {
         box-shadow: 10px 10px 15px -10px rgba(27, 28, 5, 1);
         font-size: 16px;
 
-        @media (max-width: 768px) {
-            & {
-                padding: 20px;
-                margin: 25px 0;
-            }
-
-            &__footer {
-                padding-bottom: 30px;
-            }
+        @media (max-width: $xs) {
+            padding: 20px;
+            margin: 25px 0;
         }
 
         &:first-of-type {
             margin-top: $pad;
 
-            @media (max-width: 768px) {
-                & {
-                    margin: $pad / 2 0;
-                }
+            @media (max-width: $xs) {
+                margin: $pad / 2 0;
             }
         }
 
@@ -447,10 +421,8 @@ nav {
             overflow: hidden;
             clear: left;
 
-            @media (max-width: 768px) {
-                & {
-                    font-size: 0.8em;
-                }
+            @media (max-width: $xs) {
+                font-size: 0.8em;
             }
 
             &__name {
@@ -460,7 +432,7 @@ nav {
             }
 
             &__rating {
-                border: 1px solid #d1d1d1;
+                border: 1px solid $borderColor;
                 background-color: #fdfdfd;
                 float: right;
                 font-size: 1.4em;
@@ -468,20 +440,16 @@ nav {
                 border-radius: 30px;
                 padding: 3px 15px;
 
-                @media (max-width: 768px) {
-                    & {
-                        padding: 1px 2px;
-                        margin-right: 0;
-                    }
+                @media (max-width: $xs) {
+                    padding: 1px 2px;
+                    margin-right: 0;
                 }
 
                 span {
                     padding: 4px;
 
-                    @media (max-width: 768px) {
-                        & {
-                            padding: 3px;
-                        }
+                    @media (max-width: $xs) {
+                        padding: 3px;
                     }
                 }
 
@@ -559,6 +527,10 @@ nav {
                     flex-direction: row;
                     align-items: center;
 
+                    @media (max-width: $xs) {
+                        flex-direction: column;
+                    }
+
                     &__wrapper {
                         flex: 1;
                         transition: all 1s;
@@ -569,12 +541,6 @@ nav {
                         transition: all 1s ease-in-out;
                         width: 100%;
                         cursor: pointer;
-                    }
-                }
-
-                @media (max-width: 767px) {
-                    .img-grid {
-                        flex-direction: column;
                     }
                 }
             }
@@ -602,10 +568,8 @@ nav {
             color: #627588;
             display: block;
 
-            @media (max-width: 768px) {
-                & {
-                    padding-bottom: 25px;
-                }
+            @media (max-width: $xs) {
+                padding-bottom: 25px;
             }
 
             a {
@@ -650,8 +614,13 @@ nav {
         text-align: center;
 
         &__links {
-            display: inline-block;
+            display: flex;
             line-height: 40px;
+            justify-content: center;
+
+            @media (max-width: $xs) {
+                flex-direction: column;
+            }
 
             li {
                 float: left;
@@ -660,6 +629,10 @@ nav {
 
                 &:first-of-type {
                     border-right: 1px solid $hrColor;
+
+                    @media (max-width: $xs) {
+                        border: 0;
+                    }
                 }
 
                 a {
@@ -706,10 +679,8 @@ nav {
                     height: 100px;
                     border: 1px solid #ddd;
                     border-radius: 100px;
-                }
 
-                @media (max-width: 767px) {
-                    &__wrapper {
+                    @media (max-width: $xs) {
                         width: 50px;
                         height: 50px;
                     }
@@ -728,7 +699,6 @@ nav {
                 border-collapse: collapse;
                 width: 100%;
 
-                $border: #ccc;
                 $radius: 5px;
 
                 textarea {
@@ -738,16 +708,14 @@ nav {
                     padding: 10px;
                     padding-top: 3px;
                     height: 150px;
-                    border: 1px solid $border;
+                    border: 1px solid $borderColor;
                     resize: none;
                     outline: none;
                     border-top-left-radius: $radius;
                     border-bottom-left-radius: $radius;
 
-                    @media (max-width: 767px) {
-                        & {
-                            flex: 4;
-                        }
+                    @media (max-width: $xs) {
+                        flex: 4;
                     }
                 }
 
@@ -757,7 +725,7 @@ nav {
                     font-size: 0.7em;
                     padding: 58px 0;
                     background-color: #fafafa;
-                    border: 1px solid $border;
+                    border: 1px solid $borderColor;
                     cursor: pointer;
                     transition: all 0.5s;
                     border-top-right-radius: $radius;
@@ -766,10 +734,8 @@ nav {
                     &:hover {
                         background-color: $navColor;
                     }
-                }
 
-                @media (max-width: 767px) {
-                    &__button {
+                    @media (max-width: $xs) {
                         width: 90%;
                     }
                 }
@@ -801,10 +767,8 @@ nav {
         box-shadow: 10px 10px 15px -10px rgba(27, 28, 5, 1);
         font-size: 16px;
 
-        @media (max-width: 991px) {
-            & {
-                padding: 20px 10px;
-            }
+        @media (max-width: $s) {
+            padding: 20px 10px;
         }
 
         h1 {
@@ -817,10 +781,8 @@ nav {
         .settings {
             display: flex;
 
-            @media (max-width: 767px) {
-                & {
-                    flex-direction: column;
-                }
+            @media (max-width: $xs) {
+                flex-direction: column;
             }
 
             &__info {
@@ -845,7 +807,7 @@ nav {
                     box-shadow: none;
                     padding: 8px 12px;
                     cursor: pointer;
-                    border: 1px solid #d1d1d1;
+                    border: 1px solid $borderColor;
                     border-radius: 3px;
                     transition: all 0.5s;
 
@@ -857,7 +819,7 @@ nav {
 
             &__main {
                 flex: 2;
-                border: 1px solid #d1d1d1;
+                border: 1px solid $borderColor;
                 background-color: #fff;
                 border-radius: 10px;
                 padding: 10px 15px;
@@ -878,21 +840,18 @@ nav {
                     font-size: $fontsize;
                     align-items: center;
 
-                    @media (max-width: 767px) {
-                        & {
-                            flex-direction: column;
-                        }
+                    @media (max-width: $xs) {
+                        flex-direction: column;
                     }
 
                     label {
                         flex: 1;
-
                     }
 
                     input {
                         line-height: $lnheight;
                         flex: 3;
-                        border: 1px solid #ccc;
+                        border: 1px solid $borderColor;
                         border-radius: 5px;
                         box-shadow: none;
                         padding: 2px 4px 2px 12px;
@@ -930,17 +889,19 @@ nav {
         box-shadow: 10px 10px 15px -10px rgba(27, 28, 5, 1);
         font-size: 16px;
 
-        @media (max-width: 991px) {
-            & {
-                padding: 20px 10px;
-            }
+        @media (max-width: $s) {
+            padding: 20px 10px;
+        }
+
+        .new-input {
+            display: none;
         }
 
         h1 {
             text-align: center;
             font-size: 1.6em;
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .new-idea {
@@ -963,16 +924,14 @@ nav {
                 font-size: $fontsize;
                 align-items: center;
 
-                @media (max-width: 767px) {
-                    & {
-                        flex-direction: column;
-                    }
+                @media (max-width: $xs) {
+                    flex-direction: column;
                 }
 
                 label {
                     flex: 1;
 
-                    @media (max-width: 767px) {
+                    @media (max-width: $xs) {
                         margin-bottom: 5px;
                     }
                 }
@@ -1014,7 +973,7 @@ nav {
                     background-color: #fff;
                     box-shadow: none;
                     cursor: pointer;
-                    border: 1px solid #d1d1d1;
+                    border: 1px solid $borderColor;
                     border-radius: 4px;
                     transition: all 0.5s;
 
@@ -1022,21 +981,38 @@ nav {
                         background-color: $navColor;
                     }
 
-                    @media (max-width: 767px) {
+                    @media (max-width: $xs) {
                         margin-top: 10px;
                     }
                 }
             }
 
             &__func {
+
+                &__wrapper {
+                    flex: 4;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                }
+
                 input {
-                    flex: 4 !important;
+                    flex: 1 !important;
+                    margin-bottom: 10px !important;
                 }
 
                 &__add {
                     flex: 1;
                     text-align: center;
                     line-height: $lnheight;
+                }
+
+                label, &__add {
+                    align-self: flex-start;
+
+                    @media (max-width: $xs) {
+                        align-self: center;
+                    }
                 }
             }
 
@@ -1055,19 +1031,26 @@ nav {
             }
 
             &__other {
+
                 label {
                     align-self: flex-start;
 
-                    @media (max-width: 767px) {
+                    @media (max-width: $xs) {
                         align-self: center;
                     }
                 }
 
-                &__wish {
+                &__wish-wrapper {
                     flex: 4;
                     display: flex;
                     flex-direction: column;
                     width: 100%;
+
+                    .wish-hr {
+                        width: 100%;
+                        margin-top: 10px;
+                        margin-bottom: 20px;
+                    }
 
                     input {
                         margin-bottom: 10px;
@@ -1080,12 +1063,11 @@ nav {
                     text-align: center;
                     line-height: $lnheight;
 
-                    @media (max-width: 767px) {
+                    @media (max-width: $xs) {
                         align-self: center;
                     }
                 }
             }
-
         }
 
         hr {
@@ -1100,18 +1082,21 @@ nav {
             width: 50%;
             margin: 0 auto;
             font-weight: 600;
-            font-size: 1.2em;
+            font-size: 1em;
             background-color: #fff;
             box-shadow: none;
             cursor: pointer;
-            border: 1px solid #d1d1d1;
+            border: 1px solid $borderColor;
             border-radius: 4px;
             transition: all 0.5s;
 
             &:hover {
                 background-color: $navColor;
             }
-        }
 
+            @media (max-width: $xs) {
+                width: 100%;
+            }
+        }
     }
 }

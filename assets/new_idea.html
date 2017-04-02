@@ -23,7 +23,7 @@
         <div id="profile-bar" class="nav__right-side">
             <a class="nav__img-wrapper">
                 <img src="../img/profile.jpg">
-                <span class="nav__profile-name">Ilya</span>
+                <span class="nav__profile-name">Username</span>
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu invisible-element">
@@ -50,9 +50,11 @@
             </div>
             <div class="form-input new-idea__func">
                 <label for="ideaFuncInput">Functionality</label>
-                <input id="ideaFuncInput">
+                <div id="functionWrapper" class="new-idea__func__wrapper">
+                    <input id="ideaFuncInput">
+                </div>
                 <div class="new-idea__func__add">
-                    <button>+</button>
+                    <button id="addFunction">+</button>
                 </div>
             </div>
             <div class="form-input new-idea__mockup">
@@ -63,12 +65,14 @@
             </div>
             <div class="form-input new-idea__other">
                 <label for="ideaOtherInput">Other wishes</label>
-                <div class="new-idea__other__wish">
-                    <input id="ideaOtherInput" placeholder="Wish">
-                    <textarea placeholder="Description"></textarea>
+                <div id="wishWrapper" class="new-idea__other__wish-wrapper">
+                    <div class="wish">
+                        <input id="ideaOtherInput" placeholder="Wish">
+                        <textarea placeholder="Description"></textarea>
+                    </div>
                 </div>
                 <div class="new-idea__other__add">
-                    <button>+</button>
+                    <button id="addWish">+</button>
                 </div>
             </div>
         </div>

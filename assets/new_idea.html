@@ -1,10 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Let me do it!</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css.map">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
+
 <body>
 
+<nav>
+    <div class="nav-wrapper">
+        <div class="nav__left-side">
+            <a href="../index.html" class="logo">
+                <img src="../img/logo.png">
+                <span class="nav__profile-name">Let me do it!</span>
+            </a>
+        </div>
+        <div id="profile-bar" class="nav__right-side">
+            <a class="nav__img-wrapper">
+                <img src="../img/profile.jpg">
+                <span class="nav__profile-name">Ilya</span>
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu invisible-element">
+                <li><a href="new_idea.html">New idea</a></li>
+                <li><a href="profile.html">My profile</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="../index.html">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="page-wrapper">
+    <section class="newidea-section">
+        <h1>Create new idea</h1>
+        <div class="new-idea">
+            <div class="form-input new-idea__name">
+                <label for="ideaNameInput">Idea name</label>
+                <input id="ideaNameInput" placeholder="Name">
+            </div>
+            <div class="form-input new-idea__desc">
+                <label for="ideaDescTextarea">Idea description</label>
+                <textarea id="ideaDescTextarea" rows="7"></textarea>
+            </div>
+            <div class="form-input new-idea__func">
+                <label for="ideaFuncInput">Functionality</label>
+                <input id="ideaFuncInput">
+                <div class="new-idea__func__add">
+                    <button>+</button>
+                </div>
+            </div>
+            <div class="form-input new-idea__mockup">
+                <label for="ideaFuncInput">Mockups</label>
+                <div class="new-idea__mockup__add">
+                    <button>Upload</button>
+                </div>
+            </div>
+            <div class="form-input new-idea__other">
+                <label for="ideaOtherInput">Other wishes</label>
+                <div class="new-idea__other__wish">
+                    <input id="ideaOtherInput" placeholder="Wish">
+                    <textarea placeholder="Description"></textarea>
+                </div>
+                <div class="new-idea__other__add">
+                    <button>+</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <button class="create-idea">Create idea</button>
+    </section>
+
+    <hr class="footer-hr">
+
+    <footer class="page-footer">
+        <ul class="page-footer__links">
+            <li>
+                © 2017, Let me do it!
+            </li>
+            <li>
+                <a href="https://gitlab.com/vertvvv/js-practice-ilya-trokhin">Gitlab link</a>
+            </li>
+        </ul>
+    </footer>
+</div>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/index.js"></script>
+
 </body>
+
 </html>

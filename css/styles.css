@@ -103,7 +103,7 @@ nav {
       display: block;
       float: left;
       cursor: pointer;
-      padding-right: 30px;
+      padding-right: 10px;
       transition: all 0.3s; }
       @media (max-width: 768px) {
         nav .nav__left-side a {
@@ -537,8 +537,8 @@ nav {
           background-position: center;
           background-size: cover;
           margin: 0 auto;
-          width: 150px;
-          height: 150px;
+          width: 200px;
+          height: 200px;
           border: 1px solid #ddd;
           border-radius: 10px; }
         .page-wrapper .settings-section .settings__info__change-avatar {
@@ -546,7 +546,7 @@ nav {
           margin-bottom: 15px;
           background-color: #fff;
           box-shadow: none;
-          padding: 6px 12px;
+          padding: 8px 12px;
           cursor: pointer;
           border: 1px solid #d1d1d1;
           border-radius: 3px;
@@ -554,7 +554,7 @@ nav {
           .page-wrapper .settings-section .settings__info__change-avatar:hover {
             background-color: #f0f317; }
       .page-wrapper .settings-section .settings__main {
-        flex: 3;
+        flex: 2;
         border: 1px solid #d1d1d1;
         background-color: #fff;
         border-radius: 10px;
@@ -596,5 +596,133 @@ nav {
             width: 100%;
             resize: none;
             outline: none; }
+  .page-wrapper .newidea-section {
+    text-align: center;
+    background-color: #fcfcfc;
+    padding: 25px 30px 40px 30px;
+    line-height: 1.4;
+    margin: 50px 0;
+    box-shadow: 10px 10px 15px -10px #1b1c05;
+    font-size: 16px; }
+    @media (max-width: 991px) {
+      .page-wrapper .newidea-section {
+        padding: 20px 10px; } }
+    .page-wrapper .newidea-section h1 {
+      text-align: center;
+      font-size: 1.6em;
+      font-weight: 600;
+      margin-bottom: 25px; }
+    .page-wrapper .newidea-section .new-idea {
+      display: flex;
+      flex-direction: column;
+      font-size: 1em;
+      text-align: left; }
+      .page-wrapper .newidea-section .new-idea > div {
+        display: flex; }
+      .page-wrapper .newidea-section .new-idea .form-input {
+        margin: 12px 0;
+        display: flex;
+        line-height: 24px;
+        font-size: 1em;
+        align-items: center; }
+        @media (max-width: 767px) {
+          .page-wrapper .newidea-section .new-idea .form-input {
+            flex-direction: column; } }
+        .page-wrapper .newidea-section .new-idea .form-input label {
+          flex: 1; }
+          @media (max-width: 767px) {
+            .page-wrapper .newidea-section .new-idea .form-input label {
+              margin-bottom: 5px; } }
+        .page-wrapper .newidea-section .new-idea .form-input input {
+          line-height: 24px;
+          flex: 5;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-shadow: none;
+          padding: 2px 4px 2px 12px;
+          font-size: 1em;
+          width: 100%; }
+          .page-wrapper .newidea-section .new-idea .form-input input[disabled] {
+            cursor: not-allowed; }
+        .page-wrapper .newidea-section .new-idea .form-input textarea {
+          line-height: 24px;
+          flex: 5;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font: inherit;
+          padding: 2px 12px 2px 12px;
+          font-size: 1em;
+          width: 100%;
+          resize: none;
+          outline: none; }
+        .page-wrapper .newidea-section .new-idea .form-input button {
+          width: 40px;
+          height: 32px;
+          margin: 0 auto;
+          font-weight: 600;
+          font-size: 1.2em;
+          background-color: #fff;
+          box-shadow: none;
+          cursor: pointer;
+          border: 1px solid #d1d1d1;
+          border-radius: 4px;
+          transition: all 0.5s; }
+          .page-wrapper .newidea-section .new-idea .form-input button:hover {
+            background-color: #f0f317; }
+          @media (max-width: 767px) {
+            .page-wrapper .newidea-section .new-idea .form-input button {
+              margin-top: 10px; } }
+      .page-wrapper .newidea-section .new-idea__func input {
+        flex: 4 !important; }
+      .page-wrapper .newidea-section .new-idea__func__add {
+        flex: 1;
+        text-align: center;
+        line-height: 24px; }
+      .page-wrapper .newidea-section .new-idea__mockup__add {
+        flex: 5;
+        line-height: 24px; }
+        .page-wrapper .newidea-section .new-idea__mockup__add button {
+          width: 100px !important;
+          font-weight: 300 !important;
+          font-size: 1em !important; }
+      .page-wrapper .newidea-section .new-idea__other label {
+        align-self: flex-start; }
+        @media (max-width: 767px) {
+          .page-wrapper .newidea-section .new-idea__other label {
+            align-self: center; } }
+      .page-wrapper .newidea-section .new-idea__other__wish {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+        width: 100%; }
+        .page-wrapper .newidea-section .new-idea__other__wish input {
+          margin-bottom: 10px; }
+      .page-wrapper .newidea-section .new-idea__other__add {
+        align-self: flex-start;
+        flex: 1;
+        text-align: center;
+        line-height: 24px; }
+        @media (max-width: 767px) {
+          .page-wrapper .newidea-section .new-idea__other__add {
+            align-self: center; } }
+    .page-wrapper .newidea-section hr {
+      margin-top: 20px;
+      margin-bottom: 35px;
+      border: 1px solid #d9d9d9; }
+    .page-wrapper .newidea-section .create-idea {
+      text-align: center;
+      height: 38px;
+      width: 50%;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 1.2em;
+      background-color: #fff;
+      box-shadow: none;
+      cursor: pointer;
+      border: 1px solid #d1d1d1;
+      border-radius: 4px;
+      transition: all 0.5s; }
+      .page-wrapper .newidea-section .create-idea:hover {
+        background-color: #f0f317; }
 
 /*# sourceMappingURL=styles.css.map */

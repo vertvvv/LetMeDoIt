@@ -2,10 +2,10 @@
  * Created by Ilya on 09.04.2017.
  */
 
-import { FullIdea } from '../classes/Idea';
-import { renderPage } from '../all';
+import { FullIdea } from '../classes/FullIdea';
+import { getPageContent } from '../all';
 
-renderPage(renderContent);
+getPageContent().then(renderContent);
 
 $('body')
     .on('click', '.mockup', function () {
@@ -22,8 +22,8 @@ $('body')
 
 
 function renderContent(json) {
-    let data = json.users.ideas[0];
-    let idea = new FullIdea(data.name, data['main-idea'], data.rating, data.functionality, data.mockups, data.other, data.tags);
+    let data = json.ideas[0];
+    let idea = new FullIdea(data);
 
     $('.single-idea-section').append(idea.getFullIdea());
 }

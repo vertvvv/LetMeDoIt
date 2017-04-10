@@ -5,11 +5,24 @@
 export class Profile {
     constructor(user) {
         this.username = user.username;
-        let name = user.name, surname = user.surname;
-        this.fullname = (name && surname) ? (name + ' ' + surname) : ((name) ? name : ((surname) ? surname : null));
+        this.name = user.name;
+        this.surname = user.surname;
         this.info = user.info;
         this.stats = user.stats;
         this.avatar = user.avatar;
+    }
+
+    getFullName() {
+        let name = this.name, surname = this.surname;
+        if (name && surname) {
+            return name + ' ' + surname;
+        } else if (name) {
+            return name;
+        } else if (surname) {
+            return surname;
+        } else {
+            return null;
+        }
     }
 
     getUserMain() {
@@ -18,7 +31,7 @@ export class Profile {
                 <div class="user-bio__main__avatar">
                 </div>
                 <div class="user-bio__main__username">
-                    ${this.fullname}
+                    ${this.getFullName()}
                 </div>
             </div>
         `

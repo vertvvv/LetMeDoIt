@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,7 +76,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.renderPage = renderPage;
+exports.getPageContent = getPageContent;
 
 var _consts = __webpack_require__(3);
 
@@ -84,18 +84,25 @@ var _Header = __webpack_require__(2);
 
 var _Footer = __webpack_require__(1);
 
-function renderPage(renderContent) {
-    $.get(_consts.API_URL + 'data', function (json) {
-        var header = new _Header.Header(json.users.username);
-        var footer = new _Footer.Footer();
+function getPageContent(renderContent) {
+    return new Promise(function (resolve, reject) {
+        var query = $.get(_consts.API_URL + 'data');
 
-        $('body').prepend(header.getFullHeader()).append(footer.getFooter());
-        if (renderContent) renderContent(json);
-    });
+        query.done(renderPage).error(function (data) {
+            $('body').html('We have some technical troubles, sorry.');
+        });
 
-    $('body').on('click', '#profile-bar', function () {
-        $('.dropdown-menu').toggleClass('invisible-element');
-        $(this).toggleClass('active');
+        function renderPage(json) {
+            var header = new _Header.Header(json.users[0].username);
+            var footer = new _Footer.Footer();
+
+            $('body').prepend(header.getFullHeader()).append(footer.getFooter()).on('click', '#profile-bar', function () {
+                $('.dropdown-menu').toggleClass('invisible-element');
+                $(this).toggleClass('active');
+            });
+
+            resolve(json);
+        }
     });
 } /**
    * Created by Ilya on 27.03.2017.
@@ -166,7 +173,7 @@ var Header = exports.Header = function () {
     _createClass(Header, [{
         key: "getHeaderLeftSide",
         value: function getHeaderLeftSide() {
-            return "\n            <div class=\"nav__left-side\">\n                <a id=\"logo\" href=\"../../assets/index.html\" class=\"logo\">\n                    <img src=\"../../img/logo.png\">\n                    <span class=\"nav__profile-name\">Let me do it!</span>\n                </a>\n            </div>\n        ";
+            return "\n            <div class=\"nav__left-side\">\n                <a id=\"logo\" href=\"../index.html\" class=\"logo\">\n                    <img src=\"../img/logo.png\">\n                    <span class=\"nav__profile-name\">Let me do it!</span>\n                </a>\n            </div>\n        ";
         }
     }, {
         key: "getLoginElement",
@@ -176,7 +183,7 @@ var Header = exports.Header = function () {
     }, {
         key: "getProfileElement",
         value: function getProfileElement() {
-            return "\n                <div id=\"profile-bar\" class=\"nav__right-side\">\n                    <a class=\"nav__img-wrapper\">\n                        <img src=\"../../img/profile.jpg\">\n                        <span class=\"nav__profile-name\">Username</span>\n                        <span class=\"caret\"></span>\n                    </a>\n                    <ul class=\"dropdown-menu invisible-element\">\n                        <li><a href=\"../../assets/new_idea.html\">New idea</a></li>\n                        <li><a href=\"../../assets/profile.html\">My profile</a></li>\n                        <li><a href=\"../../assets/settings.html\">Settings</a></li>\n                        <li><a href=\"#\">Logout</a></li>\n                    </ul>\n                </div>\n            ";
+            return "\n                <div id=\"profile-bar\" class=\"nav__right-side\">\n                    <a class=\"nav__img-wrapper\">\n                        <img src=\"../img/profile.jpg\">\n                        <span class=\"nav__profile-name\">Username</span>\n                        <span class=\"caret\"></span>\n                    </a>\n                    <ul class=\"dropdown-menu invisible-element\">\n                        <li><a href=\"../assets/new_idea.html\">New idea</a></li>\n                        <li><a href=\"../assets/profile.html\">My profile</a></li>\n                        <li><a href=\"../assets/settings.html\">Settings</a></li>\n                        <li><a href=\"../index.html\">Logout</a></li>\n                    </ul>\n                </div>\n            ";
         }
     }, {
         key: "getHeaderRightSide",
@@ -228,6 +235,89 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Created by Ilya on 09.04.2017.
  */
 
+var ShortIdea = exports.ShortIdea = function () {
+    function ShortIdea(idea) {
+        _classCallCheck(this, ShortIdea);
+
+        this.name = idea.name;
+        this.mainIdea = idea['main-idea'];
+        this.rating = idea.rating;
+    }
+
+    _createClass(ShortIdea, [{
+        key: 'getIdeaHeader',
+        value: function getIdeaHeader() {
+            return '<div class="idea__header">\n                    <div class="idea__header__name">' + this.name + '</div>\n                    <div class="idea__header__rating">\n                        <span class="rating rating__minus">-</span>\n                        <span>' + this.rating + '</span>\n                        <span class="rating rating__plus">+</span>\n                    </div>\n                </div>';
+        }
+    }, {
+        key: 'getFullIdea',
+        value: function getFullIdea() {
+            return '<div class="idea">\n                    ' + this.getIdeaHeader() + '\n                    <div class="idea__text">' + this.mainIdea + '</div>\n                    <div class="idea__footer">\n                        <a href="../../assets/idea.html" class="idea__footer__full">Read more..</a>\n                        <a href="../../assets/idea.html#comments" class="idea__footer__comments"><span class="comment-icon">111</span>\n                            0</a>\n                    </div>\n                </div>';
+        }
+    }]);
+
+    return ShortIdea;
+}();
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _FullIdea = __webpack_require__(11);
+
+var _all = __webpack_require__(0);
+
+/**
+ * Created by Ilya on 09.04.2017.
+ */
+
+(0, _all.getPageContent)().then(renderContent);
+
+$('body').on('click', '.mockup', function () {
+    var self = $(this).parent();
+
+    $('.img-grid__wrapper').each(function (i, item) {
+        if (!$(item).is(self)) {
+            $(item).removeClass('mockup-full-width');
+        }
+    });
+
+    $(this).parent().toggleClass('mockup-full-width');
+});
+
+function renderContent(json) {
+    var data = json.ideas[0];
+    var idea = new _FullIdea.FullIdea(data);
+
+    $('.single-idea-section').append(idea.getFullIdea());
+}
+
+/***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Created by Ilya on 09.04.2017.
+ */
+
 var Comments = exports.Comments = function () {
     function Comments() {
         _classCallCheck(this, Comments);
@@ -249,7 +339,7 @@ var Comments = exports.Comments = function () {
 }();
 
 /***/ }),
-/* 5 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -258,56 +348,34 @@ var Comments = exports.Comments = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.FullIdea = exports.ShortIdea = undefined;
+exports.FullIdea = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Created by Ilya on 09.04.2017.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Comments = __webpack_require__(4);
+var _ShortIdea2 = __webpack_require__(4);
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _Comments = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ShortIdea = exports.ShortIdea = function () {
-    function ShortIdea(name, mainIdea, rating) {
-        _classCallCheck(this, ShortIdea);
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-        this.name = name;
-        this.mainIdea = mainIdea;
-        this.rating = rating;
-    }
-
-    _createClass(ShortIdea, [{
-        key: 'getIdeaHeader',
-        value: function getIdeaHeader() {
-            return '<div class="idea__header">\n                    <div class="idea__header__name">' + this.name + '</div>\n                    <div class="idea__header__rating">\n                        <span class="rating rating__minus">-</span>\n                        <span>' + this.rating + '</span>\n                        <span class="rating rating__plus">+</span>\n                    </div>\n                </div>';
-        }
-    }, {
-        key: 'getFullIdea',
-        value: function getFullIdea() {
-            return '<div class="idea">\n                    ' + this.getIdeaHeader() + '\n                    <div class="idea__text">' + this.mainIdea + '</div>\n                    <div class="idea__footer">\n                        <a href="../../assets/idea.html" class="idea__footer__full">Read more..</a>\n                        <a href="../../assets/idea.html#comments" class="idea__footer__comments"><span class="comment-icon">111</span>\n                            0</a>\n                    </div>\n                </div>';
-        }
-    }]);
-
-    return ShortIdea;
-}();
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by Ilya on 10.04.2017.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 var FullIdea = exports.FullIdea = function (_ShortIdea) {
     _inherits(FullIdea, _ShortIdea);
 
-    function FullIdea(name, mainIdea, rating, functionality, mockups, other, tags) {
+    function FullIdea(idea) {
         _classCallCheck(this, FullIdea);
 
-        var _this = _possibleConstructorReturn(this, (FullIdea.__proto__ || Object.getPrototypeOf(FullIdea)).call(this, name, mainIdea, rating));
+        var _this = _possibleConstructorReturn(this, (FullIdea.__proto__ || Object.getPrototypeOf(FullIdea)).call(this, idea));
 
-        _this.functionality = functionality;
-        _this.mockups = mockups;
-        _this.other = other;
-        _this.tags = tags;
+        _this.functionality = idea.functionality;
+        _this.mockups = idea.mockups;
+        _this.other = idea.other;
+        _this.tags = idea.tags;
         return _this;
     }
 
@@ -382,54 +450,14 @@ var FullIdea = exports.FullIdea = function (_ShortIdea) {
     }]);
 
     return FullIdea;
-}(ShortIdea);
+}(_ShortIdea2.ShortIdea);
 
 /***/ }),
-/* 6 */
+/* 12 */,
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-var _Idea = __webpack_require__(5);
-
-var _all = __webpack_require__(0);
-
-/**
- * Created by Ilya on 09.04.2017.
- */
-
-(0, _all.renderPage)(renderContent);
-
-$('body').on('click', '.mockup', function () {
-    var self = $(this).parent();
-
-    $('.img-grid__wrapper').each(function (i, item) {
-        if (!$(item).is(self)) {
-            $(item).removeClass('mockup-full-width');
-        }
-    });
-
-    $(this).parent().toggleClass('mockup-full-width');
-});
-
-function renderContent(json) {
-    var data = json.users.ideas[0];
-    var idea = new _Idea.FullIdea(data.name, data['main-idea'], data.rating, data.functionality, data.mockups, data.other, data.tags);
-
-    $('.single-idea-section').append(idea.getFullIdea());
-}
-
-/***/ }),
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(6);
+module.exports = __webpack_require__(5);
 
 
 /***/ })

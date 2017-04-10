@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,7 +76,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.renderPage = renderPage;
+exports.getPageContent = getPageContent;
 
 var _consts = __webpack_require__(3);
 
@@ -84,18 +84,25 @@ var _Header = __webpack_require__(2);
 
 var _Footer = __webpack_require__(1);
 
-function renderPage(renderContent) {
-    $.get(_consts.API_URL + 'data', function (json) {
-        var header = new _Header.Header(json.users.username);
-        var footer = new _Footer.Footer();
+function getPageContent(renderContent) {
+    return new Promise(function (resolve, reject) {
+        var query = $.get(_consts.API_URL + 'data');
 
-        $('body').prepend(header.getFullHeader()).append(footer.getFooter());
-        if (renderContent) renderContent(json);
-    });
+        query.done(renderPage).error(function (data) {
+            $('body').html('We have some technical troubles, sorry.');
+        });
 
-    $('body').on('click', '#profile-bar', function () {
-        $('.dropdown-menu').toggleClass('invisible-element');
-        $(this).toggleClass('active');
+        function renderPage(json) {
+            var header = new _Header.Header(json.users[0].username);
+            var footer = new _Footer.Footer();
+
+            $('body').prepend(header.getFullHeader()).append(footer.getFooter()).on('click', '#profile-bar', function () {
+                $('.dropdown-menu').toggleClass('invisible-element');
+                $(this).toggleClass('active');
+            });
+
+            resolve(json);
+        }
     });
 } /**
    * Created by Ilya on 27.03.2017.
@@ -166,7 +173,7 @@ var Header = exports.Header = function () {
     _createClass(Header, [{
         key: "getHeaderLeftSide",
         value: function getHeaderLeftSide() {
-            return "\n            <div class=\"nav__left-side\">\n                <a id=\"logo\" href=\"../../assets/index.html\" class=\"logo\">\n                    <img src=\"../../img/logo.png\">\n                    <span class=\"nav__profile-name\">Let me do it!</span>\n                </a>\n            </div>\n        ";
+            return "\n            <div class=\"nav__left-side\">\n                <a id=\"logo\" href=\"../index.html\" class=\"logo\">\n                    <img src=\"../img/logo.png\">\n                    <span class=\"nav__profile-name\">Let me do it!</span>\n                </a>\n            </div>\n        ";
         }
     }, {
         key: "getLoginElement",
@@ -176,7 +183,7 @@ var Header = exports.Header = function () {
     }, {
         key: "getProfileElement",
         value: function getProfileElement() {
-            return "\n                <div id=\"profile-bar\" class=\"nav__right-side\">\n                    <a class=\"nav__img-wrapper\">\n                        <img src=\"../../img/profile.jpg\">\n                        <span class=\"nav__profile-name\">Username</span>\n                        <span class=\"caret\"></span>\n                    </a>\n                    <ul class=\"dropdown-menu invisible-element\">\n                        <li><a href=\"../../assets/new_idea.html\">New idea</a></li>\n                        <li><a href=\"../../assets/profile.html\">My profile</a></li>\n                        <li><a href=\"../../assets/settings.html\">Settings</a></li>\n                        <li><a href=\"#\">Logout</a></li>\n                    </ul>\n                </div>\n            ";
+            return "\n                <div id=\"profile-bar\" class=\"nav__right-side\">\n                    <a class=\"nav__img-wrapper\">\n                        <img src=\"../img/profile.jpg\">\n                        <span class=\"nav__profile-name\">Username</span>\n                        <span class=\"caret\"></span>\n                    </a>\n                    <ul class=\"dropdown-menu invisible-element\">\n                        <li><a href=\"../assets/new_idea.html\">New idea</a></li>\n                        <li><a href=\"../assets/profile.html\">My profile</a></li>\n                        <li><a href=\"../assets/settings.html\">Settings</a></li>\n                        <li><a href=\"../index.html\">Logout</a></li>\n                    </ul>\n                </div>\n            ";
         }
     }, {
         key: "getHeaderRightSide",
@@ -228,57 +235,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Created by Ilya on 09.04.2017.
  */
 
-var Comments = exports.Comments = function () {
-    function Comments() {
-        _classCallCheck(this, Comments);
-    }
-
-    _createClass(Comments, [{
-        key: "getComment",
-        value: function getComment() {
-            return "\n            <div class=\"comments-block\">\n                <div class=\"flex-item avatar\">\n                    <div class=\"avatar__wrapper\"></div>\n                    <div class=\"avatar__username\"><a href=\"profile.html\">Username</a></div>\n                </div>\n                <div class=\"flex-item comment\">\n                    <div class=\"comment__text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar massa in fermentum sagittis. Aliquam congue commodo ligula, quis pretium dui pellentesque a. Donec eget porta nibh, sed ullamcorper odio. Vivamus euismod leo ante, nec vestibulum sapien blandit sed. Mauris vel hendrerit mauris. Vestibulum vulputate metus sit amet urna facilisis euismod. Maecenas eget sapien ut arcu cursus lobortis. Curabitur vel quam porttitor, convallis odio interdum, iaculis tellus. Pellentesque pretium risus id volutpat maximus. Duis blandit tempus rutrum. Proin bibendum nibh quam, ac mattis massa bibendum congue.</div>\n                    <div class=\"comment__date\">31 Aug 2018, 18:02</div>\n                </div>\n            </div>\n        ";
-        }
-    }, {
-        key: "getAllComments",
-        value: function getAllComments() {
-            return "\n            " + this.getComment() + "\n            " + this.getComment() + "\n        ";
-        }
-    }]);
-
-    return Comments;
-}();
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.FullIdea = exports.ShortIdea = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Created by Ilya on 09.04.2017.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-var _Comments = __webpack_require__(4);
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 var ShortIdea = exports.ShortIdea = function () {
-    function ShortIdea(name, mainIdea, rating) {
+    function ShortIdea(idea) {
         _classCallCheck(this, ShortIdea);
 
-        this.name = name;
-        this.mainIdea = mainIdea;
-        this.rating = rating;
+        this.name = idea.name;
+        this.mainIdea = idea['main-idea'];
+        this.rating = idea.rating;
     }
 
     _createClass(ShortIdea, [{
@@ -296,99 +259,11 @@ var ShortIdea = exports.ShortIdea = function () {
     return ShortIdea;
 }();
 
-var FullIdea = exports.FullIdea = function (_ShortIdea) {
-    _inherits(FullIdea, _ShortIdea);
-
-    function FullIdea(name, mainIdea, rating, functionality, mockups, other, tags) {
-        _classCallCheck(this, FullIdea);
-
-        var _this = _possibleConstructorReturn(this, (FullIdea.__proto__ || Object.getPrototypeOf(FullIdea)).call(this, name, mainIdea, rating));
-
-        _this.functionality = functionality;
-        _this.mockups = mockups;
-        _this.other = other;
-        _this.tags = tags;
-        return _this;
-    }
-
-    _createClass(FullIdea, [{
-        key: 'getMainIdea',
-        value: function getMainIdea() {
-            return '<section class="idea__text__main">\n                    <h1>Main idea</h1>\n                    <p>' + this.mainIdea + '</p>\n                </section>';
-        }
-    }, {
-        key: 'getFunctionsList',
-        value: function getFunctionsList() {
-            var func = this.functionality;
-
-            return func.reduce(function (res, item) {
-                return res + ('<li>' + item + '</li>');
-            }, '');
-        }
-    }, {
-        key: 'getFunctionality',
-        value: function getFunctionality() {
-            return '<section class="idea__text__functions">\n                    <h1>Functionality</h1>\n                    <ul>\n                        ' + this.getFunctionsList() + '\n                    </ul>\n                </section>';
-        }
-    }, {
-        key: 'getMockupsGrid',
-        value: function getMockupsGrid() {
-            var mockups = this.mockups;
-
-            return mockups.reduce(function (res, item) {
-                return res + ('\n                    <div class="img-grid__wrapper">\n                        <img class="mockup" src="' + item + '">\n                    </div>\n            ');
-            }, '');
-        }
-    }, {
-        key: 'getMockups',
-        value: function getMockups() {
-            return '<section class="idea__text__mockups">\n                    <h1>Mockups</h1>\n                    <div class="img-grid">\n                        ' + this.getMockupsGrid() + '\n                    </div>\n                </section>';
-        }
-    }, {
-        key: 'getOtherFormatted',
-        value: function getOtherFormatted() {
-            var other = this.other;
-
-            return other.reduce(function (res, item) {
-                return res + ('\n                    <h3>' + item.name + '</h3>\n                    <p>' + item.text + '</p>\n            ');
-            }, '');
-        }
-    }, {
-        key: 'getOther',
-        value: function getOther() {
-            return '<section class="idea__text__other">\n                    <h2>Other wishes</h2>\n                    ' + this.getOtherFormatted() + '\n                </section>';
-        }
-    }, {
-        key: 'getTagsFormatted',
-        value: function getTagsFormatted() {
-            var tags = this.tags;
-
-            return tags.reduce(function (res, item) {
-                return res + ('<div class="tag">' + item + '</div>');
-            }, '');
-        }
-    }, {
-        key: 'getTags',
-        value: function getTags() {
-            return '<section class="idea__text__tags">\n                    ' + this.getTagsFormatted() + '\n                </section>';
-        }
-    }, {
-        key: 'getFullIdea',
-        value: function getFullIdea() {
-            var comments = new _Comments.Comments();
-
-            return '<div class="idea">\n                   ' + this.getIdeaHeader() + '\n                    <div class="idea__text">\n                        ' + this.getMainIdea() + '\n                        ' + this.getFunctionality() + '\n                        ' + this.getMockups() + '\n                        ' + this.getOther() + '\n                        ' + this.getTags() + '\n                        <div id="comments" class="idea__footer">\n                            <hr>\n                            <div class="comments">\n                                <div class="answer-block">\n                                    <div class="flex-item input-place">\n                                        <textarea id="new-comment" placeholder="Write your comment here.."></textarea>\n                                        <button class="input-place__button">Send</button>\n                                    </div>\n                                </div>\n                                <div id="commentsPlace">\n                                    ' + comments.getAllComments() + '\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>'; //comments temp desicion
-        }
-    }]);
-
-    return FullIdea;
-}(ShortIdea);
-
 /***/ }),
+/* 5 */,
 /* 6 */,
 /* 7 */,
-/* 8 */,
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -396,28 +271,30 @@ var FullIdea = exports.FullIdea = function (_ShortIdea) {
 
 var _all = __webpack_require__(0);
 
-var _Profile = __webpack_require__(11);
+var _Profile = __webpack_require__(12);
 
-var _Idea = __webpack_require__(5);
+var _ShortIdea = __webpack_require__(4);
 
-(0, _all.renderPage)(renderContent); /**
-                                      * Created by Ilya on 09.04.2017.
-                                      */
+(0, _all.getPageContent)().then(renderContent); /**
+                                                 * Created by Ilya on 09.04.2017.
+                                                 */
 
 function renderContent(data) {
-    var profile = new _Profile.Profile(data.users);
+    var profile = new _Profile.Profile(data.users[0]);
 
     $('.user-section').append(profile.getFullProfile());
 
-    data.users.ideas.forEach(function (item) {
-        var idea = new _Idea.ShortIdea(item.name, item['main-idea'], item.rating);
+    data.ideas.forEach(function (item) {
+        var idea = new _ShortIdea.ShortIdea(item);
         $('.ideas-user-section').append(idea.getFullIdea());
     });
 }
 
 /***/ }),
+/* 9 */,
 /* 10 */,
-/* 11 */
+/* 11 */,
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -440,18 +317,32 @@ var Profile = exports.Profile = function () {
         _classCallCheck(this, Profile);
 
         this.username = user.username;
-        var name = user.name,
-            surname = user.surname;
-        this.fullname = name && surname ? name + ' ' + surname : name ? name : surname ? surname : null;
+        this.name = user.name;
+        this.surname = user.surname;
         this.info = user.info;
         this.stats = user.stats;
         this.avatar = user.avatar;
     }
 
     _createClass(Profile, [{
+        key: 'getFullName',
+        value: function getFullName() {
+            var name = this.name,
+                surname = this.surname;
+            if (name && surname) {
+                return name + ' ' + surname;
+            } else if (name) {
+                return name;
+            } else if (surname) {
+                return surname;
+            } else {
+                return null;
+            }
+        }
+    }, {
         key: 'getUserMain',
         value: function getUserMain() {
-            return '\n            <div class="user-bio__main">\n                <div class="user-bio__main__avatar">\n                </div>\n                <div class="user-bio__main__username">\n                    ' + this.fullname + '\n                </div>\n            </div>\n        ';
+            return '\n            <div class="user-bio__main">\n                <div class="user-bio__main__avatar">\n                </div>\n                <div class="user-bio__main__username">\n                    ' + this.getFullName() + '\n                </div>\n            </div>\n        ';
         }
     }, {
         key: 'getUserBioStats',
@@ -479,13 +370,13 @@ var Profile = exports.Profile = function () {
 }();
 
 /***/ }),
-/* 12 */,
 /* 13 */,
 /* 14 */,
-/* 15 */
+/* 15 */,
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(9);
+module.exports = __webpack_require__(8);
 
 
 /***/ })

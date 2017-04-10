@@ -2,19 +2,19 @@
  * Created by Ilya on 09.04.2017.
  */
 
-import { renderPage } from '../all';
+import { getPageContent } from '../all';
 import { Profile } from '../classes/Profile';
-import { ShortIdea } from '../classes/Idea';
+import { ShortIdea } from '../classes/ShortIdea';
 
-renderPage(renderContent);
+getPageContent().then(renderContent);
 
 function renderContent(data) {
-    let profile = new Profile(data.users);
+    let profile = new Profile(data.users[0]);
 
     $('.user-section').append(profile.getFullProfile());
 
-    data.users.ideas.forEach((item) => {
-        let idea = new ShortIdea(item.name, item['main-idea'], item.rating);
+    data.ideas.forEach((item) => {
+        let idea = new ShortIdea(item);
         $('.ideas-user-section').append(idea.getFullIdea());
     });
 }

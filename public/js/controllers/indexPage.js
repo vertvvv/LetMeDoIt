@@ -2,10 +2,10 @@
  * Created by Ilya on 09.04.2017.
  */
 
-import { ShortIdea } from '../classes/Idea';
-import { renderPage } from '../all';
+import { ShortIdea } from '../classes/ShortIdea';
+import { getPageContent } from '../all';
 
-renderPage(renderContent);
+getPageContent().then(renderContent);
 
 $('body')
     .on('click', '#logo', function (e) {
@@ -14,8 +14,8 @@ $('body')
     });
 
 function renderContent(data) {
-    data.users.ideas.forEach((item) => {
-        let idea = new ShortIdea(item.name, item['main-idea'], item.rating);
+    data.ideas.forEach((item) => {
+        let idea = new ShortIdea(item);
         $('#ideasPlace').append(idea.getFullIdea());
     })
 }

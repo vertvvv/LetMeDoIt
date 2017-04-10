@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -76,7 +76,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.renderPage = renderPage;
+exports.getPageContent = getPageContent;
 
 var _consts = __webpack_require__(3);
 
@@ -84,18 +84,25 @@ var _Header = __webpack_require__(2);
 
 var _Footer = __webpack_require__(1);
 
-function renderPage(renderContent) {
-    $.get(_consts.API_URL + 'data', function (json) {
-        var header = new _Header.Header(json.users.username);
-        var footer = new _Footer.Footer();
+function getPageContent(renderContent) {
+    return new Promise(function (resolve, reject) {
+        var query = $.get(_consts.API_URL + 'data');
 
-        $('body').prepend(header.getFullHeader()).append(footer.getFooter());
-        if (renderContent) renderContent(json);
-    });
+        query.done(renderPage).error(function (data) {
+            $('body').html('We have some technical troubles, sorry.');
+        });
 
-    $('body').on('click', '#profile-bar', function () {
-        $('.dropdown-menu').toggleClass('invisible-element');
-        $(this).toggleClass('active');
+        function renderPage(json) {
+            var header = new _Header.Header(json.users[0].username);
+            var footer = new _Footer.Footer();
+
+            $('body').prepend(header.getFullHeader()).append(footer.getFooter()).on('click', '#profile-bar', function () {
+                $('.dropdown-menu').toggleClass('invisible-element');
+                $(this).toggleClass('active');
+            });
+
+            resolve(json);
+        }
     });
 } /**
    * Created by Ilya on 27.03.2017.
@@ -166,7 +173,7 @@ var Header = exports.Header = function () {
     _createClass(Header, [{
         key: "getHeaderLeftSide",
         value: function getHeaderLeftSide() {
-            return "\n            <div class=\"nav__left-side\">\n                <a id=\"logo\" href=\"../../assets/index.html\" class=\"logo\">\n                    <img src=\"../../img/logo.png\">\n                    <span class=\"nav__profile-name\">Let me do it!</span>\n                </a>\n            </div>\n        ";
+            return "\n            <div class=\"nav__left-side\">\n                <a id=\"logo\" href=\"../index.html\" class=\"logo\">\n                    <img src=\"../img/logo.png\">\n                    <span class=\"nav__profile-name\">Let me do it!</span>\n                </a>\n            </div>\n        ";
         }
     }, {
         key: "getLoginElement",
@@ -176,7 +183,7 @@ var Header = exports.Header = function () {
     }, {
         key: "getProfileElement",
         value: function getProfileElement() {
-            return "\n                <div id=\"profile-bar\" class=\"nav__right-side\">\n                    <a class=\"nav__img-wrapper\">\n                        <img src=\"../../img/profile.jpg\">\n                        <span class=\"nav__profile-name\">Username</span>\n                        <span class=\"caret\"></span>\n                    </a>\n                    <ul class=\"dropdown-menu invisible-element\">\n                        <li><a href=\"../../assets/new_idea.html\">New idea</a></li>\n                        <li><a href=\"../../assets/profile.html\">My profile</a></li>\n                        <li><a href=\"../../assets/settings.html\">Settings</a></li>\n                        <li><a href=\"#\">Logout</a></li>\n                    </ul>\n                </div>\n            ";
+            return "\n                <div id=\"profile-bar\" class=\"nav__right-side\">\n                    <a class=\"nav__img-wrapper\">\n                        <img src=\"../img/profile.jpg\">\n                        <span class=\"nav__profile-name\">Username</span>\n                        <span class=\"caret\"></span>\n                    </a>\n                    <ul class=\"dropdown-menu invisible-element\">\n                        <li><a href=\"../assets/new_idea.html\">New idea</a></li>\n                        <li><a href=\"../assets/profile.html\">My profile</a></li>\n                        <li><a href=\"../assets/settings.html\">Settings</a></li>\n                        <li><a href=\"../index.html\">Logout</a></li>\n                    </ul>\n                </div>\n            ";
         }
     }, {
         key: "getHeaderRightSide",
@@ -215,8 +222,7 @@ var API_URL = exports.API_URL = "http://localhost:3000/";
 /* 6 */,
 /* 7 */,
 /* 8 */,
-/* 9 */,
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -224,20 +230,22 @@ var API_URL = exports.API_URL = "http://localhost:3000/";
 
 var _all = __webpack_require__(0);
 
-(0, _all.renderPage)(); /**
-                         * Created by Ilya on 09.04.2017.
-                         */
+(0, _all.getPageContent)(); /**
+                             * Created by Ilya on 09.04.2017.
+                             */
 
 /***/ }),
+/* 10 */,
 /* 11 */,
 /* 12 */,
 /* 13 */,
 /* 14 */,
 /* 15 */,
-/* 16 */
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(10);
+module.exports = __webpack_require__(9);
 
 
 /***/ })

@@ -2,16 +2,16 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        idea: ['./js/controllers/ideaPage.js'],
-        index: ['./js/controllers/indexPage.js'],
-        newIdea: ['./js/controllers/newIdeaPage.js'],
-        settings: ['./js/controllers/settingsPage.js'],
-        profile: ['./js/controllers/profilePage.js']
+        idea: ['./public/js/controllers/ideaPage.js'],
+        index: ['./public/js/controllers/indexPage.js'],
+        newIdea: ['./public/js/controllers/newIdeaPage.js'],
+        settings: ['./public/js/controllers/settingsPage.js'],
+        profile: ['./public/js/controllers/profilePage.js']
 
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'public/dist')
     },
     module: {
         rules: [

@@ -2,9 +2,9 @@
  * Created by Ilya on 09.04.2017.
  */
 
-import { renderPage } from '../all';
+import { getPageContent } from '../all';
 
-renderPage();
+getPageContent();
 
 $('body')
     .on('click', '#addFunction', () => {
@@ -15,10 +15,10 @@ $('body')
     })
     .on('click', '#addWish', () => {
         let wish = `<div class="wish new-input">
-                    <hr class="wish-hr">
-                    <input placeholder="Wish">
-                    <textarea placeholder="Description"></textarea>
-                </div>`;
+                        <hr class="wish-hr">
+                        <input placeholder="Wish">
+                        <textarea placeholder="Description"></textarea>
+                    </div>`;
 
         $('#wishWrapper').append(wish);
         $('.new-input').fadeIn(1000);

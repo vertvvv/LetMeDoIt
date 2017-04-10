@@ -10,8 +10,8 @@ export class Header {
     getHeaderLeftSide() {
         return `
             <div class="nav__left-side">
-                <a id="logo" href="../../assets/index.html" class="logo">
-                    <img src="../../img/logo.png">
+                <a id="logo" href="../index.html" class="logo">
+                    <img src="../img/logo.png">
                     <span class="nav__profile-name">Let me do it!</span>
                 </a>
             </div>
@@ -32,15 +32,15 @@ export class Header {
         return `
                 <div id="profile-bar" class="nav__right-side">
                     <a class="nav__img-wrapper">
-                        <img src="../../img/profile.jpg">
+                        <img src="../img/profile.jpg">
                         <span class="nav__profile-name">Username</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu invisible-element">
-                        <li><a href="../../assets/new_idea.html">New idea</a></li>
-                        <li><a href="../../assets/profile.html">My profile</a></li>
-                        <li><a href="../../assets/settings.html">Settings</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="../assets/new_idea.html">New idea</a></li>
+                        <li><a href="../assets/profile.html">My profile</a></li>
+                        <li><a href="../assets/settings.html">Settings</a></li>
+                        <li><a href="../index.html">Logout</a></li>
                     </ul>
                 </div>
             `;

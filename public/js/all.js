@@ -8,9 +8,8 @@ import { Footer } from './classes/Footer';
 
 export function getPageContent(renderContent) {
     return new Promise((resolve, reject) => {
-        let query = $.get(API_URL + 'data');
-
-        query.done(renderPage)
+        $.get(API_URL + 'data')
+            .done(renderPage)
             .error((data) => {
                 $('body').html('We have some technical troubles, sorry.');
             });

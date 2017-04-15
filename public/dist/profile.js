@@ -86,9 +86,7 @@ var _Footer = __webpack_require__(1);
 
 function getPageContent(renderContent) {
     return new Promise(function (resolve, reject) {
-        var query = $.get(_consts.API_URL + 'data');
-
-        query.done(renderPage).error(function (data) {
+        $.get(_consts.API_URL + 'data').done(renderPage).error(function (data) {
             $('body').html('We have some technical troubles, sorry.');
         });
 
@@ -239,20 +237,73 @@ var ShortIdea = exports.ShortIdea = function () {
     function ShortIdea(idea) {
         _classCallCheck(this, ShortIdea);
 
+        this.id = idea.id;
         this.name = idea.name;
         this.mainIdea = idea['main-idea'];
         this.rating = idea.rating;
+        this.voteCounter = 0;
+        this.commentsCounter = idea.comments.length;
     }
 
     _createClass(ShortIdea, [{
+        key: 'init',
+        value: function init() {
+            var _this = this;
+
+            $('body').on('click', this.getId() + ' .rating__minus', function () {
+                if (_this.voteCounter !== -1) {
+                    _this.rating--;
+                    _this.voteCounter--;
+                    _this.headerReRender('minus').then(_this.addVoted('minus'));
+                }
+            }).on('click', this.getId() + ' .rating__plus', function () {
+                if (_this.voteCounter !== 1) {
+                    _this.rating++;
+                    _this.voteCounter++;
+                    _this.headerReRender('minus').then(_this.addVoted('plus'));
+                }
+            });
+
+            return this.getFullIdea();
+        }
+    }, {
+        key: 'addVoted',
+        value: function addVoted(votedClass) {
+            if (this.voteCounter !== 0) {
+                $(this.getId() + ' .rating__' + votedClass).addClass('voted');
+            }
+        }
+    }, {
+        key: 'headerReRender',
+        value: function headerReRender() {
+            var _this2 = this;
+
+            var voted = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+            return new Promise(function () {
+                $(_this2.getId() + ' .idea__header__rating').remove();
+                $(_this2.getId() + ' .idea__header').append(_this2.getIdeaRating());
+            });
+        }
+    }, {
+        key: 'getId',
+        value: function getId() {
+            return '#' + this.id;
+        }
+    }, {
+        key: 'getIdeaRating',
+        value: function getIdeaRating() {
+            return '\n                <div class="idea__header__rating">\n                    <span class="rating rating__minus">-</span>\n                    <span>' + this.rating + '</span>\n                    <span class="rating rating__plus">+</span>\n                </div>\n        ';
+        }
+    }, {
         key: 'getIdeaHeader',
         value: function getIdeaHeader() {
-            return '<div class="idea__header">\n                    <div class="idea__header__name">' + this.name + '</div>\n                    <div class="idea__header__rating">\n                        <span class="rating rating__minus">-</span>\n                        <span>' + this.rating + '</span>\n                        <span class="rating rating__plus">+</span>\n                    </div>\n                </div>';
+            return '<div class="idea__header">\n                    <div class="idea__header__name">' + this.name + '</div>\n                    ' + this.getIdeaRating() + '\n                </div>';
         }
     }, {
         key: 'getFullIdea',
         value: function getFullIdea() {
-            return '<div class="idea">\n                    ' + this.getIdeaHeader() + '\n                    <div class="idea__text">' + this.mainIdea + '</div>\n                    <div class="idea__footer">\n                        <a href="../../assets/idea.html" class="idea__footer__full">Read more..</a>\n                        <a href="../../assets/idea.html#comments" class="idea__footer__comments"><span class="comment-icon">111</span>\n                            0</a>\n                    </div>\n                </div>';
+            return '<div id="' + this.id + '" class="idea">\n                    ' + this.getIdeaHeader() + '\n                    <div class="idea__text">' + this.mainIdea + '</div>\n                    <div class="idea__footer">\n                        <a href="../../assets/idea.html" class="idea__footer__full">Read more..</a>\n                        <a href="../../assets/idea.html#comments" class="idea__footer__comments"><span class="comment-icon">111</span>\n                            ' + this.commentsCounter + '</a>\n                    </div>\n                </div>';
         }
     }]);
 
@@ -286,7 +337,7 @@ function renderContent(data) {
 
     data.ideas.forEach(function (item) {
         var idea = new _ShortIdea.ShortIdea(item);
-        $('.ideas-user-section').append(idea.getFullIdea());
+        $('.ideas-user-section').append(idea.init());
     });
 }
 

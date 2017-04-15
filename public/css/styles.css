@@ -167,6 +167,8 @@ nav {
       margin-right: 10px;
       border-radius: 30px;
       padding: 3px 15px; }
+      .idea__header__rating, .idea__header__rating span {
+        user-select: none; }
       @media (max-width: 767px) {
         .idea__header__rating {
           padding: 1px 2px;
@@ -180,12 +182,12 @@ nav {
           .idea__header__rating .rating {
             padding: 3px; } }
         .idea__header__rating .rating__plus {
-          color: green; }
-          .idea__header__rating .rating__plus:hover {
+          color: black; }
+          .idea__header__rating .rating__plus:hover, .idea__header__rating .rating__plus.voted {
             color: #00c100; }
         .idea__header__rating .rating__minus {
-          color: #bc0000; }
-          .idea__header__rating .rating__minus:hover {
+          color: black; }
+          .idea__header__rating .rating__minus:hover, .idea__header__rating .rating__minus.voted {
             color: #ff0000; }
   .idea__text {
     display: flex;

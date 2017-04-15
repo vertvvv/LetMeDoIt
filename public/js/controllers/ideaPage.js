@@ -25,5 +25,5 @@ function renderContent(json) {
     let data = json.ideas[0];
     let idea = new FullIdea(data);
 
-    $('.single-idea-section').append(idea.getFullIdea());
+    $('.single-idea-section').append(idea.init());
 }

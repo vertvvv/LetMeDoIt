@@ -60,7 +60,8 @@
       "functionality": [
         "Do it 2!",
         "Do it again 22"
-      ]
+      ],
+      "comments": []
     }
   ],
   "comments": [
@@ -69,28 +70,28 @@
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": ""
+      "data": "31 Aug 2018, 18:02"
     },
     {
       "id": 2,
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": ""
+      "data": "31 Aug 2018, 18:02"
     },
     {
       "id": 3,
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": ""
+      "data": "31 Aug 2018, 18:02"
     },
     {
       "id": 4,
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": ""
+      "data": "31 Aug 2018, 18:02"
     }
   ]
 }

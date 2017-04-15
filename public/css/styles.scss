@@ -1,6 +1,5 @@
 @import "reset.css";
 
-
 /*Colors*/
 $navColor: #f0f317;
 $hoverNavColor: #cbca4c;
@@ -11,9 +10,9 @@ $menuHoverColor: #eee;
 $textColor: #333;
 $footerTextColor: #627588;
 $sectionsBackground: #fcfcfc;
-$plusGreen: green;
+$plusGreen: black;
 $plusGreenHover: #00c100;
-$minusRed: #bc0000;
+$minusRed: black;
 $minusRedHover: #ff0000;
 $white: white;
 
@@ -268,6 +267,10 @@ nav {
             border-radius: 30px;
             padding: 3px 15px;
 
+            &, span {
+                user-select: none;
+            }
+
             @media (max-width: $xs) {
                 padding: 1px 2px;
                 margin-right: 0;
@@ -286,7 +289,7 @@ nav {
                 &__plus {
                     color: $plusGreen;
 
-                    &:hover {
+                    &:hover, &.voted {
                         color: $plusGreenHover;
                     }
                 }
@@ -294,7 +297,7 @@ nav {
                 &__minus {
                     color: $minusRed;
 
-                    &:hover {
+                    &:hover, &.voted {
                         color: $minusRedHover;
                     }
                 }

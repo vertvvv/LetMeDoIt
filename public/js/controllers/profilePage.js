@@ -15,6 +15,6 @@ function renderContent(data) {
 
     data.ideas.forEach((item) => {
         let idea = new ShortIdea(item);
-        $('.ideas-user-section').append(idea.getFullIdea());
+        $('.ideas-user-section').append(idea.init());
     });
 }

@@ -86,9 +86,7 @@ var _Footer = __webpack_require__(1);
 
 function getPageContent(renderContent) {
     return new Promise(function (resolve, reject) {
-        var query = $.get(_consts.API_URL + 'data');
-
-        query.done(renderPage).error(function (data) {
+        $.get(_consts.API_URL + 'data').done(renderPage).error(function (data) {
             $('body').html('We have some technical troubles, sorry.');
         });
 

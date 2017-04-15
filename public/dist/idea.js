@@ -86,9 +86,7 @@ var _Footer = __webpack_require__(1);
 
 function getPageContent(renderContent) {
     return new Promise(function (resolve, reject) {
-        var query = $.get(_consts.API_URL + 'data');
-
-        query.done(renderPage).error(function (data) {
+        $.get(_consts.API_URL + 'data').done(renderPage).error(function (data) {
             $('body').html('We have some technical troubles, sorry.');
         });
 
@@ -239,20 +237,73 @@ var ShortIdea = exports.ShortIdea = function () {
     function ShortIdea(idea) {
         _classCallCheck(this, ShortIdea);
 
+        this.id = idea.id;
         this.name = idea.name;
         this.mainIdea = idea['main-idea'];
         this.rating = idea.rating;
+        this.voteCounter = 0;
+        this.commentsCounter = idea.comments.length;
     }
 
     _createClass(ShortIdea, [{
+        key: 'init',
+        value: function init() {
+            var _this = this;
+
+            $('body').on('click', this.getId() + ' .rating__minus', function () {
+                if (_this.voteCounter !== -1) {
+                    _this.rating--;
+                    _this.voteCounter--;
+                    _this.headerReRender('minus').then(_this.addVoted('minus'));
+                }
+            }).on('click', this.getId() + ' .rating__plus', function () {
+                if (_this.voteCounter !== 1) {
+                    _this.rating++;
+                    _this.voteCounter++;
+                    _this.headerReRender('minus').then(_this.addVoted('plus'));
+                }
+            });
+
+            return this.getFullIdea();
+        }
+    }, {
+        key: 'addVoted',
+        value: function addVoted(votedClass) {
+            if (this.voteCounter !== 0) {
+                $(this.getId() + ' .rating__' + votedClass).addClass('voted');
+            }
+        }
+    }, {
+        key: 'headerReRender',
+        value: function headerReRender() {
+            var _this2 = this;
+
+            var voted = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+            return new Promise(function () {
+                $(_this2.getId() + ' .idea__header__rating').remove();
+                $(_this2.getId() + ' .idea__header').append(_this2.getIdeaRating());
+            });
+        }
+    }, {
+        key: 'getId',
+        value: function getId() {
+            return '#' + this.id;
+        }
+    }, {
+        key: 'getIdeaRating',
+        value: function getIdeaRating() {
+            return '\n                <div class="idea__header__rating">\n                    <span class="rating rating__minus">-</span>\n                    <span>' + this.rating + '</span>\n                    <span class="rating rating__plus">+</span>\n                </div>\n        ';
+        }
+    }, {
         key: 'getIdeaHeader',
         value: function getIdeaHeader() {
-            return '<div class="idea__header">\n                    <div class="idea__header__name">' + this.name + '</div>\n                    <div class="idea__header__rating">\n                        <span class="rating rating__minus">-</span>\n                        <span>' + this.rating + '</span>\n                        <span class="rating rating__plus">+</span>\n                    </div>\n                </div>';
+            return '<div class="idea__header">\n                    <div class="idea__header__name">' + this.name + '</div>\n                    ' + this.getIdeaRating() + '\n                </div>';
         }
     }, {
         key: 'getFullIdea',
         value: function getFullIdea() {
-            return '<div class="idea">\n                    ' + this.getIdeaHeader() + '\n                    <div class="idea__text">' + this.mainIdea + '</div>\n                    <div class="idea__footer">\n                        <a href="../../assets/idea.html" class="idea__footer__full">Read more..</a>\n                        <a href="../../assets/idea.html#comments" class="idea__footer__comments"><span class="comment-icon">111</span>\n                            0</a>\n                    </div>\n                </div>';
+            return '<div id="' + this.id + '" class="idea">\n                    ' + this.getIdeaHeader() + '\n                    <div class="idea__text">' + this.mainIdea + '</div>\n                    <div class="idea__footer">\n                        <a href="../../assets/idea.html" class="idea__footer__full">Read more..</a>\n                        <a href="../../assets/idea.html#comments" class="idea__footer__comments"><span class="comment-icon">111</span>\n                            ' + this.commentsCounter + '</a>\n                    </div>\n                </div>';
         }
     }]);
 
@@ -292,7 +343,7 @@ function renderContent(json) {
     var data = json.ideas[0];
     var idea = new _FullIdea.FullIdea(data);
 
-    $('.single-idea-section').append(idea.getFullIdea());
+    $('.single-idea-section').append(idea.init());
 }
 
 /***/ }),
@@ -318,24 +369,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Created by Ilya on 09.04.2017.
  */
 
-var Comments = exports.Comments = function () {
-    function Comments() {
-        _classCallCheck(this, Comments);
+var Comment = exports.Comment = function () {
+    function Comment(comment) {
+        _classCallCheck(this, Comment);
+
+        this.text = comment.text;
+        this.data = comment.data;
     }
 
-    _createClass(Comments, [{
+    _createClass(Comment, [{
         key: "getComment",
         value: function getComment() {
-            return "\n            <div class=\"comments-block\">\n                <div class=\"flex-item avatar\">\n                    <div class=\"avatar__wrapper\"></div>\n                    <div class=\"avatar__username\"><a href=\"profile.html\">Username</a></div>\n                </div>\n                <div class=\"flex-item comment\">\n                    <div class=\"comment__text\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar massa in fermentum sagittis. Aliquam congue commodo ligula, quis pretium dui pellentesque a. Donec eget porta nibh, sed ullamcorper odio. Vivamus euismod leo ante, nec vestibulum sapien blandit sed. Mauris vel hendrerit mauris. Vestibulum vulputate metus sit amet urna facilisis euismod. Maecenas eget sapien ut arcu cursus lobortis. Curabitur vel quam porttitor, convallis odio interdum, iaculis tellus. Pellentesque pretium risus id volutpat maximus. Duis blandit tempus rutrum. Proin bibendum nibh quam, ac mattis massa bibendum congue.</div>\n                    <div class=\"comment__date\">31 Aug 2018, 18:02</div>\n                </div>\n            </div>\n        ";
-        }
-    }, {
-        key: "getAllComments",
-        value: function getAllComments() {
-            return "\n            " + this.getComment() + "\n            " + this.getComment() + "\n        ";
+            return "\n            <div class=\"comments-block\">\n                <div class=\"flex-item avatar\">\n                    <div class=\"avatar__wrapper\"></div>\n                    <div class=\"avatar__username\"><a href=\"profile.html\">Username</a></div>\n                </div>\n                <div class=\"flex-item comment\">\n                    <div class=\"comment__text\">" + this.text + "</div>\n                    <div class=\"comment__date\">" + this.data + "</div>\n                </div>\n            </div>\n        ";
         }
     }]);
 
-    return Comments;
+    return Comment;
 }();
 
 /***/ }),
@@ -355,6 +404,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _ShortIdea2 = __webpack_require__(4);
 
 var _Comments = __webpack_require__(10);
+
+var _consts = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -376,6 +427,7 @@ var FullIdea = exports.FullIdea = function (_ShortIdea) {
         _this.mockups = idea.mockups;
         _this.other = idea.other;
         _this.tags = idea.tags;
+        _this.comments = idea.comments;
         return _this;
     }
 
@@ -441,11 +493,24 @@ var FullIdea = exports.FullIdea = function (_ShortIdea) {
             return '<section class="idea__text__tags">\n                    ' + this.getTagsFormatted() + '\n                </section>';
         }
     }, {
+        key: 'getAllComments',
+        value: function getAllComments() {
+            var commentsAll = '';
+            $.get(_consts.API_URL + 'data').done(function (json) {
+                json.comments.forEach(function (item) {
+                    var comment = new _Comments.Comment(item);
+                    commentsAll += comment.getComment();
+                });
+            }).error(function (data) {
+                $('body').html('We have some technical troubles, sorry.');
+            });
+
+            return commentsAll; //TODO как-то вернуть полученную верстку с комментами, сейчас пустая/undefined из-за асинхронности
+        }
+    }, {
         key: 'getFullIdea',
         value: function getFullIdea() {
-            var comments = new _Comments.Comments();
-
-            return '<div class="idea">\n                   ' + this.getIdeaHeader() + '\n                    <div class="idea__text">\n                        ' + this.getMainIdea() + '\n                        ' + this.getFunctionality() + '\n                        ' + this.getMockups() + '\n                        ' + this.getOther() + '\n                        ' + this.getTags() + '\n                        <div id="comments" class="idea__footer">\n                            <hr>\n                            <div class="comments">\n                                <div class="answer-block">\n                                    <div class="flex-item input-place">\n                                        <textarea id="new-comment" placeholder="Write your comment here.."></textarea>\n                                        <button class="input-place__button">Send</button>\n                                    </div>\n                                </div>\n                                <div id="commentsPlace">\n                                    ' + comments.getAllComments() + '\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>'; //comments temp desicion
+            return '<div id="' + this.id + '" class="idea">\n                   ' + this.getIdeaHeader() + '\n                    <div class="idea__text">\n                        ' + this.getMainIdea() + '\n                        ' + this.getFunctionality() + '\n                        ' + this.getMockups() + '\n                        ' + this.getOther() + '\n                        ' + this.getTags() + '\n                        <div id="comments" class="idea__footer">\n                            <hr>\n                            <div class="comments">\n                                <div class="answer-block">\n                                    <div class="flex-item input-place">\n                                        <textarea id="new-comment" placeholder="Write your comment here.."></textarea>\n                                        <button class="input-place__button">Send</button>\n                                    </div>\n                                </div>\n                                <div id="commentsPlace">\n                                    ' + this.getAllComments() + '\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>'; //TODO comments
         }
     }]);
 

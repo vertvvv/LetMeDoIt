@@ -3,7 +3,8 @@
  */
 
 import { ShortIdea } from './ShortIdea';
-import { Comments } from './Comments';
+import { Comment } from './Comments';
+import { API_URL } from '../consts';
 
 export class FullIdea extends ShortIdea {
     constructor(idea) {
@@ -12,6 +13,7 @@ export class FullIdea extends ShortIdea {
         this.mockups = idea.mockups;
         this.other = idea.other;
         this.tags = idea.tags;
+        this.comments = idea.comments;
     }
 
     getMainIdea() {
@@ -87,10 +89,24 @@ export class FullIdea extends ShortIdea {
                 </section>`;
     }
 
-    getFullIdea() {
-        let comments = new Comments();
+    getAllComments() {
+        let commentsAll = '';
+        $.get(API_URL + 'data')
+            .done((json) => {
+                json.comments.forEach(item => {
+                    let comment = new Comment(item);
+                    commentsAll += comment.getComment();
+                });
+            })
+            .error((data) => {
+                $('body').html('We have some technical troubles, sorry.');
+            });
 
-        return `<div class="idea">
+        return commentsAll;//TODO как-то вернуть полученную верстку с комментами, сейчас пустая/undefined из-за асинхронности
+    }
+
+    getFullIdea() {
+        return `<div id="${this.id}" class="idea">
                    ${this.getIdeaHeader()}
                     <div class="idea__text">
                         ${this.getMainIdea()}
@@ -108,11 +124,11 @@ export class FullIdea extends ShortIdea {
                                     </div>
                                 </div>
                                 <div id="commentsPlace">
-                                    ${comments.getAllComments()}
+                                    ${this.getAllComments()}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>` //comments temp desicion
+                </div>` //TODO comments
     }
 }

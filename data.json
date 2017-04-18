@@ -70,28 +70,28 @@
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": "31 Aug 2018, 18:02"
+      "date": "2018-08-14 14:02"
     },
     {
       "id": 2,
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": "31 Aug 2018, 18:02"
+      "date": "2018-01-31 18:22"
     },
     {
       "id": 3,
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": "31 Aug 2018, 18:02"
+      "date": "2018-01-31 18:02"
     },
     {
       "id": 4,
       "ideaid": 1,
       "userid": 1,
       "text": "Lorem ipsum...",
-      "data": "31 Aug 2018, 18:02"
+      "date": "2017-02-31 18:22"
     }
   ]
 }

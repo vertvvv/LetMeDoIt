@@ -6,8 +6,8 @@ import { API_URL } from './consts';
 import { Header } from './classes/Header';
 import { Footer } from './classes/Footer';
 
-export function getPageContent(renderContent) {
-    return new Promise((resolve, reject) => {
+export function getPageContent() {
+    return new Promise((resolve) => {
         $.get(API_URL + 'data')
             .done(renderPage)
             .error((data) => {

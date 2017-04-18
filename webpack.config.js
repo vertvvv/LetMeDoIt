@@ -7,7 +7,6 @@ module.exports = {
         newIdea: ['./public/js/controllers/newIdeaPage.js'],
         settings: ['./public/js/controllers/settingsPage.js'],
         profile: ['./public/js/controllers/profilePage.js']
-
     },
     output: {
         filename: '[name].js',

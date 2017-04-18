@@ -375,7 +375,7 @@ nav {
     padding: 0 10px;
     flex: 4; }
     .comments .comment__date {
-      font-size: 0.7em;
+      font-size: 0.85em;
       color: #627588;
       align-self: flex-end; }
 

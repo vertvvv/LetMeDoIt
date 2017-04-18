@@ -90,22 +90,27 @@ export class FullIdea extends ShortIdea {
     }
 
     getAllComments() {
-        let commentsAll = '';
+
         $.get(API_URL + 'data')
-            .done((json) => {
-                json.comments.forEach(item => {
-                    let comment = new Comment(item);
-                    commentsAll += comment.getComment();
-                });
-            })
-            .error((data) => {
+            .done(sumComments)
+            .error(() => {
                 $('body').html('We have some technical troubles, sorry.');
             });
 
-        return commentsAll;//TODO как-то вернуть полученную верстку с комментами, сейчас пустая/undefined из-за асинхронности
+        function sumComments(json) {
+            let commentsAll = '';
+            json.comments.forEach(item => {
+                let comment = new Comment(item);
+                commentsAll += comment.getComment();
+            });
+            $('#commentsPlace').append(commentsAll);
+        }
+
+
     }
 
     getFullIdea() {
+        this.getAllComments();
         return `<div id="${this.id}" class="idea">
                    ${this.getIdeaHeader()}
                     <div class="idea__text">
@@ -124,11 +129,10 @@ export class FullIdea extends ShortIdea {
                                     </div>
                                 </div>
                                 <div id="commentsPlace">
-                                    ${this.getAllComments()}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>` //TODO comments
+                </div>`
     }
 }

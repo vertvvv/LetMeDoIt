@@ -2,18 +2,37 @@
  * Created by Ilya on 09.04.2017.
  */
 
-import { getPageContent } from '../all';
+import { renderMainComponents } from '../all';
 import { Profile } from '../classes/Profile';
 import { ShortIdea } from '../classes/ShortIdea';
+import { users, ideas } from '../api';
 
-getPageContent().then(renderContent);
+renderMainComponents().then(getProfileData);
 
-function renderContent(data) {
-    let profile = new Profile(data.users[0]);
+function getProfileData() {
 
-    $('.user-section').append(profile.getFullProfile());
+    users.getAllUsers()
+        .done((data) => {
+            renderProfileContent(data).then(getUserIdeas);
+        });
+}
 
-    data.ideas.forEach((item) => {
+function renderProfileContent(data) {
+    return new Promise((resolve) => {
+        let profile = new Profile(data[0]);
+        $('.user-section').append(profile.getFullProfile());
+        resolve(data[0]);
+    });
+}
+
+function getUserIdeas(data) {
+    ideas.getUserIdeas(data.id)
+        .done(renderUserIdeas);
+}
+
+function renderUserIdeas(data) {
+    console.log(data);
+    data.forEach((item) => {
         let idea = new ShortIdea(item);
         $('.ideas-user-section').append(idea.init());
     });

@@ -2,9 +2,9 @@
  * Created by Ilya on 09.04.2017.
  */
 
-import { getPageContent } from '../all';
+import { renderMainComponents } from '../all';
 
-getPageContent();
+renderMainComponents();
 
 $('body')
     .on('click', '#addFunction', () => {

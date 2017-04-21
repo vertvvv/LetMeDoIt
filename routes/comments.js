@@ -3,18 +3,18 @@
  */
 
 var express = require('express');
-var users = require('../services/usersService');
+var comments = require('../services/commentsService');
 
 var router = express.Router();
 
 router.get('/', function (req, res, next) {
-    res.send(users.getAllUsers());
+    res.send(comments.getAllComments());
 });
 
 router.post('/', function (req, res, next) {
-    var newUser = req.body;
-    users.addUser(newUser);
-    res.send(newUser);
+    var newComment = req.body;
+    comments.addComment(newComment);
+    res.send(newComment);
 });
 
 module.exports = router;

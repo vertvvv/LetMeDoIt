@@ -3,9 +3,10 @@
  */
 
 import { ShortIdea } from '../classes/ShortIdea';
-import { getPageContent } from '../all';
+import { renderMainComponents } from '../all';
+import { ideas } from '../api';
 
-getPageContent().then(renderContent);
+renderMainComponents().then(getContentData);
 
 $('body')
     .on('click', '#logo', function (e) {
@@ -13,8 +14,14 @@ $('body')
         $('html,body').animate({scrollTop: $('body').offset().top}, 'slow');
     });
 
-function renderContent(data) {
-    data.ideas.forEach((item) => {
+function getContentData() {
+    ideas.getAllIdeas()
+        .done(renderIdeas)
+        .error();
+}
+
+function renderIdeas(data) {
+    data.forEach((item) => {
         let idea = new ShortIdea(item);
         $('#ideasPlace').append(idea.init());
     })

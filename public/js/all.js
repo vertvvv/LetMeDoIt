@@ -2,20 +2,20 @@
  * Created by Ilya on 27.03.2017.
  */
 
-import { API_URL } from './consts';
 import { Header } from './classes/Header';
 import { Footer } from './classes/Footer';
+import { users } from './api';
 
-export function getPageContent() {
+export function renderMainComponents() {
     return new Promise((resolve) => {
-        $.get(API_URL + 'data')
+        users.getAllUsers()
             .done(renderPage)
             .error((data) => {
-                $('body').html('We have some technical troubles, sorry.');
+                console.log(data);
             });
 
         function renderPage(json) {
-            let header = new Header(json.users[0].username);
+            let header = new Header(json[0].username);
             let footer = new Footer();
 
             $('body')
@@ -26,7 +26,7 @@ export function getPageContent() {
                     $(this).toggleClass('active');
                 });
 
-            resolve(json);
+            resolve();
         }
     });
 }

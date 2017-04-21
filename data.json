@@ -11,8 +11,8 @@
             "info": "I am user from Userland, my hobby is posting ideas, hope someone can realize something from it!",
             "stats": {
                 "ideas": 1,
-                "comments": 5,
-                "rating": 25
+                "comments": 9,
+                "rating": 125
             },
             "ideas": [
                 1,
@@ -66,7 +66,7 @@
         },
         {
             "id": 2,
-            "userid": 1,
+            "userid": 2,
             "name": "New cool idea 2",
             "main-idea": "Lorem ipsum 123lkasflfsk",
             "rating": 0,
@@ -74,7 +74,27 @@
                 "Do it 2!",
                 "Do it again 22"
             ],
-            "comments": []
+            "comments": [],
+            "mockups": [
+                "../img/mockup1.png",
+                "../img/mockup2.png",
+                "../img/mockup3.png"
+            ],
+            "other": [
+                {
+                    "name": "Platforms",
+                    "text": "Windows, MacOS, Linux, Android, idk"
+                },
+                {
+                    "name": "Special thanks",
+                    "text": "I can buy thousand delicious cookies for you!"
+                }
+            ],
+            "tags": [
+                "tag1",
+                "tag2",
+                "tag3"
+            ]
         }
     ],
     "comments": [

@@ -31,3 +31,6 @@ public/dist
 
 # WebStorm files
 .idea
+
+# Database dump
+data_copy.json

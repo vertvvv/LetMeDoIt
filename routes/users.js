@@ -11,6 +11,11 @@ router.get('/', function (req, res, next) {
     res.send(users.getAllUsers());
 });
 
+router.get('/:id', function (req, res, next) {
+    var id = req.params.id;
+    res.send(users.getUserInfo(id));
+});
+
 router.post('/', function (req, res, next) {
     var newUser = req.body;
     users.addUser(newUser);

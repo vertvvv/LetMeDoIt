@@ -158,7 +158,10 @@ nav {
     .idea__header__name {
       font-size: 1.705em;
       float: left;
-      max-width: 75%; }
+      max-width: 75%;
+      cursor: pointer; }
+      .idea__header__name:hover {
+        text-decoration: underline; }
     .idea__header__rating {
       border: 1px solid #d1d1d1;
       background-color: #fdfdfd;
@@ -232,10 +235,25 @@ nav {
           transition: all 1s ease-in-out;
           width: 100%;
           cursor: pointer; }
-    .idea__text__tags {
-      align-self: flex-end;
-      margin: 30px 0 10px 0; }
-      .idea__text__tags div {
+    .idea__text__footer {
+      margin: 50px 0 10px 0;
+      display: flex;
+      justify-content: space-between; }
+      @media (max-width: 480px) {
+        .idea__text__footer {
+          flex-direction: column; } }
+      .idea__text__footer .idea-author span {
+        font-weight: 600;
+        color: #333; }
+      .idea__text__footer .idea-author a {
+        color: #627588;
+        cursor: pointer; }
+        .idea__text__footer .idea-author a:hover {
+          text-decoration: underline; }
+      @media (max-width: 480px) {
+        .idea__text__footer .idea-tags {
+          align-self: flex-end; } }
+      .idea__text__footer .idea-tags div {
         font-size: 0.7em;
         padding: 5px 12px;
         margin: 0 7px;
@@ -244,22 +262,24 @@ nav {
         background-color: #f0f317;
         cursor: pointer; }
   .idea__footer {
-    padding: 20px 10px;
+    padding: 15px 5px 0px 5px;
     line-height: 30px;
     font-size: 0.96em;
     color: #627588;
     display: block; }
-    @media (max-width: 767px) {
-      .idea__footer {
-        padding-bottom: 25px; } }
+    .idea__footer.footer-short {
+      display: flex;
+      justify-content: space-between; }
+    .idea__footer span {
+      font-weight: 600;
+      color: #333; }
     .idea__footer a {
       cursor: pointer; }
       .idea__footer a:hover {
         text-decoration: underline; }
     .idea__footer__full {
-      float: left; }
+      padding-left: 4px; }
     .idea__footer__comments {
-      float: right;
       padding-right: 10px; }
       .idea__footer__comments .comment-icon {
         color: rgba(120, 40, 200, 0);

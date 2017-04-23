@@ -32,7 +32,7 @@ export class Comment {
             <div class="comments-block">
                 <div class="flex-item avatar">
                     <div class="avatar__wrapper"></div>
-                    <div class="avatar__username"><a href="profile.html">Username</a></div>
+                    <div class="avatar__username"><a href="profile.html?id=1">Username</a></div>
                 </div>
                 <div class="flex-item comment">
                     <div class="comment__text">${this.text}</div>

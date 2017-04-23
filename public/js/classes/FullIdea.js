@@ -2,9 +2,8 @@
  * Created by Ilya on 10.04.2017.
  */
 
-import { ShortIdea } from './ShortIdea';
-import { Comment } from './Comments';
-import { API_URL } from '../consts';
+import {ShortIdea} from "./ShortIdea";
+import {Comment} from "./Comments";
 
 export class FullIdea extends ShortIdea {
     constructor(idea) {
@@ -26,7 +25,7 @@ export class FullIdea extends ShortIdea {
     getFunctionsList() {
         let func = this.functionality;
 
-        return func.reduce((res, item) => res + `<li>${item}</li>` , '');
+        return func.reduce((res, item) => res + `<li>${item}</li>`, '');
     }
 
     getFunctionality() {
@@ -83,15 +82,20 @@ export class FullIdea extends ShortIdea {
         return tags.reduce((res, item) => res + `<div class="tag">${item}</div>`, '');
     }
 
-    getTags() {
-        return `<section class="idea__text__tags">
+    getMainIdeaFooter() {
+        return `
+            <section class="idea__text__footer">
+                <div class="idea-author">
+                    <span>From:</span><a href="../../assets/profile.html?id=${this.user.id}" class="idea__footer__full">${this.user.name}</a>
+                </div>
+                <div class="idea-tags">
                     ${this.getTagsFormatted()}
-                </section>`;
+                </div>      
+            </section>`;
     }
 
     getAllComments() {
-
-        $.get(API_URL + 'data')
+        $.get('http://localhost:3000/' + 'data')
             .done(sumComments)
             .error(() => {
                 $('body').html('We have some technical troubles, sorry.');
@@ -118,7 +122,7 @@ export class FullIdea extends ShortIdea {
                         ${this.getFunctionality()}
                         ${this.getMockups()}
                         ${this.getOther()}
-                        ${this.getTags()}
+                        ${this.getMainIdeaFooter()}
                         <div id="comments" class="idea__footer">
                             <hr>
                             <div class="comments">

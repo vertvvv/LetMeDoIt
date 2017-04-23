@@ -38,7 +38,7 @@ export class Header {
                     </a>
                     <ul class="dropdown-menu invisible-element">
                         <li><a href="../assets/new_idea.html">New idea</a></li>
-                        <li><a href="../assets/profile.html">My profile</a></li>
+                        <li><a href="../assets/profile.html?id=1">My profile</a></li>
                         <li><a href="../assets/settings.html">Settings</a></li>
                         <li><a href="../index.html">Logout</a></li>
                     </ul>

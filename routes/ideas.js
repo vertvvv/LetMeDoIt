@@ -16,11 +16,6 @@ router.get('/id/:id', function (req, res, next) {
     res.send(ideas.getSingleIdea(id));
 });
 
-router.get('/user/:userid', function (req, res, next) {
-    var id = req.params.userid;
-    res.send(ideas.getUserIdeas(id));
-});
-
 router.post('/', function (req, res, next) {
     var newIdea = req.body;
     ideas.addIdea(newIdea);

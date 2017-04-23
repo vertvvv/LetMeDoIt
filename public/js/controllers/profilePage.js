@@ -2,7 +2,7 @@
  * Created by Ilya on 09.04.2017.
  */
 
-import { renderMainComponents } from '../all';
+import { renderMainComponents,getUrlParameter } from '../all';
 import { Profile } from '../classes/Profile';
 import { ShortIdea } from '../classes/ShortIdea';
 import { users, ideas } from '../api';
@@ -10,28 +10,23 @@ import { users, ideas } from '../api';
 renderMainComponents().then(getProfileData);
 
 function getProfileData() {
+    let id = getUrlParameter('id');
 
-    users.getAllUsers()
+    users.getSingleUser(id)
         .done((data) => {
-            renderProfileContent(data).then(getUserIdeas);
+            renderProfileContent(data).then(renderUserIdeas);
         });
 }
 
 function renderProfileContent(data) {
     return new Promise((resolve) => {
-        let profile = new Profile(data[0]);
+        let profile = new Profile(data.user);
         $('.user-section').append(profile.getFullProfile());
-        resolve(data[0]);
+        resolve(data.ideas);
     });
 }
 
-function getUserIdeas(data) {
-    ideas.getUserIdeas(data.id)
-        .done(renderUserIdeas);
-}
-
 function renderUserIdeas(data) {
-    console.log(data);
     data.forEach((item) => {
         let idea = new ShortIdea(item);
         $('.ideas-user-section').append(idea.init());

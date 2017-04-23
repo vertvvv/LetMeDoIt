@@ -256,6 +256,11 @@ nav {
             font-size: $fonth1 * 1.1;
             float: left;
             max-width: 75%;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
 
         &__rating {
@@ -378,31 +383,64 @@ nav {
             }
         }
 
-        &__tags {
-            align-self: flex-end;
-            margin: 30px 0 10px 0;
+        &__footer {
+            margin: 50px 0 10px 0;
+            display: flex;
+            justify-content: space-between;
 
-            div {
-                font-size: $fontExtraSmall;
-                padding: 5px 12px;
-                margin: 0 7px;
-                border-radius: 15px;
-                display: inline-block;
-                background-color: $navColor;
-                cursor: pointer;
+            @media(max-width: 480px) {
+                flex-direction: column;
+            }
+
+            .idea-author {
+                span {
+                    font-weight: 600;
+                    color: $textColor;
+                }
+
+                a {
+                    color: $footerTextColor;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .idea-tags {
+                @media(max-width: 480px) {
+                    align-self: flex-end;
+                }
+
+                div {
+                    font-size: $fontExtraSmall;
+                    padding: 5px 12px;
+                    margin: 0 7px;
+                    border-radius: 15px;
+                    display: inline-block;
+                    background-color: $navColor;
+                    cursor: pointer;
+                }
             }
         }
     }
 
     &__footer {
-        padding: 20px 10px;
+        padding: 15px 5px 0px 5px;
         line-height: 30px;
         font-size: $fontNormal;
         color: $footerTextColor;
         display: block;
 
-        @media (max-width: $xs) {
-            padding-bottom: 25px;
+        &.footer-short {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        span {
+            font-weight: 600;
+            color: $textColor;
         }
 
         a {
@@ -414,11 +452,10 @@ nav {
         }
 
         &__full {
-            float: left;
+            padding-left: 4px;
         }
 
         &__comments {
-            float: right;
             padding-right: 10px;
 
             .comment-icon {
@@ -896,7 +933,7 @@ nav {
 
     $lnheight: 24px;
 
-    & > div  {
+    & > div {
         display: flex;
     }
 

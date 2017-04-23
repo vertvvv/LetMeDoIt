@@ -3,7 +3,7 @@
  */
 
 import { FullIdea } from '../classes/FullIdea';
-import { renderMainComponents } from '../all';
+import { renderMainComponents, getUrlParameter } from '../all';
 import { ideas } from '../api';
 
 renderMainComponents().then(getIdeaData);
@@ -23,7 +23,8 @@ $('body')
 
 
 function getIdeaData() {
-    ideas.getSingleIdea(1)
+    let id = getUrlParameter('id');
+    ideas.getSingleIdea(id)
         .done(renderIdea);
 }
 

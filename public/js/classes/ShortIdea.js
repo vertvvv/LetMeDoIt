@@ -5,6 +5,10 @@
 export class ShortIdea {
     constructor(idea) {
         this.id = idea.id;
+        this.user = {
+            id: idea.user.id,
+            name: idea.user.name
+        };
         this.name = idea.name;
         this.mainIdea = idea['main-idea'];
         this.rating = idea.rating;
@@ -61,20 +65,27 @@ export class ShortIdea {
 
     getIdeaHeader() {
         return `<div class="idea__header">
-                    <div class="idea__header__name">${this.name}</div>
+                    <a class="idea__header__name" href="../assets/idea.html?id=${this.id}">${this.name}</a>
                     ${this.getIdeaRating()}
                 </div>`;
+    }
+
+    getIdeaFooter() {
+        return `
+            <div class="idea__footer footer-short">
+                <div class="idea__footer__author">
+                    <span>From:</span><a href="../../assets/profile.html?id=${this.user.id}" class="idea__footer__full">${this.user.name}</a>
+                </div>
+                <a href="../../assets/idea.html?id=${this.id}#comments" class="idea__footer__comments"><span class="comment-icon">111</span>
+                    ${this.commentsCounter}</a>
+            </div>`
     }
 
     getFullIdea() {
         return `<div id="${this.id}" class="idea">
                     ${this.getIdeaHeader()}
                     <div class="idea__text">${this.mainIdea}</div>
-                    <div class="idea__footer">
-                        <a href="../../assets/idea.html" class="idea__footer__full">Read more..</a>
-                        <a href="../../assets/idea.html#comments" class="idea__footer__comments"><span class="comment-icon">111</span>
-                            ${this.commentsCounter}</a>
-                    </div>
+                    ${this.getIdeaFooter()}
                 </div>`;
     }
 }

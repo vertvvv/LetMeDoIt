@@ -2,7 +2,7 @@
  * Created by Ilya on 09.04.2017.
  */
 
-export const API_URL = "http://localhost:3000/";
+export const API_URL = "http://localhost:3000/api/";
 export const monthMap =
     {
     0: 'Jan',

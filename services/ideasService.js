@@ -12,13 +12,6 @@ function getAllIdeas() {
     return db.getData('/ideas');
 }
 
-function getUserIdeas(userid) {
-    let allIdeas = db.getData('/ideas');
-    return allIdeas.filter((idea) => {
-       return idea['userid'] == userid;
-    });
-}
-
 function getSingleIdea(id) {
     let allIdeas = db.getData('/ideas');
     return (allIdeas.filter((idea) => {
@@ -29,6 +22,5 @@ function getSingleIdea(id) {
 module.exports = {
     addIdea: addIdea,
     getAllIdeas: getAllIdeas,
-    getUserIdeas: getUserIdeas,
     getSingleIdea: getSingleIdea
 };

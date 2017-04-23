@@ -7,7 +7,11 @@ import { API_URL } from './consts';
 export const users = {
 
     getAllUsers: () => {
-        return $.get(API_URL + 'api/users');
+        return $.get(API_URL + 'users');
+    },
+
+    getSingleUser: (id) => {
+        return $.get(API_URL + 'users/' + id);
     }
 
 };
@@ -15,14 +19,10 @@ export const users = {
 export const ideas = {
 
     getAllIdeas: () => {
-        return $.get(API_URL + 'api/ideas');
+        return $.get(API_URL + 'ideas');
     },
 
     getSingleIdea: (id) => {
-        return $.get(API_URL + 'api/ideas/id/' + id);
-    },
-
-    getUserIdeas: (id) => {
-        return $.get(API_URL + 'api/ideas/user/' + id);
+        return $.get(API_URL + 'ideas/id/' + id);
     }
 };

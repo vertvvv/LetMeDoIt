@@ -3,8 +3,9 @@
  */
 
 import { FullIdea } from '../classes/FullIdea';
+import { Comment } from '../classes/Comments';
 import { renderMainComponents, getUrlParameter } from '../all';
-import { ideas } from '../api';
+import { ideas, comments } from '../api';
 
 renderMainComponents().then(getIdeaData);
 
@@ -19,8 +20,29 @@ $('body')
         });
 
         $(this).parent().toggleClass('mockup-full-width');
-    });
+    })
+    .on('click', '#addComment', sendComment);
 
+function sendComment() {
+    makeCommentObject()
+        .then(comments.postComment)
+        .then((json) => {
+            let comment = new Comment(json);
+            $(comment.getComment()).prependTo('#commentsPlace')
+                .hide().show('slow');
+        });
+}
+
+function makeCommentObject() {
+    return new Promise((resolve) => {
+        let comment = {};
+        comment.ideaid = getUrlParameter('id');
+        comment.date = new Date();
+        comment.text = $('#new-comment').val();
+        $('#new-comment').val('');
+        resolve(comment);
+    });
+}
 
 function getIdeaData() {
     let id = getUrlParameter('id');

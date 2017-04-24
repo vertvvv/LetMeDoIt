@@ -33,7 +33,7 @@ export class Header {
                 <div id="profile-bar" class="nav__right-side">
                     <a class="nav__img-wrapper">
                         <img src="../img/profile.jpg">
-                        <span class="nav__profile-name">Username</span>
+                        <span class="nav__profile-name">username</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu invisible-element">

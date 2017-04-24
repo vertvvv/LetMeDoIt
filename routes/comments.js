@@ -7,12 +7,18 @@ var comments = require('../services/commentsService');
 
 var router = express.Router();
 
-router.get('/', function (req, res, next) {
-    res.send(comments.getAllComments());
+router.get('/id/:id', function (req, res, next) {
+    let id = req.params.id;
+    res.send(comments.getIdeaComments(id));
 });
 
 router.post('/', function (req, res, next) {
     var newComment = req.body;
+    newComment.id = comments.getAllComments().length + 1;
+    newComment.user = {
+        id: 1,
+        name: 'username'
+    };
     comments.addComment(newComment);
     res.send(newComment);
 });

@@ -4,7 +4,7 @@
 
 var db = require('./database');
 
-function addIdea(idea) {
+function postIdea(idea) {
     db.push('/ideas[]', idea);
 }
 
@@ -20,7 +20,7 @@ function getSingleIdea(id) {
 }
 
 module.exports = {
-    addIdea: addIdea,
     getAllIdeas: getAllIdeas,
-    getSingleIdea: getSingleIdea
+    getSingleIdea: getSingleIdea,
+    postIdea: postIdea
 };

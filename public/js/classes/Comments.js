@@ -7,7 +7,7 @@ export class Comment {
     constructor(comment) {
         this.text = comment.text;
         this.date = this.getFormattedDate(comment.date);
-        console.log(this.date);
+        this.user = comment.user;
     }
 
     getFormattedDateNumber(num) {
@@ -27,12 +27,11 @@ export class Comment {
     }
 
     getComment() {
-
         return `
             <div class="comments-block">
                 <div class="flex-item avatar">
                     <div class="avatar__wrapper"></div>
-                    <div class="avatar__username"><a href="profile.html?id=1">Username</a></div>
+                    <div class="avatar__username"><a href="profile.html?id=${this.user.id}">${this.user.name}</a></div>
                 </div>
                 <div class="flex-item comment">
                     <div class="comment__text">${this.text}</div>

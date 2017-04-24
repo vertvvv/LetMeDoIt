@@ -4,6 +4,7 @@
 
 import {ShortIdea} from "./ShortIdea";
 import {Comment} from "./Comments";
+import { comments } from '../api';
 
 export class FullIdea extends ShortIdea {
     constructor(idea) {
@@ -39,14 +40,17 @@ export class FullIdea extends ShortIdea {
 
     getMockupsGrid() {
         let mockups = this.mockups;
-
-        return mockups.reduce((res, item) => {
-            return res + `
+        if (mockups.length) {
+            return mockups.reduce((res, item) => {
+                return res + `
                     <div class="img-grid__wrapper">
                         <img class="mockup" src="${item}">
                     </div>
             `;
-        }, '');
+            }, '');
+        } else {
+            return "Currently haven't mockups";
+        }
     }
 
     getMockups() {
@@ -94,8 +98,8 @@ export class FullIdea extends ShortIdea {
             </section>`;
     }
 
-    getAllComments() {
-        $.get('http://localhost:3000/' + 'data')
+    getIdeaComments() {
+        comments.getIdeaComments(this.id)
             .done(sumComments)
             .error(() => {
                 $('body').html('We have some technical troubles, sorry.');
@@ -103,7 +107,7 @@ export class FullIdea extends ShortIdea {
 
         function sumComments(json) {
             let commentsAll = '';
-            json.comments.forEach(item => {
+            json.forEach(item => {
                 let comment = new Comment(item);
                 commentsAll += comment.getComment();
             });
@@ -114,7 +118,7 @@ export class FullIdea extends ShortIdea {
     }
 
     getFullIdea() {
-        this.getAllComments();
+        this.getIdeaComments();
         return `<div id="${this.id}" class="idea">
                    ${this.getIdeaHeader()}
                     <div class="idea__text">
@@ -129,7 +133,7 @@ export class FullIdea extends ShortIdea {
                                 <div class="answer-block">
                                     <div class="flex-item input-place">
                                         <textarea id="new-comment" placeholder="Write your comment here.."></textarea>
-                                        <button class="input-place__button">Send</button>
+                                        <button id="addComment" class="input-place__button">Send</button>
                                     </div>
                                 </div>
                                 <div id="commentsPlace">

@@ -1,155 +1,224 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "email": "test@test.com",
-      "password": "testtest",
-      "username": "userrrrnnnname",
-      "name": "user",
-      "surname": "name",
-      "avatar": null,
-      "info": "I am user from Userland, my hobby is posting ideas, hope someone can realize something from it!",
-      "stats": {
-        "ideas": 1,
-        "comments": 9,
-        "rating": 125
-      },
-      "ideas": [
-        1
-      ],
-      "comments": [
-        1,
-        2,
-        3,
-        4
-      ]
-    },
-    {
-      "id": 2,
-      "email": "test2@test.com",
-      "password": "test2test2",
-      "username": "use2rrrrnn2nname",
-      "name": "nouser",
-      "surname": "noname",
-      "avatar": null,
-      "info": "I am user from Userland2, my hobby is posting ideas, hope someone can realize something from it!",
-      "stats": {
-        "ideas": 1,
-        "comments": 13,
-        "rating": 145
-      },
-      "ideas": [
-        2
-      ],
-      "comments": [
-      ]
-    }
-  ],
-  "ideas": [
-    {
-      "id": 1,
-      "user": {
-        "id": 1,
-        "name": "username"
-      },
-      "name": "Human Resource Management System",
-      "main-idea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar massa in fermentum sagittis. Aliquam congue commodo ligula, quis pretium dui pellentesque a. Donec eget porta nibh, sed ullamcorper odio. Vivamus euismod leo ante, nec vestibulum sapien blandit sed. Mauris vel hendrerit mauris. Vestibulum vulputate metus sit amet urna facilisis euismod. Maecenas eget sapien ut arcu cursus lobortis. Curabitur vel quam porttitor, convallis odio interdum, iaculis tellus. Pellentesque pretium risus id volutpat maximus. Duis blandit tempus rutrum. Proin bibendum nibh quam, ac mattis massa bibendum congue.",
-      "rating": 1,
-      "functionality": [
-        "Do it!",
-        "Do it again"
-      ],
-      "mockups": [
-        "../img/mockup1.png",
-        "../img/mockup2.png",
-        "../img/mockup3.png"
-      ],
-      "other": [
+    "users": [
         {
-          "name": "Platforms",
-          "text": "Windows, MacOS, Linux, Android, idk"
+            "id": 1,
+            "email": "test@test.com",
+            "password": "testtest",
+            "username": "userrrrnnnname",
+            "name": "user",
+            "surname": "name",
+            "avatar": null,
+            "info": "I am user from Userland, my hobby is posting ideas, hope someone can realize something from it!",
+            "stats": {
+                "ideas": 1,
+                "comments": 9,
+                "rating": 125
+            },
+            "ideas": [
+                1
+            ],
+            "comments": [
+                1,
+                2,
+                3,
+                4
+            ]
         },
         {
-          "name": "Special thanks",
-          "text": "I can buy thousand delicious cookies for you!"
+            "id": 2,
+            "email": "test2@test.com",
+            "password": "test2test2",
+            "username": "use2rrrrnn2nname",
+            "name": "nouser",
+            "surname": "noname",
+            "avatar": null,
+            "info": "I am user from Userland2, my hobby is posting ideas, hope someone can realize something from it!",
+            "stats": {
+                "ideas": 1,
+                "comments": 13,
+                "rating": 145
+            },
+            "ideas": [
+                2
+            ],
+            "comments": []
         }
-      ],
-      "tags": [
-        "tag1",
-        "tag2",
-        "tag3"
-      ],
-      "comments": [
-        1,
-        2,
-        3,
-        4
-      ]
-    },
-    {
-      "id": 2,
-      "user": {
-        "id": 2,
-        "name": "userrrnnnameeemmm"
-      },
-      "name": "New cool idea 2",
-      "main-idea": "Lorem ipsum 123lkasflfsk",
-      "rating": 0,
-      "functionality": [
-        "Do it 2!",
-        "Do it again 22"
-      ],
-      "comments": [],
-      "mockups": [
-        "../img/mockup1.png",
-        "../img/mockup2.png",
-        "../img/mockup3.png"
-      ],
-      "other": [
+    ],
+    "ideas": [
         {
-          "name": "Platforms",
-          "text": "Windows, MacOS, Linux, Android, idk"
+            "id": 1,
+            "user": {
+                "id": 1,
+                "name": "username"
+            },
+            "name": "Human Resource Management System",
+            "main-idea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar massa in fermentum sagittis. Aliquam congue commodo ligula, quis pretium dui pellentesque a. Donec eget porta nibh, sed ullamcorper odio. Vivamus euismod leo ante, nec vestibulum sapien blandit sed. Mauris vel hendrerit mauris. Vestibulum vulputate metus sit amet urna facilisis euismod. Maecenas eget sapien ut arcu cursus lobortis. Curabitur vel quam porttitor, convallis odio interdum, iaculis tellus. Pellentesque pretium risus id volutpat maximus. Duis blandit tempus rutrum. Proin bibendum nibh quam, ac mattis massa bibendum congue.",
+            "rating": 1,
+            "functionality": [
+                "Do it!",
+                "Do it again"
+            ],
+            "mockups": [
+                "../img/mockup1.png",
+                "../img/mockup2.png",
+                "../img/mockup3.png"
+            ],
+            "other": [
+                {
+                    "name": "Platforms",
+                    "text": "Windows, MacOS, Linux, Android, idk"
+                },
+                {
+                    "name": "Special thanks",
+                    "text": "I can buy thousand delicious cookies for you!"
+                }
+            ],
+            "tags": [
+                "tag1",
+                "tag2",
+                "tag3"
+            ],
+            "comments": [
+            ]
         },
         {
-          "name": "Special thanks",
-          "text": "I can buy thousand delicious cookies for you!"
+            "id": 2,
+            "user": {
+                "id": 2,
+                "name": "userrrnnnameeemmm"
+            },
+            "name": "New cool idea 2",
+            "main-idea": "Lorem ipsum 123lkasflfsk",
+            "rating": 0,
+            "functionality": [
+                "Do it 2!",
+                "Do it again 22"
+            ],
+            "comments": [],
+            "mockups": [
+                "../img/mockup1.png",
+                "../img/mockup2.png",
+                "../img/mockup3.png"
+            ],
+            "other": [
+                {
+                    "name": "Platforms",
+                    "text": "Windows, MacOS, Linux, Android, idk"
+                },
+                {
+                    "name": "Special thanks",
+                    "text": "I can buy thousand delicious cookies for you!"
+                }
+            ],
+            "tags": [
+                "tag1",
+                "tag2",
+                "tag3"
+            ]
+        },
+        {
+            "functionality": [
+                "First item",
+                "Second item"
+            ],
+            "other": [
+                {
+                    "name": "Wanna it",
+                    "text": "it"
+                },
+                {
+                    "name": "And it",
+                    "text": "itt"
+                }
+            ],
+            "name": "New idea",
+            "main-idea": "Cool description",
+            "tags": [
+                "tag1",
+                "tag2",
+                "tag3"
+            ],
+            "mockups": [],
+            "comments": [
+            ],
+            "rating": 0,
+            "id": 3,
+            "user": {
+                "id": 1,
+                "name": "username"
+            }
         }
-      ],
-      "tags": [
-        "tag1",
-        "tag2",
-        "tag3"
-      ]
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "ideaid": 1,
-      "userid": 1,
-      "text": "Lorem ipsum...",
-      "date": "2018-08-14 14:02"
-    },
-    {
-      "id": 2,
-      "ideaid": 1,
-      "userid": 1,
-      "text": "Lorem ipsum...",
-      "date": "2018-01-31 18:22"
-    },
-    {
-      "id": 3,
-      "ideaid": 1,
-      "userid": 1,
-      "text": "Lorem ipsum...",
-      "date": "2018-01-31 18:02"
-    },
-    {
-      "id": 4,
-      "ideaid": 1,
-      "userid": 1,
-      "text": "Lorem ipsum...",
-      "date": "2017-02-31 18:22"
-    }
-  ]
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "ideaid": 1,
+            "user": {
+                "id": 1,
+                "name": "username"
+            },
+            "text": "Lorem ipsum...",
+            "date": "2016-08-14 14:02"
+        },
+        {
+            "id": 2,
+            "ideaid": 1,
+            "user": {
+                "id": 1,
+                "name": "username"
+            },
+            "text": "Lorem ipsum...",
+            "date": "2016-01-31 18:22"
+        },
+        {
+            "id": 3,
+            "ideaid": 1,
+            "user": {
+                "id": 1,
+                "name": "username"
+            },
+            "text": "Lorem ipsum...",
+            "date": "2016-01-31 18:02"
+        },
+        {
+            "id": 4,
+            "ideaid": 1,
+            "user": {
+                "id": 1,
+                "name": "username"
+            },
+            "text": "Lorem ipsum...",
+            "date": "2017-02-31 18:22"
+        },
+        {
+            "ideaid": "1",
+            "date": "Mon Apr 24 2017 21:49:19 GMT+0300 (RTZ 2 (зима))",
+            "text": "New cool comment!",
+            "id": 5,
+            "user": {
+                "id": 1,
+                "name": "username"
+            }
+        },
+        {
+            "ideaid": "1",
+            "date": "Mon Apr 24 2017 22:23:21 GMT+0300 (RTZ 2 (зима))",
+            "text": "Wow! cool!",
+            "id": 6,
+            "user": {
+                "id": 1,
+                "name": "username"
+            }
+        },
+        {
+            "ideaid": "2",
+            "date": "Mon Apr 24 2017 22:27:40 GMT+0300 (RTZ 2 (зима))",
+            "text": "Not cool..",
+            "id": 7,
+            "user": {
+                "id": 1,
+                "name": "username"
+            }
+        }
+    ]
 }

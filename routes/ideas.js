@@ -18,7 +18,14 @@ router.get('/id/:id', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     var newIdea = req.body;
-    ideas.addIdea(newIdea);
+    newIdea.tags = ['tag1', 'tag2', 'tag3'];
+    newIdea.mockups = [];
+    newIdea.id = ideas.getAllIdeas().length + 1;
+    newIdea.user = {
+        id: 1,
+        name: 'username'
+    };
+    ideas.postIdea(newIdea);
     res.send(newIdea);
 });
 

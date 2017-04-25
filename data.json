@@ -78,8 +78,7 @@
                 "tag2",
                 "tag3"
             ],
-            "comments": [
-            ]
+            "comments": []
         },
         {
             "id": 2,
@@ -139,10 +138,35 @@
                 "tag3"
             ],
             "mockups": [],
-            "comments": [
-            ],
+            "comments": [],
             "rating": 0,
             "id": 3,
+            "user": {
+                "id": 1,
+                "name": "username"
+            }
+        },
+        {
+            "functionality": [
+                "123"
+            ],
+            "other": [
+                {
+                    "name": "123",
+                    "text": "123"
+                }
+            ],
+            "rating": "0",
+            "name": "123321",
+            "main-idea": "321321",
+            "tags": [
+                "tag1",
+                "tag2",
+                "tag3"
+            ],
+            "mockups": [],
+            "comments": [],
+            "id": 4,
             "user": {
                 "id": 1,
                 "name": "username"

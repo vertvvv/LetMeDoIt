@@ -20,6 +20,7 @@ router.post('/', function (req, res, next) {
     var newIdea = req.body;
     newIdea.tags = ['tag1', 'tag2', 'tag3'];
     newIdea.mockups = [];
+    newIdea.comments = [];
     newIdea.id = ideas.getAllIdeas().length + 1;
     newIdea.user = {
         id: 1,

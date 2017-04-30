@@ -98,27 +98,16 @@ export class FullIdea extends ShortIdea {
             </section>`;
     }
 
-    getIdeaComments() {
-        comments.getIdeaComments(this.id)
-            .done(sumComments)
-            .error(() => {
-                $('body').html('We have some technical troubles, sorry.');
-            });
-
-        function sumComments(json) {
-            let commentsAll = '';
-            json.forEach(item => {
-                let comment = new Comment(item);
-                commentsAll += comment.getComment();
-            });
-            $('#commentsPlace').append(commentsAll);
-        }
-
-
+    getComments() {
+        let commentsAll = '';
+        this.comments.forEach(item => {
+            let comment = new Comment(item);
+            commentsAll += comment.getComment();
+        });
+        return commentsAll;
     }
 
     getFullIdea() {
-        this.getIdeaComments();
         return `<div id="${this.id}" class="idea">
                    ${this.getIdeaHeader()}
                     <div class="idea__text">
@@ -137,6 +126,7 @@ export class FullIdea extends ShortIdea {
                                     </div>
                                 </div>
                                 <div id="commentsPlace">
+                                    ${this.getComments()}
                                 </div>
                             </div>
                         </div>

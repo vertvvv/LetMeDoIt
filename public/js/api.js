@@ -29,10 +29,6 @@ export const ideas = {
 };
 
 export const comments = {
-    getIdeaComments: (ideaid) => {
-        return $.get(API_URL + 'comments/id/' + ideaid)
-    },
-
     postComment: (comment) => {
         return $.post(API_URL + 'comments', comment);
     }

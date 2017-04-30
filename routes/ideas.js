@@ -21,13 +21,18 @@ router.post('/', function (req, res, next) {
     newIdea.tags = ['tag1', 'tag2', 'tag3'];
     newIdea.mockups = [];
     newIdea.comments = [];
-    newIdea.id = ideas.getAllIdeas().length + 1;
+    newIdea.id = ideas.getNewIdeaID() + 1;
     newIdea.user = {
         id: 1,
         name: 'username'
     };
     ideas.postIdea(newIdea);
     res.send(newIdea);
+});
+
+router.delete('/id/:id', function (req, res, next) {
+    var id = req.params.id;
+    res.send(ideas.deleteIdea(id));
 });
 
 module.exports = router;

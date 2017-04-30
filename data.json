@@ -78,7 +78,18 @@
                 "tag2",
                 "tag3"
             ],
-            "comments": []
+            "comments": [
+                {
+                    "ideaid": "1",
+                    "date": "Sun Apr 30 2017 05:18:14 GMT+0300 (RTZ 2 (зима))",
+                    "text": "123",
+                    "id": 2,
+                    "user": {
+                        "id": 1,
+                        "name": "username"
+                    }
+                }
+            ]
         },
         {
             "id": 2,
@@ -93,7 +104,28 @@
                 "Do it 2!",
                 "Do it again 22"
             ],
-            "comments": [],
+            "comments": [
+                {
+                    "ideaid": "2",
+                    "date": "Sun Apr 30 2017 05:18:51 GMT+0300 (RTZ 2 (зима))",
+                    "text": "test",
+                    "id": 3,
+                    "user": {
+                        "id": 1,
+                        "name": "username"
+                    }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Sun Apr 30 2017 05:18:54 GMT+0300 (RTZ 2 (зима))",
+                    "text": "testtest",
+                    "id": 4,
+                    "user": {
+                        "id": 1,
+                        "name": "username"
+                    }
+                }
+            ],
             "mockups": [
                 "../img/mockup1.png",
                 "../img/mockup2.png",
@@ -165,7 +197,18 @@
                 "tag3"
             ],
             "mockups": [],
-            "comments": [],
+            "comments": [
+                {
+                    "ideaid": "4",
+                    "date": "Sun Apr 30 2017 05:19:04 GMT+0300 (RTZ 2 (зима))",
+                    "text": "test",
+                    "id": 5,
+                    "user": {
+                        "id": 1,
+                        "name": "username"
+                    }
+                }
+            ],
             "id": 4,
             "user": {
                 "id": 1,
@@ -175,60 +218,10 @@
     ],
     "comments": [
         {
-            "id": 1,
-            "ideaid": 1,
-            "user": {
-                "id": 1,
-                "name": "username"
-            },
-            "text": "Lorem ipsum...",
-            "date": "2016-08-14 14:02"
-        },
-        {
+            "ideaid": "1",
+            "date": "Sun Apr 30 2017 05:18:14 GMT+0300 (RTZ 2 (зима))",
+            "text": "123",
             "id": 2,
-            "ideaid": 1,
-            "user": {
-                "id": 1,
-                "name": "username"
-            },
-            "text": "Lorem ipsum...",
-            "date": "2016-01-31 18:22"
-        },
-        {
-            "id": 3,
-            "ideaid": 1,
-            "user": {
-                "id": 1,
-                "name": "username"
-            },
-            "text": "Lorem ipsum...",
-            "date": "2016-01-31 18:02"
-        },
-        {
-            "id": 4,
-            "ideaid": 1,
-            "user": {
-                "id": 1,
-                "name": "username"
-            },
-            "text": "Lorem ipsum...",
-            "date": "2017-02-31 18:22"
-        },
-        {
-            "ideaid": "1",
-            "date": "Mon Apr 24 2017 21:49:19 GMT+0300 (RTZ 2 (зима))",
-            "text": "New cool comment!",
-            "id": 5,
-            "user": {
-                "id": 1,
-                "name": "username"
-            }
-        },
-        {
-            "ideaid": "1",
-            "date": "Mon Apr 24 2017 22:23:21 GMT+0300 (RTZ 2 (зима))",
-            "text": "Wow! cool!",
-            "id": 6,
             "user": {
                 "id": 1,
                 "name": "username"
@@ -236,13 +229,36 @@
         },
         {
             "ideaid": "2",
-            "date": "Mon Apr 24 2017 22:27:40 GMT+0300 (RTZ 2 (зима))",
-            "text": "Not cool..",
-            "id": 7,
+            "date": "Sun Apr 30 2017 05:18:51 GMT+0300 (RTZ 2 (зима))",
+            "text": "test",
+            "id": 3,
+            "user": {
+                "id": 1,
+                "name": "username"
+            }
+        },
+        {
+            "ideaid": "2",
+            "date": "Sun Apr 30 2017 05:18:54 GMT+0300 (RTZ 2 (зима))",
+            "text": "testtest",
+            "id": 4,
+            "user": {
+                "id": 1,
+                "name": "username"
+            }
+        },
+        {
+            "ideaid": "4",
+            "date": "Sun Apr 30 2017 05:19:04 GMT+0300 (RTZ 2 (зима))",
+            "text": "test",
+            "id": 5,
             "user": {
                 "id": 1,
                 "name": "username"
             }
         }
-    ]
+    ],
+    "ideaid": 4,
+    "commentid": 5,
+    "userid": 2
 }

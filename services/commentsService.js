@@ -3,10 +3,20 @@
  */
 
 var db = require('./database');
+var ideas = require('./ideasService');
 
 function addComment(comment) {
     db.push('/comments[]', comment);
+    db.push('/commentid', comment.id);
+
+    //add comment to idea json
+    let index = ideas.findIdea(comment.ideaid);
+    db.push('/ideas[' + index + ']/comments[]', comment);
 }
+
+function getNewCommentID() {
+    return db.getData('/commentid');
+} //temporary decision
 
 function getIdeaComments(id) {
     let allComments = db.getData('/comments');
@@ -21,6 +31,7 @@ function getAllComments() {
 }
 
 module.exports = {
+    getNewCommentID: getNewCommentID,
     addComment: addComment,
     getIdeaComments: getIdeaComments,
     getAllComments: getAllComments

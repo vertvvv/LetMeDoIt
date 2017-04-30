@@ -14,7 +14,7 @@ router.get('/id/:id', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     var newComment = req.body;
-    newComment.id = comments.getAllComments().length + 1;
+    newComment.id = comments.getNewCommentID() + 1;
     newComment.user = {
         id: 1,
         name: 'username'

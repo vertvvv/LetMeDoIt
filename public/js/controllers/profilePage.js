@@ -11,6 +11,9 @@ renderMainComponents().then(getProfileData);
 
 function getProfileData() {
     let id = getUrlParameter('id');
+    if (id === undefined) {
+        id = localStorage.getItem('id');
+    }
 
     users.getSingleUser(id)
         .done((data) => {

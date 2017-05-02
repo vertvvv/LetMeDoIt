@@ -23,7 +23,6 @@ function getSingleIdea(id) {
     let idea = (allIdeas.filter((idea) => {
         return idea['id'] == id;
     }))[0]; //like Array.some(), but returns value, idk how to do it better
-    //idea['comments'] = comments.getIdeaComments(id);
     return idea;
 }
 
@@ -48,7 +47,18 @@ function deleteIdea(id) {
     }
 }
 
+function editIdea(id) {
+    let index = findIdea(id);
+    if (index != -1) {
+        db.push('/ideas[' + index + ']');
+        return 'Success!';
+    } else {
+        return 'Error! Try again.';
+    }
+}
+
 module.exports = {
+    editIdea: editIdea,
     findIdea: findIdea,
     getNewIdeaID: getNewIdeaID,
     getAllIdeas: getAllIdeas,

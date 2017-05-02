@@ -115,6 +115,60 @@ nav {
     .nav__right-side {
         float: right;
 
+        .sign {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid $borderColor;
+            background-color: $ratingBackground;
+            box-shadow: 0 1px 5px 0 rgba(84, 83, 81, 0.68);
+
+            input {
+                padding-left: 5px;
+                margin: 10px 8px 0 8px;
+                border: 1px solid $borderColor;
+                border-radius: 5px;
+                line-height: 1.7;
+                font-size: $fontSmall;
+            }
+
+            button {
+                cursor: pointer;
+                margin: 10px;
+                border: 1px solid $borderColor;
+                border-radius: 5px;
+                background-color: $navColor;
+                line-height: 1.7;
+                font-size: $fontSmall;
+            }
+        }
+
+        .no-display {
+            display: none;
+        }
+
+        .sign-wrapper {
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+
+            span {
+                padding: 15px;
+                display: flex;
+
+                &:hover {
+                    background-color: $hoverNavColor;
+                }
+
+                &:first-of-type {
+                    margin-right: 40px;
+                }
+            }
+
+            &:hover {
+                background-color: inherit;
+            }
+        }
+
         & > a {
             cursor: pointer;
             transition: all 0.3s;

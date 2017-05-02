@@ -8,18 +8,20 @@ import { users } from './api';
 
 export function renderMainComponents() {
     return new Promise((resolve) => {
-        users.getAllUsers()
+        users.getSingleUser(localStorage.getItem('id'))
             .done(renderPage)
             .error((data) => {
                 console.log(data);
             });
 
         function renderPage(json) {
-            let header = new Header(json[0].username);
+            let login = localStorage.getItem('login');
+
+            let header = new Header(login);
             let footer = new Footer();
 
             $('body')
-                .prepend(header.getFullHeader())
+                .prepend(header.init())
                 .append(footer.getFooter())
                 .on('click', '#profile-bar', function () {
                     $('.dropdown-menu').toggleClass('invisible-element');

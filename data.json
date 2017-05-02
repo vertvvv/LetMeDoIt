@@ -3,7 +3,6 @@
         {
             "id": 1,
             "email": "test@test.com",
-            "password": "testtest",
             "username": "userrrrnnnname",
             "name": "user",
             "surname": "name",
@@ -27,7 +26,6 @@
         {
             "id": 2,
             "email": "test2@test.com",
-            "password": "test2test2",
             "username": "use2rrrrnn2nname",
             "name": "nouser",
             "surname": "noname",
@@ -42,6 +40,22 @@
                 2
             ],
             "comments": []
+        },
+        {
+            "id": 3,
+            "login": "test3@test.com"
+        },
+        {
+            "id": 4,
+            "login": "test33@test.com"
+        },
+        {
+            "id": 5,
+            "login": "newacc@test.sd"
+        },
+        {
+            "id": 6,
+            "login": "newac2c@test.sd"
         }
     ],
     "ideas": [
@@ -260,5 +274,45 @@
     ],
     "ideaid": 4,
     "commentid": 5,
-    "userid": 2
+    "userid": 7,
+    "userpassword": [
+        {
+            "id": 1,
+            "login": "test@test.com",
+            "password": "test"
+        },
+        {
+            "id": 2,
+            "login": "test2@test.com",
+            "password": "testtest"
+        },
+        {
+            "id": 3,
+            "login": "test3@test.com",
+            "password": "test33"
+        },
+        {
+            "id": 4,
+            "login": "test33@test.com",
+            "password": "test4443"
+        }
+    ],
+    "useridtoken": [
+        {
+            "id": 3,
+            "token": "e59934e8-1226-4555-981b-87275226bfab"
+        },
+        {
+            "id": 4,
+            "token": "c335eec0-fff9-4482-bbfc-39f7a4127f54"
+        },
+        {
+            "id": 2,
+            "token": "b6982c1b-594d-40fc-aeb6-51e6637d7bc7"
+        },
+        {
+            "id": 1,
+            "token": "c9cefdce-1c0a-4f6f-85ef-cce4186cef18"
+        }
+    ]
 }

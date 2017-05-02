@@ -4,9 +4,11 @@
 
 import { ShortIdea } from '../classes/ShortIdea';
 import { renderMainComponents } from '../all';
-import { ideas } from '../api';
+import { ideas, users } from '../api';
 
 renderMainComponents().then(getContentData);
+
+//users.signUpUser('test33@test.com', 'test4443').done((data) => console.log(data));
 
 $('body')
     .on('click', '#logo', function (e) {

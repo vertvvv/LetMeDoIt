@@ -35,4 +35,9 @@ router.delete('/id/:id', function (req, res, next) {
     res.send(ideas.deleteIdea(id));
 });
 
+router.put('/id/:id', function (req, res, next) {
+   var id = req.params.id;
+   res.send(ideas.editIdea(id));
+});
+
 module.exports = router;

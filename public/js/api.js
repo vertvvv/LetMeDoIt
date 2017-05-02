@@ -33,3 +33,13 @@ export const comments = {
         return $.post(API_URL + 'comments', comment);
     }
 };
+
+export const auth = {
+    authorizeUser: (login, password) => {
+        return $.post(API_URL + 'users/login', {login: login, password: password});
+    },
+
+    signUpUser: (login, password) => {
+        return $.post(API_URL + 'users/signup', {login: login, password: password});
+    }
+};

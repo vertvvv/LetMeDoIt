@@ -63,6 +63,42 @@ nav {
             display: none; } }
   nav .nav__right-side {
     float: right; }
+    nav .nav__right-side .sign {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #d1d1d1;
+      background-color: #fdfdfd;
+      box-shadow: 0 1px 5px 0 rgba(84, 83, 81, 0.68); }
+      nav .nav__right-side .sign input {
+        padding-left: 5px;
+        margin: 10px 8px 0 8px;
+        border: 1px solid #d1d1d1;
+        border-radius: 5px;
+        line-height: 1.7;
+        font-size: 0.85em; }
+      nav .nav__right-side .sign button {
+        cursor: pointer;
+        margin: 10px;
+        border: 1px solid #d1d1d1;
+        border-radius: 5px;
+        background-color: #f0f317;
+        line-height: 1.7;
+        font-size: 0.85em; }
+    nav .nav__right-side .no-display {
+      display: none; }
+    nav .nav__right-side .sign-wrapper {
+      display: flex;
+      justify-content: space-between;
+      padding: 0; }
+      nav .nav__right-side .sign-wrapper span {
+        padding: 15px;
+        display: flex; }
+        nav .nav__right-side .sign-wrapper span:hover {
+          background-color: #cbca4c; }
+        nav .nav__right-side .sign-wrapper span:first-of-type {
+          margin-right: 40px; }
+      nav .nav__right-side .sign-wrapper:hover {
+        background-color: inherit; }
     nav .nav__right-side > a {
       cursor: pointer;
       transition: all 0.3s; }

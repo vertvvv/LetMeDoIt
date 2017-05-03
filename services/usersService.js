@@ -12,6 +12,7 @@ function authorizeUser(login, password) {
 
     allAccounts.forEach((item, i) => {
         if (item.login == login && item.password == password) {
+            console.log(login, password);
             index = i;
             id = item.id;
         }
@@ -27,7 +28,7 @@ function authorizeUser(login, password) {
         db.push('/useridtoken[]', {id: id, token: token});
         return {token: token, login: login, id: id};
     } else {
-        return "Invalid data!";
+        throw new Error('Invalid data!');
     }
 }
 
@@ -45,13 +46,25 @@ function signUpUser(login, password) {
         let id = db.getData('/userid');
         db.push('/userid', id + 1);
         db.push('/userpassword[]', {id: id, login: login, password: password});
-        db.push('/users[]', {id: id, login: login});
+        db.push('/users[]', {id: id, email: login});
         return authorizeUser(login, password);
     } else {
-        return 'This login is already taken!';
+        throw new Error ('This login is already taken!');
     }
 }
 
+function getUsernameByID(id) {
+    let allAccounts = db.getData('/users');
+    let name = undefined;
+
+    allAccounts.forEach(item => {
+        if (item.id == id) {
+            name = item.name;
+        }
+    });
+
+    return name;
+}
 
 function getAllUsers() {
     return db.getData('/users');
@@ -75,9 +88,28 @@ function getUserInfo(userid) {
     return result;
 }
 
+function getUserByToken(token) {
+    let allUserTokens = db.getData('/useridtoken');
+    let id = false;
+
+    allUserTokens.forEach(item => {
+        if (item.token == token) {
+            id = item.id;
+        }
+    });
+
+    if (id !== false) {
+        return id;
+    } else {
+        throw new Error('Wrong access token! Try again or re-login.');
+    }
+}
+
 module.exports = {
     authorizeUser: authorizeUser,
     signUpUser: signUpUser,
     getAllUsers: getAllUsers,
-    getUserInfo: getUserInfo
+    getUserInfo: getUserInfo,
+    getUserByToken: getUserByToken,
+    getUsernameByID: getUsernameByID
 };

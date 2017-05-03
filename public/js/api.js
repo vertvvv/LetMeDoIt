@@ -24,13 +24,13 @@ export const ideas = {
     },
 
     postIdea: (idea) => {
-        return $.post(API_URL + 'ideas', idea);
+        return $.post(API_URL + 'ideas?token=' + localStorage.getItem('token'), idea);
     }
 };
 
 export const comments = {
     postComment: (comment) => {
-        return $.post(API_URL + 'comments', comment);
+        return $.post(API_URL + 'comments?token=' + localStorage.getItem('token'), comment);
     }
 };
 

@@ -13,16 +13,8 @@ export class Header {
         let self = this;
 
         $('body')
-            .on('click', '#signin', () => {
-                $('.sign').css('display', 'none');
-                $('#signin-window').fadeIn('1000')
-                    .css('display', 'flex');
-            })
-            .on('click', '#signup', () => {
-                $('.sign').css('display', 'none');
-                $('#signup-window').fadeIn('1000')
-                    .css('display', 'flex');
-            })
+            .on('click', '#signin', showElement)
+            .on('click', '#signup', showElement)
             .on('click', '#signin-button', self.authorizeUser)
             .on('click', '#signup-button', self.signUpUser)
             .on('click', '#logout', function(e) {
@@ -36,19 +28,36 @@ export class Header {
                 }
             });
 
+        function showElement() {
+            let id = '#' + $(this).attr('id') + '-window';
+            let el = $(id); //element
+            if (el.css('display') === 'flex') {
+                el.fadeOut('1000');
+            } else {
+                $('.sign').css('display', 'none');
+                el.fadeIn('1000')
+                    .css('display', 'flex');
+            }
+        }
+
         return this.getFullHeader();
     }
 
     authorizeUser() {
-        let login = $('#signin-email').val();
+        let element = $('#signin-email');
+        let login = element.val();
         let password = $('#signin-password').val();
-        auth.authorizeUser(login, password).done(data => {
-            localStorage.setItem('login', login);
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('id', data.id);
-
-            location.reload();
-        });
+        auth.authorizeUser(login, password)
+            .done(data => {
+                console.log(data);
+                localStorage.setItem('login', login);
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('id', data.id);
+                location.reload();
+            })
+            .error(err =>
+                element.val('').attr('placeholder', err.responseText)
+            );
     }
 
     signUpUser() {

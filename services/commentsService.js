@@ -4,6 +4,7 @@
 
 var db = require('./database');
 var ideas = require('./ideasService');
+var users = require('./usersService');
 
 function addComment(comment) {
     db.push('/comments[]', comment);
@@ -16,23 +17,18 @@ function addComment(comment) {
 
 function getNewCommentID() {
     return db.getData('/commentid');
-} //temporary decision
-
-function getIdeaComments(id) {
-    let allComments = db.getData('/comments');
-
-    return (allComments.filter((comment) => {
-        return comment['ideaid'] == id;
-    })).sort((a, b) => {return new Date(a.date) < new Date(b.date)});
 }
 
-function getAllComments() {
-    return db.getData('/comments');
-}
+// function getIdeaComments(id) {
+//     let allComments = db.getData('/comments');
+//
+//     return (allComments.filter((comment) => {
+//             return comment['ideaid'] == id;
+//         }))
+//         .sort((a, b) => {return new Date(a.date) < new Date(b.date)});
+// }
 
 module.exports = {
     getNewCommentID: getNewCommentID,
-    addComment: addComment,
-    getIdeaComments: getIdeaComments,
-    getAllComments: getAllComments
+    addComment: addComment
 };

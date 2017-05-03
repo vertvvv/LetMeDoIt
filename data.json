@@ -40,22 +40,6 @@
                 2
             ],
             "comments": []
-        },
-        {
-            "id": 3,
-            "login": "test3@test.com"
-        },
-        {
-            "id": 4,
-            "login": "test33@test.com"
-        },
-        {
-            "id": 5,
-            "login": "newacc@test.sd"
-        },
-        {
-            "id": 6,
-            "login": "newac2c@test.sd"
         }
     ],
     "ideas": [
@@ -63,7 +47,7 @@
             "id": 1,
             "user": {
                 "id": 1,
-                "name": "username"
+                "name": "user"
             },
             "name": "Human Resource Management System",
             "main-idea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar massa in fermentum sagittis. Aliquam congue commodo ligula, quis pretium dui pellentesque a. Donec eget porta nibh, sed ullamcorper odio. Vivamus euismod leo ante, nec vestibulum sapien blandit sed. Mauris vel hendrerit mauris. Vestibulum vulputate metus sit amet urna facilisis euismod. Maecenas eget sapien ut arcu cursus lobortis. Curabitur vel quam porttitor, convallis odio interdum, iaculis tellus. Pellentesque pretium risus id volutpat maximus. Duis blandit tempus rutrum. Proin bibendum nibh quam, ac mattis massa bibendum congue.",
@@ -100,7 +84,7 @@
                     "id": 2,
                     "user": {
                         "id": 1,
-                        "name": "username"
+                        "name": "user"
                     }
                 }
             ]
@@ -109,7 +93,7 @@
             "id": 2,
             "user": {
                 "id": 2,
-                "name": "userrrnnnameeemmm"
+                "name": "nouser"
             },
             "name": "New cool idea 2",
             "main-idea": "Lorem ipsum 123lkasflfsk",
@@ -126,7 +110,7 @@
                     "id": 3,
                     "user": {
                         "id": 1,
-                        "name": "username"
+                        "name": "user"
                     }
                 },
                 {
@@ -136,7 +120,27 @@
                     "id": 4,
                     "user": {
                         "id": 1,
-                        "name": "username"
+                        "name": "user"
+                    }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Wed May 03 2017 00:42:37 GMT+0300 (RTZ 2 (зима))",
+                    "text": "test2",
+                    "id": 6,
+                    "user": {
+                        "id": 2,
+                        "name": "nouser"
+                    }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Wed May 03 2017 00:56:34 GMT+0300 (RTZ 2 (зима))",
+                    "text": "test",
+                    "id": 8,
+                    "user": {
+                        "id": 2,
+                        "name": "nouser"
                     }
                 }
             ],
@@ -189,7 +193,7 @@
             "id": 3,
             "user": {
                 "id": 1,
-                "name": "username"
+                "name": "user"
             }
         },
         {
@@ -219,14 +223,14 @@
                     "id": 5,
                     "user": {
                         "id": 1,
-                        "name": "username"
+                        "name": "user"
                     }
                 }
             ],
             "id": 4,
             "user": {
                 "id": 1,
-                "name": "username"
+                "name": "user"
             }
         }
     ],
@@ -237,8 +241,7 @@
             "text": "123",
             "id": 2,
             "user": {
-                "id": 1,
-                "name": "username"
+                "id": 2
             }
         },
         {
@@ -247,8 +250,7 @@
             "text": "test",
             "id": 3,
             "user": {
-                "id": 1,
-                "name": "username"
+                "id": 1
             }
         },
         {
@@ -257,8 +259,7 @@
             "text": "testtest",
             "id": 4,
             "user": {
-                "id": 1,
-                "name": "username"
+                "id": 1
             }
         },
         {
@@ -267,13 +268,41 @@
             "text": "test",
             "id": 5,
             "user": {
-                "id": 1,
-                "name": "username"
+                "id": 2
+            }
+        },
+        {
+            "ideaid": "2",
+            "date": "Wed May 03 2017 00:42:37 GMT+0300 (RTZ 2 (зима))",
+            "text": "test2",
+            "id": 6,
+            "user": {
+                "id": 2
+            }
+        },
+        {
+            "ideaid": "8",
+            "date": "Wed May 03 2017 00:55:51 GMT+0300 (RTZ 2 (зима))",
+            "text": "new",
+            "id": 7,
+            "user": {
+                "id": 2,
+                "name": "nouser"
+            }
+        },
+        {
+            "ideaid": "2",
+            "date": "Wed May 03 2017 00:56:34 GMT+0300 (RTZ 2 (зима))",
+            "text": "test",
+            "id": 8,
+            "user": {
+                "id": 2,
+                "name": "nouser"
             }
         }
     ],
-    "ideaid": 4,
-    "commentid": 5,
+    "ideaid": 13,
+    "commentid": 9,
     "userid": 7,
     "userpassword": [
         {
@@ -307,12 +336,12 @@
             "token": "c335eec0-fff9-4482-bbfc-39f7a4127f54"
         },
         {
-            "id": 2,
-            "token": "b6982c1b-594d-40fc-aeb6-51e6637d7bc7"
+            "id": 1,
+            "token": "520a101b-f3db-4a6f-ad66-1e4077be2892"
         },
         {
-            "id": 1,
-            "token": "c9cefdce-1c0a-4f6f-85ef-cce4186cef18"
+            "id": 2,
+            "token": "5ff08253-a968-4177-9591-924d1781f39d"
         }
     ]
 }

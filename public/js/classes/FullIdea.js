@@ -100,10 +100,11 @@ export class FullIdea extends ShortIdea {
 
     getComments() {
         let commentsAll = '';
-        this.comments.forEach(item => {
-            let comment = new Comment(item);
-            commentsAll += comment.getComment();
-        });
+        this.comments.sort((a, b) => {return new Date(a.date) < new Date(b.date)})
+            .forEach(item => {
+                let comment = new Comment(item);
+                commentsAll += comment.getComment();
+            });
         return commentsAll;
     }
 

@@ -4,23 +4,35 @@
 
 var express = require('express');
 var comments = require('../services/commentsService');
+var users = require('../services/usersService');
 
 var router = express.Router();
 
-router.get('/id/:id', function (req, res, next) {
-    let id = req.params.id;
-    res.send(comments.getIdeaComments(id));
-});
+/**
+ * Post comment for idea
+ * @param {string} token - Access token to identificate user
+ * @param {Object} comment - Comment with text and date
+ * @returns {string} Success - if operation was correct
+ * @throws 400 Error - if wrong access token
+ */
 
 router.post('/', function (req, res, next) {
-    var newComment = req.body;
-    newComment.id = comments.getNewCommentID() + 1;
-    newComment.user = {
-        id: 1,
-        name: 'username'
-    };
-    comments.addComment(newComment);
-    res.send(newComment);
+    let newComment = req.body;
+    let token = req.query.token;
+
+    try {
+        newComment.id = comments.getNewCommentID() + 1;
+        let userid = users.getUserByToken(token);
+        newComment.user = {
+            id: userid,
+            name: users.getUsernameByID(userid)
+        };
+        comments.addComment(newComment);
+        res.send(newComment);
+    } catch(err) {
+        res.status('400');
+        res.send(err.message);
+    }
 });
 
 module.exports = router;

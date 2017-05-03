@@ -4,32 +4,23 @@
 
 import { Header } from './classes/Header';
 import { Footer } from './classes/Footer';
-import { users } from './api';
 
 export function renderMainComponents() {
     return new Promise((resolve) => {
-        users.getSingleUser(localStorage.getItem('id'))
-            .done(renderPage)
-            .error((data) => {
-                console.log(data);
+        let login = localStorage.getItem('login');
+
+        let header = new Header(login);
+        let footer = new Footer();
+
+        $('body')
+            .prepend(header.init())
+            .append(footer.getFooter())
+            .on('click', '#profile-bar', function () {
+                $('.dropdown-menu').toggleClass('invisible-element');
+                $(this).toggleClass('active');
             });
 
-        function renderPage(json) {
-            let login = localStorage.getItem('login');
-
-            let header = new Header(login);
-            let footer = new Footer();
-
-            $('body')
-                .prepend(header.init())
-                .append(footer.getFooter())
-                .on('click', '#profile-bar', function () {
-                    $('.dropdown-menu').toggleClass('invisible-element');
-                    $(this).toggleClass('active');
-                });
-
-            resolve();
-        }
+        resolve();
     });
 }
 

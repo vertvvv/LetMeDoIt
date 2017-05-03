@@ -4,6 +4,7 @@
 
 var db = require('./database');
 var comments = require('./commentsService');
+var users = require('./usersService');
 
 function postIdea(idea) {
     db.push('/ideas[]', idea);
@@ -11,11 +12,14 @@ function postIdea(idea) {
 }
 
 function getNewIdeaID() {
-    return db.get('/ideaid');
-} //temporary decision
+    return db.getData('/ideaid');
+}//temporary decision
 
 function getAllIdeas() {
-    return db.getData('/ideas');
+    return (db.getData('/ideas')).map(item => {
+        item.user.name = users.getUsernameByID(item.user.id);
+        return item;
+    });
 }
 
 function getSingleIdea(id) {
@@ -23,6 +27,9 @@ function getSingleIdea(id) {
     let idea = (allIdeas.filter((idea) => {
         return idea['id'] == id;
     }))[0]; //like Array.some(), but returns value, idk how to do it better
+
+    idea.user.name = users.getUsernameByID(idea.user.id);
+
     return idea;
 }
 
@@ -39,21 +46,21 @@ function findIdea(id) {
 
 function deleteIdea(id) {
     let index = findIdea(id);
-    if (index != -1) {
+    if (index !== false) {
         db.delete('/ideas[' + index + ']');
         return 'Success!';
     } else {
-        return 'Error! Try again.';
+        throw new Error('Wrong idea id, try again');
     }
 }
 
 function editIdea(id) {
     let index = findIdea(id);
-    if (index != -1) {
+    if (index !== false) {
         db.push('/ideas[' + index + ']');
         return 'Success!';
     } else {
-        return 'Error! Try again.';
+        throw new Error('Wrong idea id, try again');
     }
 }
 

@@ -30,7 +30,9 @@ $('.create-idea').on('click', postIdea);
 function postIdea() {
     makeNewIdeaObject()
         .then(ideas.postIdea)
-        .then((data) => {console.log(data)});
+        .then((data) => {
+            window.location.href = 'http://localhost:3000/assets/idea.html?id=' + data.id;
+        });
 }
 
 function makeNewIdeaObject() {

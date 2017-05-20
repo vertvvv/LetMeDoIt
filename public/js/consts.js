@@ -3,6 +3,7 @@
  */
 
 export const API_URL = "http://localhost:3000/api/";
+export const MAIN_PAGE_URL = "http://localhost:3000/";
 export const monthMap =
     {
     0: 'Jan',

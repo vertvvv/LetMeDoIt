@@ -607,6 +607,21 @@ nav {
         width: 100%;
         resize: none;
         outline: none; }
+    .settings__main .change-button {
+      text-align: center;
+      width: 80%;
+      font-weight: 600;
+      background-color: white;
+      cursor: pointer;
+      border: 1px solid #d1d1d1;
+      border-radius: 4px;
+      transition: all 0.5s;
+      padding: 6px 10px;
+      margin: auto;
+      margin-top: 35px;
+      margin-bottom: 20px; }
+      .settings__main .change-button:hover {
+        background-color: #f0f317; }
 
 .newidea-section {
   text-align: center;

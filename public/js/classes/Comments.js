@@ -16,14 +16,14 @@ export class Comment {
     }
 
     getFormattedDate(date) {
-        let df = new Date(date); //date_full
-        if ( isNaN(df.valueOf()) ) {
+        let date_full = new Date(date);
+        if ( isNaN(date_full.valueOf()) ) {
             return 'Wrong Date!';
         }
-        let day = this.getFormattedDateNumber(df.getDate());
-        let minutes = this.getFormattedDateNumber(df.getMinutes());
+        let day = this.getFormattedDateNumber(date_full.getDate());
+        let minutes = this.getFormattedDateNumber(date_full.getMinutes());
 
-        return `${day} ${monthMap[df.getMonth()]} ${df.getFullYear()}, ${df.getHours()}:${minutes}`;
+        return `${day} ${monthMap[date_full.getMonth()]} ${date_full.getFullYear()}, ${date_full.getHours()}:${minutes}`;
     }
 
     getComment() {

@@ -5,7 +5,7 @@
 import { FullIdea } from '../classes/FullIdea';
 import { Comment } from '../classes/Comments';
 import { renderMainComponents, getUrlParameter } from '../all';
-import { ideas, comments } from '../api';
+import { users, ideas, comments } from '../api';
 
 renderMainComponents().then(getIdeaData);
 

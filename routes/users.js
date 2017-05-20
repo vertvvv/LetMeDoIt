@@ -7,13 +7,6 @@ var users = require('../services/usersService');
 var errHandler = require('../app');
 
 var router = express.Router();
-/**
- * Get all users
- * @returns JSON with all users
- */
-router.get('/', function (req, res, next) {
-    res.send(users.getAllUsers());
-});
 
 /**
  * Authenticate user
@@ -64,6 +57,42 @@ router.post('/signup', function(req, res, next) {
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
     res.send(users.getUserInfo(id));
+});
+
+/**
+ * Get user about current user
+ * @param {string} token - access token
+ * @returns JSON with user info
+ */
+
+router.get('/', function (req, res, next) {
+    let token = req.query.token;
+    try {
+        let id = users.getUserByToken(token);
+        res.send(users.getUserInfo(id));
+    } catch(err) {
+        res.status('400');
+        res.send(err.message);
+    }
+});
+
+/**
+ * Change information about user
+ * @param {string} token - Access token to identificate user
+ * @param {Object} user - User info with many fields
+ * @returns JSON with user info
+ */
+
+router.put('/', function (req, res, next) {
+    let token = req.query.token;
+    let userInfo = req.body;
+    try {
+        let id = users.getUserByToken(token);
+        res.send(users.changeUserInfo(id, userInfo));
+    } catch(err) {
+        res.status('400');
+        res.send(err.message);
+    }
 });
 
 module.exports = router;

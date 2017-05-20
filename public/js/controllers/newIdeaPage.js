@@ -4,6 +4,7 @@
 
 import { renderMainComponents } from '../all';
 import { ideas } from '../api';
+import { MAIN_PAGE_URL } from '../consts';
 
 renderMainComponents();
 
@@ -31,7 +32,7 @@ function postIdea() {
     makeNewIdeaObject()
         .then(ideas.postIdea)
         .then((data) => {
-            window.location.href = 'http://localhost:3000/assets/idea.html?id=' + data.id;
+            window.location.href = MAIN_PAGE_URL + 'assets/idea.html?id=' + data.id;
         });
 }
 

@@ -7,9 +7,6 @@ var ideas = require('./ideasService');
 var users = require('./usersService');
 
 function addComment(comment) {
-    db.push('/comments[]', comment);
-    db.push('/commentid', comment.id);
-
     //add comment to idea json
     let index = ideas.findIdea(comment.ideaid);
     db.push('/ideas[' + index + ']/comments[]', comment);
@@ -18,15 +15,6 @@ function addComment(comment) {
 function getNewCommentID() {
     return db.getData('/commentid');
 }
-
-// function getIdeaComments(id) {
-//     let allComments = db.getData('/comments');
-//
-//     return (allComments.filter((comment) => {
-//             return comment['ideaid'] == id;
-//         }))
-//         .sort((a, b) => {return new Date(a.date) < new Date(b.date)});
-// }
 
 module.exports = {
     getNewCommentID: getNewCommentID,

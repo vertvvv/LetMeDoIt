@@ -3,6 +3,7 @@
  */
 
 import { auth } from '../api';
+import { MAIN_PAGE_URL } from '../consts';
 
 export class Header {
     constructor(username = null) {
@@ -20,7 +21,7 @@ export class Header {
             .on('click', '#logout', function(e) {
                 e.preventDefault();
                 localStorage.clear();
-                window.location.href = 'http://localhost:3000/';
+                window.location.href = MAIN_PAGE_URL;
             })
             .on('keyup', '.sign', function(e) {
                 if(e.keyCode == 13){

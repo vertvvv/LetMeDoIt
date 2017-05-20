@@ -919,6 +919,25 @@ nav {
                 outline: none;
             }
         }
+
+        .change-button {
+            text-align: center;
+            width: 80%;
+            font-weight: 600;
+            background-color: $white;
+            cursor: pointer;
+            border: 1px solid $borderColor;
+            border-radius: 4px;
+            transition: all 0.5s;
+            padding: 6px 10px;
+            margin: auto;
+            margin-top: 35px;
+            margin-bottom: 20px;
+
+            &:hover {
+                background-color: $navColor;
+            }
+        }
     }
 }
 

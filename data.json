@@ -4,8 +4,8 @@
             "id": 1,
             "email": "test@test.com",
             "username": "userrrrnnnname",
-            "name": "user",
-            "surname": "name",
+            "name": "Ilya",
+            "surname": "Trokhin",
             "avatar": null,
             "info": "I am user from Userland, my hobby is posting ideas, hope someone can realize something from it!",
             "stats": {
@@ -40,6 +40,18 @@
                 2
             ],
             "comments": []
+        },
+        {
+            "id": 3,
+            "email": "test2@test.com",
+            "avatar": null,
+            "stats": {
+                "ideas": 0,
+                "comments": 0,
+                "rating": 0
+            },
+            "ideas": [],
+            "comments": []
         }
     ],
     "ideas": [
@@ -47,7 +59,7 @@
             "id": 1,
             "user": {
                 "id": 1,
-                "name": "user"
+                "name": "newUserName"
             },
             "name": "Human Resource Management System",
             "main-idea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar massa in fermentum sagittis. Aliquam congue commodo ligula, quis pretium dui pellentesque a. Donec eget porta nibh, sed ullamcorper odio. Vivamus euismod leo ante, nec vestibulum sapien blandit sed. Mauris vel hendrerit mauris. Vestibulum vulputate metus sit amet urna facilisis euismod. Maecenas eget sapien ut arcu cursus lobortis. Curabitur vel quam porttitor, convallis odio interdum, iaculis tellus. Pellentesque pretium risus id volutpat maximus. Duis blandit tempus rutrum. Proin bibendum nibh quam, ac mattis massa bibendum congue.",
@@ -82,6 +94,16 @@
                     "date": "Sun Apr 30 2017 05:18:14 GMT+0300 (RTZ 2 (зима))",
                     "text": "123",
                     "id": 2,
+                    "user": {
+                        "id": 1,
+                        "name": "user"
+                    }
+                },
+                {
+                    "ideaid": "1",
+                    "date": "Fri May 19 2017 20:03:17 GMT+0300 (RTZ 2 (зима))",
+                    "text": "lil",
+                    "id": 10,
                     "user": {
                         "id": 1,
                         "name": "user"
@@ -164,141 +186,6 @@
                 "tag2",
                 "tag3"
             ]
-        },
-        {
-            "functionality": [
-                "First item",
-                "Second item"
-            ],
-            "other": [
-                {
-                    "name": "Wanna it",
-                    "text": "it"
-                },
-                {
-                    "name": "And it",
-                    "text": "itt"
-                }
-            ],
-            "name": "New idea",
-            "main-idea": "Cool description",
-            "tags": [
-                "tag1",
-                "tag2",
-                "tag3"
-            ],
-            "mockups": [],
-            "comments": [],
-            "rating": 0,
-            "id": 3,
-            "user": {
-                "id": 1,
-                "name": "user"
-            }
-        },
-        {
-            "functionality": [
-                "123"
-            ],
-            "other": [
-                {
-                    "name": "123",
-                    "text": "123"
-                }
-            ],
-            "rating": "0",
-            "name": "123321",
-            "main-idea": "321321",
-            "tags": [
-                "tag1",
-                "tag2",
-                "tag3"
-            ],
-            "mockups": [],
-            "comments": [
-                {
-                    "ideaid": "4",
-                    "date": "Sun Apr 30 2017 05:19:04 GMT+0300 (RTZ 2 (зима))",
-                    "text": "test",
-                    "id": 5,
-                    "user": {
-                        "id": 1,
-                        "name": "user"
-                    }
-                }
-            ],
-            "id": 4,
-            "user": {
-                "id": 1,
-                "name": "user"
-            }
-        }
-    ],
-    "comments": [
-        {
-            "ideaid": "1",
-            "date": "Sun Apr 30 2017 05:18:14 GMT+0300 (RTZ 2 (зима))",
-            "text": "123",
-            "id": 2,
-            "user": {
-                "id": 2
-            }
-        },
-        {
-            "ideaid": "2",
-            "date": "Sun Apr 30 2017 05:18:51 GMT+0300 (RTZ 2 (зима))",
-            "text": "test",
-            "id": 3,
-            "user": {
-                "id": 1
-            }
-        },
-        {
-            "ideaid": "2",
-            "date": "Sun Apr 30 2017 05:18:54 GMT+0300 (RTZ 2 (зима))",
-            "text": "testtest",
-            "id": 4,
-            "user": {
-                "id": 1
-            }
-        },
-        {
-            "ideaid": "4",
-            "date": "Sun Apr 30 2017 05:19:04 GMT+0300 (RTZ 2 (зима))",
-            "text": "test",
-            "id": 5,
-            "user": {
-                "id": 2
-            }
-        },
-        {
-            "ideaid": "2",
-            "date": "Wed May 03 2017 00:42:37 GMT+0300 (RTZ 2 (зима))",
-            "text": "test2",
-            "id": 6,
-            "user": {
-                "id": 2
-            }
-        },
-        {
-            "ideaid": "8",
-            "date": "Wed May 03 2017 00:55:51 GMT+0300 (RTZ 2 (зима))",
-            "text": "new",
-            "id": 7,
-            "user": {
-                "id": 2,
-                "name": "nouser"
-            }
-        },
-        {
-            "ideaid": "2",
-            "date": "Wed May 03 2017 00:56:34 GMT+0300 (RTZ 2 (зима))",
-            "text": "test",
-            "id": 8,
-            "user": {
-                "id": 2,
-                "name": "nouser"
-            }
         }
     ],
     "ideaid": 13,
@@ -314,34 +201,16 @@
             "id": 2,
             "login": "test2@test.com",
             "password": "testtest"
-        },
-        {
-            "id": 3,
-            "login": "test3@test.com",
-            "password": "test33"
-        },
-        {
-            "id": 4,
-            "login": "test33@test.com",
-            "password": "test4443"
         }
     ],
     "useridtoken": [
         {
-            "id": 3,
-            "token": "e59934e8-1226-4555-981b-87275226bfab"
-        },
-        {
-            "id": 4,
-            "token": "c335eec0-fff9-4482-bbfc-39f7a4127f54"
+            "id": 2,
+            "token": "eeec6a90-d484-4451-924e-5c34d8f71128"
         },
         {
             "id": 1,
-            "token": "520a101b-f3db-4a6f-ad66-1e4077be2892"
-        },
-        {
-            "id": 2,
-            "token": "5ff08253-a968-4177-9591-924d1781f39d"
+            "token": "6d005240-646e-4907-8196-254810b8fdef"
         }
     ]
 }

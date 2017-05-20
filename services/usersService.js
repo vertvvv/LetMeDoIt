@@ -105,11 +105,31 @@ function getUserByToken(token) {
     }
 }
 
+function changeUserInfo(id, info) {
+    let allAccounts = db.getData('/users');
+    let index = -1;
+
+    allAccounts.forEach((item, i) => {
+        if (item.id == id) {
+            db.push('/users[' + i + ']', info, false);
+            index = i;
+        }
+    });
+
+    if (index != -1) {
+        console.log(index);
+        return db.getData('/users[' + index + ']');
+    } else {
+        throw new Error('Wrong user id!');
+    }
+}
+
 module.exports = {
     authorizeUser: authorizeUser,
     signUpUser: signUpUser,
     getAllUsers: getAllUsers,
     getUserInfo: getUserInfo,
     getUserByToken: getUserByToken,
-    getUsernameByID: getUsernameByID
+    getUsernameByID: getUsernameByID,
+    changeUserInfo: changeUserInfo
 };

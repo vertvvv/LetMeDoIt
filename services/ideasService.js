@@ -29,6 +29,10 @@ function getSingleIdea(id) {
     }))[0]; //like Array.some(), but returns value, idk how to do it better
 
     idea.user.name = users.getUsernameByID(idea.user.id);
+    idea.comments.forEach((comment) => {
+        comment.user.name = users.getUsernameByID(comment.user.id);
+        comment.user.avatar = users.getAvatarByID(comment.user.id);
+    });
 
     return idea;
 }

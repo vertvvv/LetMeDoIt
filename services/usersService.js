@@ -12,24 +12,33 @@ function authorizeUser(login, password) {
 
     allAccounts.forEach((item, i) => {
         if (item.login == login && item.password == password) {
-            console.log(login, password);
             index = i;
             id = item.id;
         }
     });
 
     if (index !== false) {
-        let token = uuid();
-        db.getData('/useridtoken').forEach((item, i) => {
-           if (item.id == id) {
-               db.delete('/useridtoken[' + i + ']');
-           }
-        });
-        db.push('/useridtoken[]', {id: id, token: token});
+        let token = generateToken(id);
+        let login = getUsernameByID(id);
+
         return {token: token, login: login, id: id};
     } else {
         throw new Error('Invalid data!');
     }
+}
+
+function generateToken(id) {
+    let token = uuid();
+
+    db.getData('/useridtoken').forEach((item, i) => {
+        if (item.id == id) {
+            db.delete('/useridtoken[' + i + ']');
+        }
+    });
+
+    db.push('/useridtoken[]', {id: id, token: token});
+
+    return token;
 }
 
 function signUpUser(login, password) {
@@ -44,9 +53,11 @@ function signUpUser(login, password) {
 
     if (!isLoginAlreadyTaken) {
         let id = db.getData('/userid');
+
         db.push('/userid', id + 1);
         db.push('/userpassword[]', {id: id, login: login, password: password});
         db.push('/users[]', {id: id, email: login});
+
         return authorizeUser(login, password);
     } else {
         throw new Error ('This login is already taken!');
@@ -59,7 +70,11 @@ function getUsernameByID(id) {
 
     allAccounts.forEach(item => {
         if (item.id == id) {
-            name = item.name;
+            if (item.username) {
+                name = item.username;
+            } else {
+                name = item.email;
+            }
         }
     });
 
@@ -71,16 +86,14 @@ function getAllUsers() {
 }
 
 function getUserInfo(userid) {
-    let result = {
-
-    };
-
+    let result = {};
     let allUsers = db.getData('/users');
+    let allIdeas = db.getData('/ideas');
+
     result.user = (allUsers.filter((user) => {
         return user['id'] == userid;
     }))[0];
 
-    let allIdeas = db.getData('/ideas');
     result.ideas = allIdeas.filter((idea) => {
         return idea.user['id'] == userid;
     });
@@ -117,11 +130,41 @@ function changeUserInfo(id, info) {
     });
 
     if (index != -1) {
-        console.log(index);
         return db.getData('/users[' + index + ']');
     } else {
         throw new Error('Wrong user id!');
     }
+}
+
+function changePassword(id, pass) {
+    let allUserPasswords = db.getData('/userpassword');
+    let index = -1;
+
+    allUserPasswords.forEach((item, i) => {
+        if (item.id == id) {
+            db.push('/userpassword[' + i + ']', {'password': pass}, false);
+            index = i;
+        }
+    });
+
+    if (index != -1) {
+        return generateToken(id);
+    } else {
+        throw new Error('Wrong user id!');
+    }
+}
+
+function getAvatarByID(id) {
+    let allAccounts = db.getData('/users');
+    let avatar = null;
+
+    allAccounts.forEach(item => {
+        if (item.id == id) {
+            avatar = item.avatar;
+        }
+    });
+
+    return avatar;
 }
 
 module.exports = {
@@ -131,5 +174,7 @@ module.exports = {
     getUserInfo: getUserInfo,
     getUserByToken: getUserByToken,
     getUsernameByID: getUsernameByID,
-    changeUserInfo: changeUserInfo
+    changeUserInfo: changeUserInfo,
+    changePassword: changePassword,
+    getAvatarByID: getAvatarByID
 };

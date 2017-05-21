@@ -27,10 +27,15 @@ export class Comment {
     }
 
     getComment() {
+        let avatar = '';
+        if (this.user.avatar) {
+            avatar = `style="background-image: url(${this.user.avatar});"`
+        }
+
         return `
             <div class="comments-block">
                 <div class="flex-item avatar">
-                    <div class="avatar__wrapper"></div>
+                    <div class="avatar__wrapper" ${avatar}></div>
                     <div class="avatar__username"><a href="profile.html?id=${this.user.id}">${this.user.name}</a></div>
                 </div>
                 <div class="flex-item comment">

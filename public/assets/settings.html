@@ -18,10 +18,14 @@
         <div class="settings">
             <div class="settings__info">
                 <div class="settings__info__avatar"></div>
-                <button class="settings__info__change-avatar">Change avatar</button>
+                <button id="avatarChange" class="settings__info__change-avatar">Change avatar</button>
             </div>
             <div class="settings__main">
                 <h3>User settings</h3>
+                <div class="form-input">
+                    <label for="usernameInput">Username</label>
+                    <input id="usernameInput" placeholder="Username">
+                </div>
                 <div class="form-input">
                     <label for="nameInput">Name</label>
                     <input id="nameInput" placeholder="Name">
@@ -34,11 +38,8 @@
                     <label for="bioTextarea">Information</label>
                     <textarea id="bioTextarea" placeholder="About me" rows="5"></textarea>
                 </div>
+                <div id="userInfoChange" class="change-button">Change</div>
                 <h3>Account settings</h3>
-                <div class="form-input">
-                    <label for="usernameInput">Username</label>
-                    <input id="usernameInput" placeholder="Username">
-                </div>
                 <div class="form-input">
                     <label for="emailInput">E-mail</label>
                     <input id="emailInput" placeholder="E-Mail" disabled="disabled">
@@ -51,7 +52,7 @@
                     <label for="confirmPassInput">Confirm password</label>
                     <input id="confirmPassInput" type="password" placeholder="Password">
                 </div>
-                <div class="change-button">Change</div>
+                <div id="passwordChange" class="change-button">Change password</div>
             </div>
         </div>
     </section>

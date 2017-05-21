@@ -8,8 +8,9 @@ import { Footer } from './classes/Footer';
 export function renderMainComponents() {
     return new Promise((resolve) => {
         let login = localStorage.getItem('login');
+        let avatar = localStorage.getItem('avatar');
 
-        let header = new Header(login);
+        let header = new Header(login, avatar);
         let footer = new Footer();
 
         $('body')

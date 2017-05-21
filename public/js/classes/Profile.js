@@ -26,9 +26,14 @@ export class Profile {
     }
 
     getUserMain() {
+        let avatar = '';
+        if (this.avatar) {
+            avatar = `style="background-image: url(${this.avatar});"`
+        }
+
         return `
             <div class="user-bio__main">
-                <div class="user-bio__main__avatar">
+                <div class="user-bio__main__avatar" ${avatar}>
                 </div>
                 <div class="user-bio__main__username">
                     ${this.getFullName()}

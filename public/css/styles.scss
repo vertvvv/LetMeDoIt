@@ -10,10 +10,10 @@ $menuHoverColor: #eee;
 $textColor: #333;
 $footerTextColor: #627588;
 $sectionsBackground: #fcfcfc;
-$plusGreen: black;
-$plusGreenHover: #00c100;
-$minusRed: black;
-$minusRedHover: #ff0000;
+$plusColor: black;
+$plusColorHover: #00c100;
+$minusColor: black;
+$minusColorHover: #ff0000;
 $white: white;
 
 /*Fonts*/
@@ -346,18 +346,18 @@ nav {
                 }
 
                 &__plus {
-                    color: $plusGreen;
+                    color: $plusColor;
 
                     &:hover, &.voted {
-                        color: $plusGreenHover;
+                        color: $plusColorHover;
                     }
                 }
 
                 &__minus {
-                    color: $minusRed;
+                    color: $minusColor;
 
                     &:hover, &.voted {
-                        color: $minusRedHover;
+                        color: $minusColorHover;
                     }
                 }
             }
@@ -823,8 +823,23 @@ nav {
 .settings {
     display: flex;
 
+    $lnheight: 24px;
+
     @media (max-width: $xs) {
         flex-direction: column;
+    }
+
+    .notification-message {
+        text-align: center;
+        margin-bottom: 20px;
+
+        &.success-message {
+            color: $plusColorHover;
+        }
+
+        &.warning-message {
+            color: $minusColorHover;
+        }
     }
 
     &__info {
@@ -859,6 +874,22 @@ nav {
                 background-color: $navColor;
             }
         }
+
+        input {
+            margin-top: 20px;
+            line-height: $lnheight;
+            flex: 3;
+            border: 1px solid $borderColor;
+            border-radius: 5px;
+            box-shadow: none;
+            padding: 2px 4px 2px 12px;
+            font-size: $fontNormal;
+            width: 80%;
+
+            &[disabled] {
+                cursor: not-allowed;
+            }
+        }
     }
 
     &__main {
@@ -868,9 +899,8 @@ nav {
         border-radius: 10px;
         padding: 10px 15px;
 
-        $lnheight: 24px;
-
         h3 {
+            margin-top: 10px;
             font-size: $fonth3;
             font-weight: 600;
             text-align: center;

@@ -4,7 +4,6 @@
 
 var express = require('express');
 var users = require('../services/usersService');
-var errHandler = require('../app');
 
 var router = express.Router();
 
@@ -19,6 +18,7 @@ var router = express.Router();
 router.post('/login', function(req, res, next) {
    let login = req.body.login;
    let password = req.body.password;
+
    try {
        let result = users.authorizeUser(login, password);
        res.send(result);
@@ -39,6 +39,7 @@ router.post('/login', function(req, res, next) {
 router.post('/signup', function(req, res, next) {
    let login = req.body.login;
    let password = req.body.password;
+
    try {
        let result = users.signUpUser(login, password);
        res.send(result);
@@ -56,6 +57,7 @@ router.post('/signup', function(req, res, next) {
 
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
+
     res.send(users.getUserInfo(id));
 });
 
@@ -67,6 +69,7 @@ router.get('/:id', function (req, res, next) {
 
 router.get('/', function (req, res, next) {
     let token = req.query.token;
+
     try {
         let id = users.getUserByToken(token);
         res.send(users.getUserInfo(id));
@@ -86,9 +89,30 @@ router.get('/', function (req, res, next) {
 router.put('/', function (req, res, next) {
     let token = req.query.token;
     let userInfo = req.body;
+
     try {
         let id = users.getUserByToken(token);
         res.send(users.changeUserInfo(id, userInfo));
+    } catch(err) {
+        res.status('400');
+        res.send(err.message);
+    }
+});
+
+/**
+ * Change users password
+ * @param {string} token - Access token to identificate user
+ * @param {string} password - New password
+ * @returns new access token
+ */
+
+router.post('/changepass', function (req, res, next) {
+    let token = req.query.token;
+    let password = req.body.password;
+
+    try {
+        let id = users.getUserByToken(token);
+        res.send(users.changePassword(id, password));
     } catch(err) {
         res.status('400');
         res.send(err.message);

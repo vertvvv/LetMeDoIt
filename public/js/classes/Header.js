@@ -6,8 +6,13 @@ import { auth } from '../api';
 import { MAIN_PAGE_URL } from '../consts';
 
 export class Header {
-    constructor(username = null) {
+    constructor(username = null, avatar) {
         this.username = username;
+        if (avatar) {
+            this.avatar = avatar;
+        } else {
+            this.avatar = '../img/profile.jpg';
+        }
     }
 
     init() {
@@ -51,7 +56,7 @@ export class Header {
         auth.authorizeUser(login, password)
             .done(data => {
                 console.log(data);
-                localStorage.setItem('login', login);
+                localStorage.setItem('login', data.login);
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('id', data.id);
                 location.reload();
@@ -117,7 +122,7 @@ export class Header {
         return `
             <div id="profile-bar" class="nav__right-side">
                 <a class="nav__img-wrapper">
-                    <img src="../img/profile.jpg">
+                    <img src="${this.avatar}">
                     <span class="nav__profile-name">${this.username}</span>
                     <span class="caret"></span>
                 </a>

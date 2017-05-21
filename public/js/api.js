@@ -37,6 +37,10 @@ export const users = {
 
     changeUserInfo: (info) => {
         return $.put(API_URL + 'users?token=' + localStorage.getItem('token'), info);
+    },
+
+    changePassword: (pass) => {
+        return $.post(API_URL + 'users/changepass?token=' + localStorage.getItem('token'), pass)
     }
 };
 

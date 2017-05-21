@@ -540,6 +540,13 @@ nav {
   @media (max-width: 767px) {
     .settings {
       flex-direction: column; } }
+  .settings .notification-message {
+    text-align: center;
+    margin-bottom: 20px; }
+    .settings .notification-message.success-message {
+      color: #00c100; }
+    .settings .notification-message.warning-message {
+      color: #ff0000; }
   .settings__info {
     flex: 2;
     text-align: center; }
@@ -564,6 +571,18 @@ nav {
       transition: all 0.5s; }
       .settings__info__change-avatar:hover {
         background-color: #f0f317; }
+    .settings__info input {
+      margin-top: 20px;
+      line-height: 24px;
+      flex: 3;
+      border: 1px solid #d1d1d1;
+      border-radius: 5px;
+      box-shadow: none;
+      padding: 2px 4px 2px 12px;
+      font-size: 0.96em;
+      width: 80%; }
+      .settings__info input[disabled] {
+        cursor: not-allowed; }
   .settings__main {
     flex: 5;
     border: 1px solid #d1d1d1;
@@ -571,6 +590,7 @@ nav {
     border-radius: 10px;
     padding: 10px 15px; }
     .settings__main h3 {
+      margin-top: 10px;
       font-size: 1.15em;
       font-weight: 600;
       text-align: center; }

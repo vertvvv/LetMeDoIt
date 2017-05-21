@@ -3,11 +3,11 @@
         {
             "id": 1,
             "email": "test@test.com",
-            "username": "userrrrnnnname",
+            "username": "vertvvv",
             "name": "Ilya",
             "surname": "Trokhin",
-            "avatar": null,
-            "info": "I am user from Userland, my hobby is posting ideas, hope someone can realize something from it!",
+            "avatar": "https://pbs.twimg.com/profile_images/439852273699520512/RTZdWWL5_400x400.png",
+            "info": "Yeee it works",
             "stats": {
                 "ideas": 1,
                 "comments": 9,
@@ -26,11 +26,11 @@
         {
             "id": 2,
             "email": "test2@test.com",
-            "username": "use2rrrrnn2nname",
-            "name": "nouser",
-            "surname": "noname",
-            "avatar": null,
-            "info": "I am user from Userland2, my hobby is posting ideas, hope someone can realize something from it!",
+            "username": "username2",
+            "name": "Vasya",
+            "surname": "Pupkin",
+            "avatar": "https://vk.com/images/stickers/4493/128.png",
+            "info": "I am second user, yeeeah2",
             "stats": {
                 "ideas": 1,
                 "comments": 13,
@@ -40,18 +40,6 @@
                 2
             ],
             "comments": []
-        },
-        {
-            "id": 3,
-            "email": "test2@test.com",
-            "avatar": null,
-            "stats": {
-                "ideas": 0,
-                "comments": 0,
-                "rating": 0
-            },
-            "ideas": [],
-            "comments": []
         }
     ],
     "ideas": [
@@ -59,7 +47,7 @@
             "id": 1,
             "user": {
                 "id": 1,
-                "name": "newUserName"
+                "name": "vertvvv"
             },
             "name": "Human Resource Management System",
             "main-idea": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar massa in fermentum sagittis. Aliquam congue commodo ligula, quis pretium dui pellentesque a. Donec eget porta nibh, sed ullamcorper odio. Vivamus euismod leo ante, nec vestibulum sapien blandit sed. Mauris vel hendrerit mauris. Vestibulum vulputate metus sit amet urna facilisis euismod. Maecenas eget sapien ut arcu cursus lobortis. Curabitur vel quam porttitor, convallis odio interdum, iaculis tellus. Pellentesque pretium risus id volutpat maximus. Duis blandit tempus rutrum. Proin bibendum nibh quam, ac mattis massa bibendum congue.",
@@ -96,7 +84,8 @@
                     "id": 2,
                     "user": {
                         "id": 1,
-                        "name": "user"
+                        "name": "vertvvv",
+                        "avatar": "https://pbs.twimg.com/profile_images/439852273699520512/RTZdWWL5_400x400.png"
                     }
                 },
                 {
@@ -106,7 +95,8 @@
                     "id": 10,
                     "user": {
                         "id": 1,
-                        "name": "user"
+                        "name": "vertvvv",
+                        "avatar": "https://pbs.twimg.com/profile_images/439852273699520512/RTZdWWL5_400x400.png"
                     }
                 }
             ]
@@ -115,7 +105,7 @@
             "id": 2,
             "user": {
                 "id": 2,
-                "name": "nouser"
+                "name": "username2"
             },
             "name": "New cool idea 2",
             "main-idea": "Lorem ipsum 123lkasflfsk",
@@ -132,7 +122,8 @@
                     "id": 3,
                     "user": {
                         "id": 1,
-                        "name": "user"
+                        "name": "vertvvv",
+                        "avatar": "https://pbs.twimg.com/profile_images/439852273699520512/RTZdWWL5_400x400.png"
                     }
                 },
                 {
@@ -142,7 +133,8 @@
                     "id": 4,
                     "user": {
                         "id": 1,
-                        "name": "user"
+                        "name": "vertvvv",
+                        "avatar": "https://pbs.twimg.com/profile_images/439852273699520512/RTZdWWL5_400x400.png"
                     }
                 },
                 {
@@ -152,7 +144,8 @@
                     "id": 6,
                     "user": {
                         "id": 2,
-                        "name": "nouser"
+                        "name": "username2",
+                        "avatar": "https://vk.com/images/stickers/4493/128.png"
                     }
                 },
                 {
@@ -162,7 +155,19 @@
                     "id": 8,
                     "user": {
                         "id": 2,
-                        "name": "nouser"
+                        "name": "username2",
+                        "avatar": "https://vk.com/images/stickers/4493/128.png"
+                    }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Sun May 21 2017 20:24:01 GMT+0300 (RTZ 2 (зима))",
+                    "text": "dsa",
+                    "id": 10,
+                    "user": {
+                        "id": 2,
+                        "name": "username2",
+                        "avatar": "https://vk.com/images/stickers/4493/128.png"
                     }
                 }
             ],
@@ -186,11 +191,49 @@
                 "tag2",
                 "tag3"
             ]
+        },
+        {
+            "functionality": [
+                "edit ideas",
+                "delete ideas",
+                "rating change",
+                "change documentation",
+                "check on mobile device",
+                "deploy on heroku"
+            ],
+            "other": [
+                {
+                    "name": "code refactor",
+                    "text": ""
+                },
+                {
+                    "name": "scss/jquery to webpack add",
+                    "text": ""
+                },
+                {
+                    "name": "check documentation",
+                    "text": "must be like jsdoc format"
+                }
+            ],
+            "rating": "0",
+            "name": "This app TODO",
+            "main-idea": "just all what i need to do",
+            "user": {
+                "id": 2
+            },
+            "tags": [
+                "tag1",
+                "tag2",
+                "tag3"
+            ],
+            "mockups": [],
+            "comments": [],
+            "id": 14
         }
     ],
-    "ideaid": 13,
+    "ideaid": 14,
     "commentid": 9,
-    "userid": 7,
+    "userid": 8,
     "userpassword": [
         {
             "id": 1,
@@ -200,17 +243,17 @@
         {
             "id": 2,
             "login": "test2@test.com",
-            "password": "testtest"
+            "password": "12345"
         }
     ],
     "useridtoken": [
         {
-            "id": 2,
-            "token": "eeec6a90-d484-4451-924e-5c34d8f71128"
+            "id": 1,
+            "token": "6aef1121-3c1f-4f77-a004-9662a3746c6e"
         },
         {
-            "id": 1,
-            "token": "6d005240-646e-4907-8196-254810b8fdef"
+            "id": 2,
+            "token": "fb9002a8-cc13-4a83-a916-fc5796cc54cc"
         }
     ]
 }

@@ -55,7 +55,7 @@ export class Header {
         let password = $('#signin-password').val();
         auth.authorizeUser(login, password)
             .done(data => {
-                console.log(data);
+                localStorage.setItem('avatar', data.avatar);
                 localStorage.setItem('login', data.login);
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('id', data.id);

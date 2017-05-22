@@ -10,18 +10,9 @@
             "info": "Yeee it works",
             "stats": {
                 "ideas": 1,
-                "comments": 9,
-                "rating": 125
-            },
-            "ideas": [
-                1
-            ],
-            "comments": [
-                1,
-                2,
-                3,
-                4
-            ]
+                "comments": 4,
+                "rating": 1
+            }
         },
         {
             "id": 2,
@@ -32,14 +23,10 @@
             "avatar": "https://vk.com/images/stickers/4493/128.png",
             "info": "I am second user, yeeeah2",
             "stats": {
-                "ideas": 1,
-                "comments": 13,
-                "rating": 145
-            },
-            "ideas": [
-                2
-            ],
-            "comments": []
+                "ideas": 2,
+                "comments": 7,
+                "rating": 0
+            }
         }
     ],
     "ideas": [
@@ -169,6 +156,50 @@
                         "name": "username2",
                         "avatar": "https://vk.com/images/stickers/4493/128.png"
                     }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Mon May 22 2017 04:52:32 GMT+0300 (RTZ 2 (зима))",
+                    "text": "123",
+                    "id": 10,
+                    "user": {
+                        "id": 2,
+                        "name": "username2",
+                        "avatar": "https://vk.com/images/stickers/4493/128.png"
+                    }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Mon May 22 2017 04:52:41 GMT+0300 (RTZ 2 (зима))",
+                    "text": "fdfd",
+                    "id": 10,
+                    "user": {
+                        "id": 2,
+                        "name": "username2",
+                        "avatar": "https://vk.com/images/stickers/4493/128.png"
+                    }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Mon May 22 2017 04:54:24 GMT+0300 (RTZ 2 (зима))",
+                    "text": "23",
+                    "id": 10,
+                    "user": {
+                        "id": 2,
+                        "name": "username2",
+                        "avatar": "https://vk.com/images/stickers/4493/128.png"
+                    }
+                },
+                {
+                    "ideaid": "2",
+                    "date": "Mon May 22 2017 04:55:51 GMT+0300 (RTZ 2 (зима))",
+                    "text": "w",
+                    "id": 10,
+                    "user": {
+                        "id": 2,
+                        "name": "username2",
+                        "avatar": "https://vk.com/images/stickers/4493/128.png"
+                    }
                 }
             ],
             "mockups": [
@@ -219,7 +250,8 @@
             "name": "This app TODO",
             "main-idea": "just all what i need to do",
             "user": {
-                "id": 2
+                "id": 2,
+                "name": "username2"
             },
             "tags": [
                 "tag1",
@@ -231,7 +263,7 @@
             "id": 14
         }
     ],
-    "ideaid": 14,
+    "ideaid": 16,
     "commentid": 9,
     "userid": 8,
     "userpassword": [
@@ -249,11 +281,11 @@
     "useridtoken": [
         {
             "id": 1,
-            "token": "6aef1121-3c1f-4f77-a004-9662a3746c6e"
+            "token": "d2b8e526-9c54-4ff2-b67d-d3af8be9650b"
         },
         {
             "id": 2,
-            "token": "fb9002a8-cc13-4a83-a916-fc5796cc54cc"
+            "token": "5e9f2677-f7d2-4e9d-af3b-15cc80ced1ae"
         }
     ]
 }

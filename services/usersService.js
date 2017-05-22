@@ -20,8 +20,14 @@ function authorizeUser(login, password) {
     if (index !== false) {
         let token = generateToken(id);
         let login = getUsernameByID(id);
+        let avatar = getAvatarByID(id);
 
-        return {token: token, login: login, id: id};
+        return {
+            avatar: avatar,
+            token: token,
+            login: login,
+            id: id
+        };
     } else {
         throw new Error('Invalid data!');
     }
@@ -167,6 +173,26 @@ function getAvatarByID(id) {
     return avatar;
 }
 
+function addIdeaToStats(id) {
+    let allAccounts = db.getData('/users');
+
+    allAccounts.forEach((item, i) => {
+        if (item.id == id) {
+            db.push('/users[' + i + ']', {'stats': {'ideas': item.stats.ideas + 1}}, false);
+        }
+    });
+}
+
+function addCommentToStats(id) {
+    let allAccounts = db.getData('/users');
+
+    allAccounts.forEach((item, i) => {
+        if (item.id == id) {
+            db.push('/users[' + i + ']', {'stats': {'comments': item.stats.comments + 1}}, false);
+        }
+    });
+}
+
 module.exports = {
     authorizeUser: authorizeUser,
     signUpUser: signUpUser,
@@ -176,5 +202,7 @@ module.exports = {
     getUsernameByID: getUsernameByID,
     changeUserInfo: changeUserInfo,
     changePassword: changePassword,
-    getAvatarByID: getAvatarByID
+    getAvatarByID: getAvatarByID,
+    addIdeaToStats: addIdeaToStats,
+    addCommentToStats: addCommentToStats
 };

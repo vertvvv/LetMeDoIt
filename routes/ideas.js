@@ -41,8 +41,10 @@ router.post('/', function (req, res, next) {
     let newIdea = req.body;
     let token = req.query.token;
     try {
+        let id = users.getUserByToken(token);
+
         newIdea.user = {
-            id: users.getUserByToken(token)
+            id: id
         };
         newIdea.tags = ['tag1', 'tag2', 'tag3'];
         newIdea.mockups = [];
@@ -50,6 +52,9 @@ router.post('/', function (req, res, next) {
         newIdea.id = ideas.getNewIdeaID() + 1;
 
         ideas.postIdea(newIdea);
+
+        users.addIdeaToStats(id);
+
         res.send(newIdea);
 
     } catch(err) {

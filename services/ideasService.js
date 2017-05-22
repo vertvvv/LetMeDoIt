@@ -13,7 +13,7 @@ function postIdea(idea) {
 
 function getNewIdeaID() {
     return db.getData('/ideaid');
-}//temporary decision
+}
 
 function getAllIdeas() {
     return (db.getData('/ideas')).map(item => {
@@ -26,7 +26,7 @@ function getSingleIdea(id) {
     let allIdeas = db.getData('/ideas');
     let idea = (allIdeas.filter((idea) => {
         return idea['id'] == id;
-    }))[0]; //like Array.some(), but returns value, idk how to do it better
+    }))[0]; //like Array.some(), but returns value
 
     idea.user.name = users.getUsernameByID(idea.user.id);
     idea.comments.forEach((comment) => {

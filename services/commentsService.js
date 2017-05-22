@@ -4,10 +4,8 @@
 
 var db = require('./database');
 var ideas = require('./ideasService');
-var users = require('./usersService');
 
 function addComment(comment) {
-    //add comment to idea json
     let index = ideas.findIdea(comment.ideaid);
     db.push('/ideas[' + index + ']/comments[]', comment);
 }

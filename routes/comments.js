@@ -21,13 +21,19 @@ router.post('/', function (req, res, next) {
     let token = req.query.token;
 
     try {
-        newComment.id = comments.getNewCommentID() + 1;
         let userid = users.getUserByToken(token);
+
+        newComment.id = comments.getNewCommentID() + 1;
         newComment.user = {
             id: userid,
-            name: users.getUsernameByID(userid)
+            name: users.getUsernameByID(userid),
+            avatar: users.getAvatarByID(userid)
         };
+
         comments.addComment(newComment);
+
+        users.addCommentToStats(userid);
+
         res.send(newComment);
     } catch(err) {
         res.status('400');
